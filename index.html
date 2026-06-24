@@ -10,7 +10,6 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.paypal.com https://www.paypalobjects.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://www.paypal.com https://www.paypalobjects.com;">
     <meta name="description" content="LumaWorld Aurora Projector - Starry sky and aurora night light with Bluetooth speaker and white noise.">
     <title>LumaWorld Aurora Projector - Starry Sky Night Light</title>
-    <script src="https://www.paypal.com/sdk/js?client-id=Acm3-cmh8rAXDB4DNURTjuFTeUeFOGAU3skoyU-NXDMDH6p-livZTSVCinh5GKXdC9yp_nm-drNlDYQ1"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -943,10 +942,13 @@
     </script>
 
     <!-- PayPal Checkout -->
+    <script src="https://www.paypal.com/sdk/js?client-id=Acm3-cmh8rAXDB4DNURTjuFTeUeFOGAU3skoyU-NXDMDH6p-livZTSVCinh5GKXdC9yp_nm-drNlDYQ1"></script>
     <script>
-    (function() {
+    document.addEventListener('DOMContentLoaded', function() {
+        var container = document.getElementById('paypal-button-container');
+        if (!container) return;
         if (typeof paypal === 'undefined') {
-            document.getElementById('paypal-button-container').innerHTML = '<p style="color:#a8a7c7;font-size:.85rem;text-align:center">PayPal failed to load. <a href="mailto:lumaworldshop@gmail.com" style="color:#a78bfa">Contact us</a> to order.</p>';
+            container.innerHTML = '<p style="color:#a8a7c7;font-size:.85rem;text-align:center">PayPal failed to load. <a href="mailto:lumaworldshop@gmail.com" style="color:#a78bfa">Contact us</a> to order.</p>';
             return;
         }
         paypal.Buttons({
@@ -967,15 +969,15 @@
             },
             onApprove: function(data, actions) {
                 return actions.order.capture().then(function(details) {
-                    document.getElementById('paypal-button-container').innerHTML = '<div style="text-align:center;padding:1rem"><div style="font-size:2rem;margin-bottom:.5rem">&#10003;</div><p style="color:#2dd4bf;font-weight:600;font-size:1.1rem">Payment Successful!</p><p style="color:#a8a7c7;font-size:.85rem;margin-top:.5rem">Thank you, ' + details.payer.name.given_name + '!<br>Check your email for confirmation.</p></div>';
+                    container.innerHTML = '<div style="text-align:center;padding:1rem"><div style="font-size:2rem;margin-bottom:.5rem">&#10003;</div><p style="color:#2dd4bf;font-weight:600;font-size:1.1rem">Payment Successful!</p><p style="color:#a8a7c7;font-size:.85rem;margin-top:.5rem">Thank you, ' + details.payer.name.given_name + '!<br>Check your email for confirmation.</p></div>';
                 });
             },
             onError: function(err) {
                 console.error('PayPal error:', err);
-                document.getElementById('paypal-button-container').innerHTML += '<p style="color:#f87171;font-size:.75rem;text-align:center;margin-top:.5rem">Payment error. Please try again or <a href="mailto:lumaworldshop@gmail.com" style="color:#a78bfa">contact us</a>.</p>';
+                container.innerHTML += '<p style="color:#f87171;font-size:.75rem;text-align:center;margin-top:.5rem">Payment error. Please try again or <a href="mailto:lumaworldshop@gmail.com" style="color:#a78bfa">contact us</a>.</p>';
             }
         }).render('#paypal-button-container');
-    })();
+    });
     </script>
 </body>
 </html>
