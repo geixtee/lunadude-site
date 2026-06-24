@@ -942,13 +942,13 @@
     </script>
 
     <!-- PayPal Checkout -->
-    <script src="https://www.paypal.com/sdk/js?client-id=Acm3-cmh8rAXDB4DNURTjuFTeUeFOGAU3skoyU-NXDMDH6p-livZTSVCinh5GKXdC9yp_nm-drNlDYQ1"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=Acm3-cmh8rAXDB4DNURTjuFTeUeFOGAU3skoyU-NXDMDH6p-livZTSVCinh5GKXdC9yp_nm-drNlDYQ1&currency=USD"></script>
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    function initPayPal() {
         var container = document.getElementById('paypal-button-container');
         if (!container) return;
         if (typeof paypal === 'undefined') {
-            container.innerHTML = '<p style="color:#a8a7c7;font-size:.85rem;text-align:center">PayPal failed to load. <a href="mailto:lumaworldshop@gmail.com" style="color:#a78bfa">Contact us</a> to order.</p>';
+            setTimeout(initPayPal, 200);
             return;
         }
         paypal.Buttons({
@@ -977,7 +977,8 @@
                 container.innerHTML += '<p style="color:#f87171;font-size:.75rem;text-align:center;margin-top:.5rem">Payment error. Please try again or <a href="mailto:lumaworldshop@gmail.com" style="color:#a78bfa">contact us</a>.</p>';
             }
         }).render('#paypal-button-container');
-    });
+    }
+    document.addEventListener('DOMContentLoaded', initPayPal);
     </script>
 </body>
 </html>
