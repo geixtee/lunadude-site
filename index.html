@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="theme-midnight">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
@@ -19,7 +19,7 @@
         html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
         body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
         h1,h2,h3,h4,h5{font-family:'Space Grotesk',sans-serif}
-        img{max-width:100%;height:auto;display:block}
+        img{max-width:100%;height:auto;display:block;transition:opacity .15s ease}
 
         /* ACCESSIBILITY: Skip link */
         .skip-link{position:absolute;top:-100px;left:0;background:#8b5cf6;color:#fff;padding:12px 20px;z-index:10000;border-radius:0 0 12px 0;font-size:.95rem;text-decoration:none;transition:top .2s;font-weight:600}
@@ -77,15 +77,21 @@
         /* ACCESSIBILITY: Focus indicator enhancement */
         .a11y-high-contrast *:focus-visible{outline:3px solid #ffff00;outline-offset:3px}
 
-        .atmos{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
-        .orb{position:absolute;border-radius:50%;filter:blur(100px);animation:drift 20s ease-in-out infinite}
-        .orb:nth-child(1){width:600px;height:600px;top:-10%;left:-10%;background:radial-gradient(circle,rgba(139,92,246,.25) 0%,transparent 70%)}
-        .orb:nth-child(2){width:500px;height:500px;bottom:10%;right:-10%;background:radial-gradient(circle,rgba(96,165,250,.15) 0%,transparent 70%);animation-delay:-7s}
-        .orb:nth-child(3){width:400px;height:400px;top:40%;left:50%;transform:translateX(-50%);background:radial-gradient(circle,rgba(45,212,191,.1) 0%,transparent 70%);animation-delay:-14s}
-        @keyframes drift{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-20px) scale(1.05)}66%{transform:translate(-20px,15px) scale(.95)}}
-        .stars{position:fixed;inset:0;pointer-events:none;z-index:0}
-        .star{position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;animation:twinkle var(--d) ease-in-out infinite;opacity:0}
-        @keyframes twinkle{0%,100%{opacity:.12}50%{opacity:var(--om)}}
+        #bgCanvas{position:fixed;inset:0;pointer-events:none;z-index:0}
+
+        /* SVG Cloud Animations */
+        @keyframes drift-cloud {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(100vw + 400px)); }
+        }
+        @keyframes glow-pulse {
+            0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.15); }
+        }
+        .cloud-group{transition:opacity 1.5s ease}
+        #svgClouds{transition:opacity 1.5s ease}
+        #svgClouds.hidden{opacity:0;pointer-events:none}
+        #svgClouds.visible{opacity:1}
         .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;background:rgba(6,6,15,.82);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--bd)}
         .nl{font-family:'Space Grotesk',sans-serif;font-size:1.35rem;font-weight:700;letter-spacing:-.02em;background:linear-gradient(135deg,var(--pl),var(--bl),var(--te));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none}
         .nll{display:flex;gap:2rem;list-style:none}
@@ -200,8 +206,8 @@
     <!-- ACCESSIBILITY: Live region for screen reader announcements -->
     <div id="a11yAnnounce" class="sr-only" aria-live="polite" aria-atomic="true"></div>
 
-    <!-- ACCESSIBILITY: Text-to-Speech controls -->
-    <div style="position:fixed;top:20px;right:20px;z-index:9999;display:flex;gap:.5rem">
+    <!-- ACCESSIBILITY: Text-to-Speech controls (inline below nav) -->
+    <div id="ttsBar" style="position:fixed;top:60px;right:20px;z-index:9999;display:flex;gap:.5rem">
         <button class="tts-btn" id="ttsReadBtn" aria-label="Read page aloud" title="Read page aloud">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
             Listen
@@ -238,8 +244,69 @@
         </div>
     </div>
 
-    <div class="atmos" aria-hidden="true"><div class="orb"></div><div class="orb"></div><div class="orb"></div></div>
-    <div class="stars" id="stars" aria-hidden="true"></div>
+    <canvas id="bgCanvas" aria-hidden="true"></canvas>
+
+    <!-- SVG Cloud Layer (Cloud White theme) -->
+    <div id="svgClouds" class="hidden" aria-hidden="true" style="position:fixed;inset:0;pointer-events:none;z-index:0">
+        <div class="cloud-group" style="position:absolute;left:-10%;top:15%;width:350px;height:140px;animation:drift-cloud 35s linear infinite">
+            <svg viewBox="0 0 350 140" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                <ellipse cx="120" cy="90" rx="80" ry="40" fill="white" fill-opacity="0.4"/>
+                <ellipse cx="180" cy="70" rx="90" ry="50" fill="white" fill-opacity="0.5"/>
+                <ellipse cx="250" cy="85" rx="70" ry="35" fill="white" fill-opacity="0.35"/>
+                <ellipse cx="150" cy="60" rx="60" ry="40" fill="white" fill-opacity="0.45"/>
+            </svg>
+        </div>
+        <div class="cloud-group" style="position:absolute;left:25%;top:30%;width:400px;height:160px;animation:drift-cloud 45s linear infinite;animation-delay:-10s">
+            <svg viewBox="0 0 400 160" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                <ellipse cx="140" cy="100" rx="90" ry="45" fill="white" fill-opacity="0.35"/>
+                <ellipse cx="220" cy="80" rx="100" ry="55" fill="white" fill-opacity="0.4"/>
+                <ellipse cx="300" cy="95" rx="80" ry="40" fill="white" fill-opacity="0.3"/>
+                <ellipse cx="180" cy="65" rx="70" ry="45" fill="white" fill-opacity="0.4"/>
+            </svg>
+        </div>
+        <div class="cloud-group" style="position:absolute;left:45%;top:10%;width:320px;height:130px;animation:drift-cloud 30s linear infinite;animation-delay:-5s">
+            <svg viewBox="0 0 320 130" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                <ellipse cx="110" cy="80" rx="75" ry="38" fill="white" fill-opacity="0.5"/>
+                <ellipse cx="170" cy="60" rx="85" ry="48" fill="white" fill-opacity="0.55"/>
+                <ellipse cx="240" cy="75" rx="65" ry="32" fill="white" fill-opacity="0.4"/>
+            </svg>
+        </div>
+        <div class="cloud-group" style="position:absolute;left:65%;top:35%;width:380px;height:150px;animation:drift-cloud 50s linear infinite;animation-delay:-20s">
+            <svg viewBox="0 0 380 150" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                <ellipse cx="130" cy="95" rx="85" ry="42" fill="white" fill-opacity="0.4"/>
+                <ellipse cx="200" cy="70" rx="95" ry="52" fill="white" fill-opacity="0.45"/>
+                <ellipse cx="280" cy="90" rx="75" ry="38" fill="white" fill-opacity="0.35"/>
+                <ellipse cx="160" cy="55" rx="65" ry="40" fill="white" fill-opacity="0.5"/>
+            </svg>
+        </div>
+        <div class="cloud-group" style="position:absolute;left:85%;top:20%;width:300px;height:120px;animation:drift-cloud 40s linear infinite;animation-delay:-15s">
+            <svg viewBox="0 0 300 120" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                <ellipse cx="100" cy="75" rx="70" ry="35" fill="white" fill-opacity="0.45"/>
+                <ellipse cx="160" cy="55" rx="80" ry="45" fill="white" fill-opacity="0.5"/>
+                <ellipse cx="230" cy="70" rx="60" ry="30" fill="white" fill-opacity="0.35"/>
+            </svg>
+        </div>
+        <div class="cloud-group" style="position:absolute;left:10%;top:50%;width:340px;height:140px;animation:drift-cloud 55s linear infinite;animation-delay:-30s">
+            <svg viewBox="0 0 340 140" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                <ellipse cx="115" cy="85" rx="78" ry="39" fill="white" fill-opacity="0.4"/>
+                <ellipse cx="175" cy="65" rx="88" ry="46" fill="white" fill-opacity="0.5"/>
+                <ellipse cx="245" cy="80" rx="68" ry="34" fill="white" fill-opacity="0.35"/>
+                <ellipse cx="140" cy="55" rx="58" ry="38" fill="white" fill-opacity="0.45"/>
+            </svg>
+        </div>
+        <div class="cloud-group" style="position:absolute;left:50%;top:55%;width:360px;height:145px;animation:drift-cloud 38s linear infinite;animation-delay:-8s">
+            <svg viewBox="0 0 360 145" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                <ellipse cx="125" cy="88" rx="82" ry="41" fill="white" fill-opacity="0.38"/>
+                <ellipse cx="190" cy="68" rx="92" ry="49" fill="white" fill-opacity="0.45"/>
+                <ellipse cx="260" cy="83" rx="72" ry="36" fill="white" fill-opacity="0.32"/>
+                <ellipse cx="155" cy="58" rx="62" ry="40" fill="white" fill-opacity="0.48"/>
+            </svg>
+        </div>
+        <!-- Pulsing glow center -->
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(180,200,255,0.12) 0%,transparent 70%);animation:glow-pulse 4s ease-in-out infinite"></div>
+        <!-- Mist overlay -->
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 0%,rgba(180,200,255,0.03) 50%,transparent 100%)"></div>
+    </div>
 
     <nav class="nav" role="navigation" aria-label="Main">
         <a href="lunadude.html" class="nl" aria-label="LumaWorld Home">LumaWorld</a>
@@ -264,10 +331,10 @@
                 <div class="vs" role="radiogroup" aria-label="Color variant selection">
                     <div class="vlb">Choose your color</div>
                     <div class="vlo">
-                        <button class="vb active" data-img="lunadude-images/img-6-desktop.jpg" onclick="selectVariant(this)" role="radio" aria-checked="true" aria-label="Midnight Black variant">
+                        <button class="vb active" data-img="img-6-desktop.jpg" onclick="selectVariant(this)" role="radio" aria-checked="true" aria-label="Midnight Black variant">
                             <span class="vd black" aria-hidden="true"></span> Midnight Black
                         </button>
-                        <button class="vb" data-img="lunadude-images/img-4-desktop.jpg" onclick="selectVariant(this)" role="radio" aria-checked="false" aria-label="Cloud White variant">
+                        <button class="vb" data-img="img-4-desktop.jpg" onclick="selectVariant(this)" role="radio" aria-checked="false" aria-label="Cloud White variant">
                             <span class="vd white" aria-hidden="true"></span> Cloud White
                         </button>
                     </div>
@@ -288,7 +355,7 @@
             </div>
             <div class="hv">
                 <div class="hw">
-                    <img src="lunadude-images/img-6-desktop.jpg" alt="Aurora Projector Midnight Black front view" id="heroImg" fetchpriority="high">
+                    <img src="img-6-desktop.jpg" alt="Aurora Projector Midnight Black front view" id="heroImg" fetchpriority="high">
                 </div>
             </div>
         </div>
@@ -338,11 +405,11 @@
                 <p class="sd">Real photos of the actual product. No AI generation.</p>
             </div>
             <div class="gg">
-                <div class="gc"><img src="lunadude-images/img-6-mobile.jpg" alt="Aurora Projector Midnight Black front product view"><span class="gl">Midnight Black - Front</span></div>
-                <div class="gc"><img src="lunadude-images/img-1-mobile.jpg" alt="Aurora Projector with light on projecting stars"><span class="gl">Bedroom - Star Mode</span></div>
-                <div class="gc"><img src="lunadude-images/img-2-mobile.jpg" alt="Aurora Projector showing different color modes"><span class="gl">Living Room - Aurora Mode</span></div>
-                <div class="gc"><img src="lunadude-images/img-4-mobile.jpg" alt="Aurora Projector Cloud White front view"><span class="gl">Cloud White - Front</span></div>
-                <div class="gc"><img src="lunadude-images/img-3-mobile.jpg" alt="Cloud White projector casting ambient glow"><span class="gl">Bedroom - Ambient Glow</span></div>
+                <div class="gc"><img src="img-6-mobile.jpg" alt="Aurora Projector Midnight Black front product view"><span class="gl">Midnight Black - Front</span></div>
+                <div class="gc"><img src="img-1-mobile.jpg" alt="Aurora Projector with light on projecting stars"><span class="gl">Bedroom - Star Mode</span></div>
+                <div class="gc"><img src="img-2-mobile.jpg" alt="Aurora Projector showing different color modes"><span class="gl">Living Room - Aurora Mode</span></div>
+                <div class="gc"><img src="img-4-mobile.jpg" alt="Aurora Projector Cloud White front view"><span class="gl">Cloud White - Front</span></div>
+                <div class="gc"><img src="img-3-mobile.jpg" alt="Cloud White projector casting ambient glow"><span class="gl">Bedroom - Ambient Glow</span></div>
             </div>
         </div>
     </section>
@@ -499,7 +566,19 @@
             img.style.opacity = '0.3';
             setTimeout(function() { img.src = src; img.style.opacity = '1'; }, 150);
         }
-        announceChange('Product variant changed to ' + btn.getAttribute('aria-label'));
+
+        // Switch background theme based on variant
+        var label = btn.getAttribute('aria-label');
+        var svgClouds = document.getElementById('svgClouds');
+        if (label && label.toLowerCase().indexOf('cloud') !== -1) {
+            if (window.switchBgTheme) window.switchBgTheme('cloud');
+            if (svgClouds) { svgClouds.classList.remove('hidden'); svgClouds.classList.add('visible'); }
+            announceChange('Cloud White variant selected — cloudy sky theme activated');
+        } else {
+            if (window.switchBgTheme) window.switchBgTheme('midnight');
+            if (svgClouds) { svgClouds.classList.remove('visible'); svgClouds.classList.add('hidden'); }
+            announceChange('Midnight Black variant selected — moonlit sky theme activated');
+        }
     }
 
     // ===== SMOOTH SCROLL =====
@@ -531,6 +610,164 @@
         });
         announceChange('Product added to cart');
     }
+
+    // ===== ANIMATED BACKGROUND CANVAS =====
+    (function() {
+        var canvas = document.getElementById('bgCanvas');
+        if (!canvas) return;
+        var ctx = canvas.getContext('2d');
+        var w, h;
+        var stars = [];
+        var clouds = [];
+        var time = 0;
+        var currentTheme = 'midnight';
+
+        function resize() {
+            w = canvas.width = window.innerWidth;
+            h = canvas.height = window.innerHeight;
+            initParticles();
+        }
+
+        function initParticles() {
+            stars = [];
+            clouds = [];
+            // Stars for midnight theme
+            for (var i = 0; i < 150; i++) {
+                stars.push({
+                    x: Math.random() * w,
+                    y: Math.random() * h * 0.7,
+                    r: Math.random() * 1.5 + 0.5,
+                    speed: Math.random() * 0.3 + 0.1,
+                    twinkle: Math.random() * Math.PI * 2
+                });
+            }
+            // Clouds for cloud theme (SVG handles visual, JS just keeps array)
+            for (var i = 0; i < 7; i++) {
+                clouds.push({
+                    x: Math.random() * w,
+                    y: Math.random() * h * 0.7,
+                    w: 200 + Math.random() * 300,
+                    h: 80 + Math.random() * 120,
+                    speed: (Math.random() * 0.2 + 0.05) * (Math.random() > 0.5 ? 1 : -1),
+                    opacity: 0.04 + Math.random() * 0.06
+                });
+            }
+        }
+
+        function drawMidnight() {
+            // Dark sky gradient
+            var grad = ctx.createLinearGradient(0, 0, 0, h);
+            grad.addColorStop(0, '#0a0a2e');
+            grad.addColorStop(0.5, '#06061a');
+            grad.addColorStop(1, '#06060f');
+            ctx.fillStyle = grad;
+            ctx.fillRect(0, 0, w, h);
+
+            // Aurora ribbons
+            for (var i = 0; i < 4; i++) {
+                ctx.beginPath();
+                ctx.moveTo(0, h * 0.3 + i * 60);
+                for (var x = 0; x <= w; x += 20) {
+                    var y = h * 0.3 + i * 60 + Math.sin(x * 0.005 + time * 0.5 + i) * 40 + Math.sin(x * 0.01 + time * 0.3) * 20;
+                    ctx.lineTo(x, y);
+                }
+                ctx.lineTo(w, h);
+                ctx.lineTo(0, h);
+                ctx.closePath();
+                var colors = ['rgba(139,92,246,0.08)', 'rgba(96,165,250,0.06)', 'rgba(108,92,231,0.05)', 'rgba(168,139,250,0.04)'];
+                ctx.fillStyle = colors[i];
+                ctx.fill();
+            }
+
+            // Crescent moon
+            var moonX = w * 0.82;
+            var moonY = h * 0.18;
+            var moonR = 50;
+            ctx.save();
+            ctx.beginPath();
+            ctx.arc(moonX, moonY, moonR, 0, Math.PI * 2);
+            ctx.fillStyle = '#c4b5fd';
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(moonX + 18, moonY - 12, moonR * 0.85, 0, Math.PI * 2);
+            ctx.fillStyle = '#06061a';
+            ctx.fill();
+            ctx.restore();
+
+            // Moon glow
+            var glow = ctx.createRadialGradient(moonX, moonY, moonR, moonX, moonY, moonR * 3);
+            glow.addColorStop(0, 'rgba(196,181,253,0.15)');
+            glow.addColorStop(1, 'rgba(196,181,253,0)');
+            ctx.fillStyle = glow;
+            ctx.fillRect(moonX - moonR * 3, moonY - moonR * 3, moonR * 6, moonR * 6);
+
+            // Stars
+            for (var i = 0; i < stars.length; i++) {
+                var s = stars[i];
+                s.twinkle += 0.02;
+                var alpha = 0.3 + Math.sin(s.twinkle) * 0.5;
+                if (alpha < 0) alpha = 0;
+                ctx.beginPath();
+                ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(255,255,255,' + alpha + ')';
+                ctx.fill();
+            }
+        }
+
+        function drawCloud() {
+            // Deep blue night sky
+            var grad = ctx.createLinearGradient(0, 0, 0, h);
+            grad.addColorStop(0, '#0b1a35');
+            grad.addColorStop(0.4, '#0d1f3c');
+            grad.addColorStop(1, '#06060f');
+            ctx.fillStyle = grad;
+            ctx.fillRect(0, 0, w, h);
+
+            // Subtle aurora ribbons
+            for (var i = 0; i < 3; i++) {
+                ctx.beginPath();
+                ctx.moveTo(0, h * 0.15 + i * 60);
+                for (var x = 0; x <= w; x += 20) {
+                    var y = h * 0.15 + i * 60 + Math.sin(x * 0.004 + time * 0.3 + i) * 40 + Math.sin(x * 0.008 + time * 0.5) * 20;
+                    ctx.lineTo(x, y);
+                }
+                ctx.lineTo(w, h);
+                ctx.lineTo(0, h);
+                ctx.closePath();
+                ctx.fillStyle = ['rgba(45,212,191,0.04)','rgba(96,165,250,0.03)','rgba(125,200,255,0.02)'][i];
+                ctx.fill();
+            }
+
+            // Twinkling stars
+            for (var i = 0; i < 80; i++) {
+                var sx = (i * 137.5 + 50) % w;
+                var sy = (i * 73.3 + 30) % (h * 0.5);
+                var alpha = 0.2 + Math.sin(time * 1.5 + i * 0.8) * 0.2;
+                ctx.beginPath();
+                ctx.arc(sx, sy, 0.6 + Math.sin(i) * 0.3, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(255,255,255,' + alpha + ')';
+                ctx.fill();
+            }
+        }
+
+        function animate() {
+            time += 0.016;
+            if (currentTheme === 'midnight') {
+                drawMidnight();
+            } else {
+                drawCloud();
+            }
+            requestAnimationFrame(animate);
+        }
+
+        window.switchBgTheme = function(theme) {
+            currentTheme = theme;
+        };
+
+        window.addEventListener('resize', resize);
+        resize();
+        animate();
+    })();
 
     // ===== TEXT-TO-SPEECH =====
     (function() {
