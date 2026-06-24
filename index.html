@@ -698,3 +698,1135 @@
     </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(self)">
+    <meta name="description" content="Privacy Policy - LumaWorld">
+    <title>Privacy Policy - LumaWorld</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root{--bg:#06060f;--surface:#0c0c1d;--card:#121228;--elev:#1a1a38;--pur:#8b5cf6;--pl:#a78bfa;--bl:#60a5fa;--te:#2dd4bf;--tx:#f1f0ff;--tm:#a8a7c7;--td:#6b6a8a;--bd:rgba(139,92,246,.12);--bh:rgba(139,92,246,.3)}
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+        body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--tx);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+        h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif}
+        img{max-width:100%;height:auto;display:block}
+        .skip-link{position:absolute;top:-40px;left:0;background:#8b5cf6;color:#fff;padding:8px 16px;z-index:1000;border-radius:0 0 8px 0;font-size:.9rem;text-decoration:none;transition:top .2s}
+        .skip-link:focus{top:0}
+        *:focus-visible{outline:2px solid #8b5cf6;outline-offset:2px}
+        .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+        .a11y-toggle{position:fixed;bottom:20px;left:20px;z-index:9999;width:48px;height:48px;border-radius:50%;background:#8b5cf6;border:2px solid #a78bfa;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(139,92,246,.4);transition:all .2s;font-size:1.2rem}
+        .a11y-toggle:hover,.a11y-toggle:focus{transform:scale(1.1);box-shadow:0 6px 24px rgba(139,92,246,.6);outline:2px solid #fff;outline-offset:2px}
+        .a11y-toggle[aria-expanded="true"]{background:#6d28d9}
+        .a11y-panel{position:fixed;bottom:80px;left:20px;z-index:9999;background:#121228;border:1px solid rgba(139,92,246,.3);border-radius:16px;padding:1.25rem;min-width:240px;box-shadow:0 8px 32px rgba(0,0,0,.5);display:none}
+        .a11y-panel.open{display:block}
+        .a11y-panel h3{font-size:.9rem;font-weight:600;color:#a78bfa;margin-bottom:.75rem;font-family:'Space Grotesk',sans-serif}
+        .a11y-option{display:flex;align-items:center;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid rgba(139,92,246,.1)}
+        .a11y-option:last-child{border-bottom:none}
+        .a11y-option label{font-size:.85rem;color:#a8a7c7;cursor:pointer}
+        .a11y-toggle-btn{padding:.3rem .6rem;background:rgba(139,92,246,.15);border:1px solid rgba(139,92,246,.3);border-radius:8px;color:#a78bfa;font-size:.75rem;font-weight:600;cursor:pointer;transition:all .15s}
+        .a11y-toggle-btn:hover,.a11y-toggle-btn.active{background:#8b5cf6;color:#fff}
+        .a11y-toggle-btn:focus{outline:2px solid #a78bfa;outline-offset:2px}
+        .a11y-high-contrast{--bg:#000000;--card:#1a1a1a;--tx:#ffffff;--tm:#e0e0e0;--td:#b0b0b0;--pur:#ffff00;--pl:#ffff00;--te:#00ff00;--bd:rgba(255,255,0,.3)}
+        .a11y-large-text{font-size:120%}
+        .a11y-dyslexia{font-family:'Comic Sans MS','Chalkboard SE','OpenDyslexic',sans-serif;letter-spacing:.05em;word-spacing:.1em}
+        .a11y-reduced-motion *,.a11y-reduced-motion *::before,.a11y-reduced-motion *::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+        .tts-btn{display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1rem;background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.25);border-radius:100px;color:var(--pl);font-size:.8rem;font-weight:600;cursor:pointer;transition:all .2s}
+        .tts-btn:hover{background:rgba(139,92,246,.2);color:#fff}
+        .tts-btn[aria-pressed="true"]{background:#8b5cf6;color:#fff}
+        .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;background:rgba(6,6,15,.82);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--bd)}
+        .nl{font-family:'Space Grotesk',sans-serif;font-size:1.35rem;font-weight:700;letter-spacing:-.02em;background:linear-gradient(135deg,var(--pl),var(--bl),var(--te));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none}
+        .nll{display:flex;gap:2rem;list-style:none}
+        .nll a{color:var(--tm);text-decoration:none;font-size:.875rem;font-weight:500;transition:color .15s}
+        .nll a:hover{color:var(--tx)}
+        .container{max-width:800px;margin:0 auto;padding:8rem 2rem 4rem}
+        h1{font-size:clamp(2rem,4vw,2.75rem);font-weight:700;margin-bottom:.5rem;letter-spacing:-.02em}
+        .last-updated{font-size:.85rem;color:var(--td);margin-bottom:3rem}
+        h2{font-size:1.35rem;font-weight:600;margin:2.5rem 0 1rem;color:var(--pl)}
+        h3{font-size:1.05rem;font-weight:600;margin:1.5rem 0 .5rem;color:var(--tx)}
+        p{color:var(--tm);margin-bottom:1rem;font-size:.95rem}
+        ul{margin:0 0 1rem 1.5rem;color:var(--tm);font-size:.95rem}
+        li{margin-bottom:.4rem}
+        strong{color:var(--tx)}
+        a{color:var(--pl);text-decoration:none}
+        a:hover{text-decoration:underline}
+        .footer{padding:2rem;border-top:1px solid var(--bd);text-align:center}
+        .footer p{font-size:.8rem;color:var(--td)}
+        .footer-links{display:flex;justify-content:center;gap:1.5rem;margin-bottom:1rem}
+        .footer-links a{color:var(--tm);text-decoration:none;font-size:.85rem}
+        .footer-links a:hover{color:var(--tx)}
+        @media(max-width:600px){
+            .container{padding:6rem 1.25rem 3rem}
+            .nll{display:none}
+        }
+        @media(prefers-reduced-motion:reduce){
+            *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+        }
+    </style>
+</head>
+<body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <nav class="nav" role="navigation" aria-label="Main">
+        <a href="lunadude.html" class="nl" aria-label="LumaWorld Home">LumaWorld</a>
+        <ul class="nll">
+            <li><a href="lunadude.html#features">Features</a></li>
+            <li><a href="lunadude.html#specs">Specs</a></li>
+            <li><a href="returns-refund-policy.html">Returns</a></li>
+        </ul>
+    </nav>
+
+    <main id="main" class="container">
+        <h1>Privacy Policy</h1>
+        <p class="last-updated">Last updated: June 2026</p>
+
+        <h2>1. Information We Collect</h2>
+        <p>When you make a purchase on LumaWorld, we collect the following information:</p>
+        <ul>
+            <li><strong>Contact information:</strong> Name, email address, shipping address</li>
+            <li><strong>Payment information:</strong> Processed securely through Stripe. We never store your full credit card number, CVV, or payment credentials on our servers.</li>
+            <li><strong>Order information:</strong> Products purchased, order date, transaction amount</li>
+            <li><strong>Technical information:</strong> IP address, browser type, device type — collected automatically for security and fraud prevention</li>
+        </ul>
+
+        <h2>2. How We Use Your Information</h2>
+        <p>We use your information only for:</p>
+        <ul>
+            <li>Processing and fulfilling your orders</li>
+            <li>Communicating order status and shipping updates</li>
+            <li>Preventing fraud and maintaining security</li>
+            <li>Complying with legal obligations (tax, accounting)</li>
+        </ul>
+        <p><strong>We never sell, rent, or share your personal information with third parties for marketing purposes.</strong></p>
+
+        <h2>3. Payment Security</h2>
+        <p>All payments are processed by <strong>Stripe</strong>, a PCI-DSS Level 1 certified payment processor. Your payment data is encrypted in transit using TLS 1.2+ and never touches our servers directly. Stripe's security practices are audited annually by independent third parties.</p>
+
+        <h2>4. Data Retention</h2>
+        <p>We retain order information for <strong>7 years</strong> to comply with tax and accounting regulations. You may request deletion of your personal data at any time by emailing <strong>lumaworldshop@gmail.com</strong>, subject to legal retention requirements.</p>
+
+        <h2>5. Cookies & Tracking</h2>
+        <p>LumaWorld does <strong>not</strong> use:</p>
+        <ul>
+            <li>Analytics cookies (no Google Analytics, no Facebook Pixel)</li>
+            <li>Advertising or tracking cookies</li>
+            <li>Third-party tracking scripts</li>
+        </ul>
+        <p>We use only strictly necessary session cookies required for basic site functionality (e.g., remembering your cart session). No personal data is collected through cookies.</p>
+
+        <h2>6. Third-Party Services</h2>
+        <p>We use the following trusted service providers, each with their own privacy practices:</p>
+        <ul>
+            <li><strong>Stripe</strong> — Payment processing (<a href="https://stripe.com/privacy" target="_blank" rel="noopener noreferrer">Stripe Privacy Policy</a>)</li>
+            <li><strong>GitHub Pages</strong> — Website hosting (static site, no server-side data collection)</li>
+            <li><strong>Your shipping carrier</strong> — Name and address shared solely for delivery purposes</li>
+        </ul>
+
+        <h2>7. Your Rights</h2>
+        <p>Depending on your location, you may have the right to:</p>
+        <ul>
+            <li>Access the personal data we hold about you</li>
+            <li>Request correction of inaccurate data</li>
+            <li>Request deletion of your data</li>
+            <li>Object to data processing</li>
+            <li>Data portability (receive your data in a machine-readable format)</li>
+        </ul>
+        <p>To exercise any of these rights, contact <strong>lumaworldshop@gmail.com</strong>. We will respond within 30 days.</p>
+
+        <h2>8. Security Measures</h2>
+        <p>We implement the following security measures:</p>
+        <ul>
+            <li>TLS/SSL encryption for all data in transit</li>
+            <li>Content Security Policy (CSP) headers to prevent code injection</li>
+            <li>X-Frame-Options and X-Content-Type-Options headers</li>
+            <li>Referrer-Policy set to strict-origin-when-cross-origin</li>
+            <li>No storage of sensitive payment data on our infrastructure</li>
+            <li>Static website architecture (no database, no server-side code execution)</li>
+        </ul>
+
+        <h2>9. Children's Privacy</h2>
+        <p>LumaWorld does not knowingly collect information from children under 16. If you believe a child has provided us with personal data, contact us immediately for deletion.</p>
+
+        <h2>10. Changes to This Policy</h2>
+        <p>We may update this privacy policy from time to time. Changes will be posted on this page with an updated "Last updated" date. We will notify you of material changes via email if you have an active order.</p>
+
+        <h2>11. Contact</h2>
+        <p>For privacy-related inquiries:<br>
+        Email: <strong>lumaworldshop@gmail.com</strong><br>
+        <br>
+        LumaWorld<br>
+        United States</p>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer-links">
+            <a href="lunadude.html">Home</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="returns-refund-policy.html">Returns & Refunds</a>
+        </div>
+        <p>&copy; 2026 LumaWorld. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(self)">
+    <meta name="description" content="Returns and Refund Policy - LumaWorld">
+    <title>Returns & Refund Policy - LumaWorld</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root{--bg:#06060f;--surface:#0c0c1d;--card:#121228;--elev:#1a1a38;--pur:#8b5cf6;--pl:#a78bfa;--bl:#60a5fa;--te:#2dd4bf;--rd:#f87171;--tx:#f1f0ff;--tm:#a8a7c7;--td:#6b6a8a;--bd:rgba(139,92,246,.12);--bh:rgba(139,92,246,.3)}
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+        body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--tx);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+        h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif}
+        img{max-width:100%;height:auto;display:block}
+        .skip-link{position:absolute;top:-40px;left:0;background:#8b5cf6;color:#fff;padding:8px 16px;z-index:1000;border-radius:0 0 8px 0;font-size:.9rem;text-decoration:none;transition:top .2s}
+        .skip-link:focus{top:0}
+        *:focus-visible{outline:2px solid #8b5cf6;outline-offset:2px}
+        .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+        .a11y-toggle{position:fixed;bottom:20px;left:20px;z-index:9999;width:48px;height:48px;border-radius:50%;background:#8b5cf6;border:2px solid #a78bfa;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(139,92,246,.4);transition:all .2s;font-size:1.2rem}
+        .a11y-toggle:hover,.a11y-toggle:focus{transform:scale(1.1);box-shadow:0 6px 24px rgba(139,92,246,.6);outline:2px solid #fff;outline-offset:2px}
+        .a11y-toggle[aria-expanded="true"]{background:#6d28d9}
+        .a11y-panel{position:fixed;bottom:80px;left:20px;z-index:9999;background:#121228;border:1px solid rgba(139,92,246,.3);border-radius:16px;padding:1.25rem;min-width:240px;box-shadow:0 8px 32px rgba(0,0,0,.5);display:none}
+        .a11y-panel.open{display:block}
+        .a11y-panel h3{font-size:.9rem;font-weight:600;color:#a78bfa;margin-bottom:.75rem;font-family:'Space Grotesk',sans-serif}
+        .a11y-option{display:flex;align-items:center;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid rgba(139,92,246,.1)}
+        .a11y-option:last-child{border-bottom:none}
+        .a11y-option label{font-size:.85rem;color:#a8a7c7;cursor:pointer}
+        .a11y-toggle-btn{padding:.3rem .6rem;background:rgba(139,92,246,.15);border:1px solid rgba(139,92,246,.3);border-radius:8px;color:#a78bfa;font-size:.75rem;font-weight:600;cursor:pointer;transition:all .15s}
+        .a11y-toggle-btn:hover,.a11y-toggle-btn.active{background:#8b5cf6;color:#fff}
+        .a11y-toggle-btn:focus{outline:2px solid #a78bfa;outline-offset:2px}
+        .a11y-high-contrast{--bg:#000000;--card:#1a1a1a;--tx:#ffffff;--tm:#e0e0e0;--td:#b0b0b0;--pur:#ffff00;--pl:#ffff00;--te:#00ff00;--bd:rgba(255,255,0,.3)}
+        .a11y-large-text{font-size:120%}
+        .a11y-dyslexia{font-family:'Comic Sans MS','Chalkboard SE','OpenDyslexic',sans-serif;letter-spacing:.05em;word-spacing:.1em}
+        .a11y-reduced-motion *,.a11y-reduced-motion *::before,.a11y-reduced-motion *::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+        .tts-btn{display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1rem;background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.25);border-radius:100px;color:var(--pl);font-size:.8rem;font-weight:600;cursor:pointer;transition:all .2s}
+        .tts-btn:hover{background:rgba(139,92,246,.2);color:#fff}
+        .tts-btn:focus{outline:2px solid #a78bfa;outline-offset:2px}
+        .tts-btn[aria-pressed="true"]{background:#8b5cf6;color:#fff}
+        .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;background:rgba(6,6,15,.82);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--bd)}
+        .nl{font-family:'Space Grotesk',sans-serif;font-size:1.35rem;font-weight:700;letter-spacing:-.02em;background:linear-gradient(135deg,var(--pl),var(--bl),var(--te));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none}
+        .nll{display:flex;gap:2rem;list-style:none}
+        .nll a{color:var(--tm);text-decoration:none;font-size:.875rem;font-weight:500;transition:color .15s}
+        .nll a:hover{color:var(--tx)}
+        .container{max-width:800px;margin:0 auto;padding:8rem 2rem 4rem}
+        h1{font-size:clamp(2rem,4vw,2.75rem);font-weight:700;margin-bottom:.5rem;letter-spacing:-.02em}
+        .last-updated{font-size:.85rem;color:var(--td);margin-bottom:3rem}
+        h2{font-size:1.35rem;font-weight:600;margin:2.5rem 0 1rem;color:var(--pl)}
+        h3{font-size:1.05rem;font-weight:600;margin:1.5rem 0 .5rem;color:var(--tx)}
+        p{color:var(--tm);margin-bottom:1rem;font-size:.95rem}
+        ul{margin:0 0 1rem 1.5rem;color:var(--tm);font-size:.95rem}
+        li{margin-bottom:.4rem}
+        strong{color:var(--tx)}
+        a{color:var(--pl);text-decoration:none}
+        a:hover{text-decoration:underline}
+        .highlight-box{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:1.25rem;margin:1.5rem 0}
+        .highlight-box p{margin-bottom:0}
+        .note{color:var(--rd);font-weight:600}
+        .footer{padding:2rem;border-top:1px solid var(--bd);text-align:center}
+        .footer p{font-size:.8rem;color:var(--td)}
+        .footer-links{display:flex;justify-content:center;gap:1.5rem;margin-bottom:1rem}
+        .footer-links a{color:var(--tm);text-decoration:none;font-size:.85rem}
+        .footer-links a:hover{color:var(--tx)}
+        @media(max-width:600px){
+            .container{padding:6rem 1.25rem 3rem}
+            .nll{display:none}
+        }
+        @media(prefers-reduced-motion:reduce){
+            *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+        }
+        @media(prefers-contrast:more){
+            *:focus-visible{outline:3px solid #ffff00!important;outline-offset:3px!important}
+        }
+    </style>
+</head>
+<body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <!-- ACCESSIBILITY: Live region for screen reader announcements -->
+    <div id="a11yAnnounce" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- ACCESSIBILITY: Text-to-Speech controls -->
+    <div style="position:fixed;top:20px;right:20px;z-index:9999;display:flex;gap:.5rem">
+        <button class="tts-btn" id="ttsReadBtn" aria-label="Read page aloud" title="Read page aloud">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+            Listen
+        </button>
+        <button class="tts-btn" id="ttsStopBtn" aria-label="Stop reading" title="Stop reading" style="display:none">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>
+            Stop
+        </button>
+    </div>
+
+    <!-- ACCESSIBILITY: Accessibility Toggle Button -->
+    <button class="a11y-toggle" id="a11yToggle" aria-label="Open accessibility settings" aria-expanded="false" aria-controls="a11yPanel">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
+    </button>
+
+    <!-- ACCESSIBILITY: Accessibility Panel -->
+    <div class="a11y-panel" id="a11yPanel" role="dialog" aria-label="Accessibility settings" aria-hidden="true">
+        <h3>Accessibility Settings</h3>
+        <div class="a11y-option">
+            <label for="a11yContrast">High Contrast</label>
+            <button class="a11y-toggle-btn" id="a11yContrast" role="switch" aria-checked="false" aria-label="Toggle high contrast mode">Off</button>
+        </div>
+        <div class="a11y-option">
+            <label for="a11yLargeText">Large Text</label>
+            <button class="a11y-toggle-btn" id="a11yLargeText" role="switch" aria-checked="false" aria-label="Toggle large text mode">Off</button>
+        </div>
+        <div class="a11y-option">
+            <label for="a11yReducedMotion">Reduced Motion</label>
+            <button class="a11y-toggle-btn" id="a11yReducedMotion" role="switch" aria-checked="false" aria-label="Toggle reduced motion">Off</button>
+        </div>
+        <div class="a11y-option">
+            <label for="a11yDyslexia">Dyslexia Font</label>
+            <button class="a11y-toggle-btn" id="a11yDyslexia" role="switch" aria-checked="false" aria-label="Toggle dyslexia-friendly font">Off</button>
+        </div>
+    </div>
+
+    <nav class="nav" role="navigation" aria-label="Main">
+        <a href="lunadude.html" class="nl" aria-label="LumaWorld Home">LumaWorld</a>
+        <ul class="nll">
+            <li><a href="lunadude.html#features">Features</a></li>
+            <li><a href="lunadude.html#specs">Specs</a></li>
+            <li><a href="privacy-policy.html">Privacy</a></li>
+        </ul>
+    </nav>
+
+    <main id="main" class="container">
+        <h1>Returns & Refund Policy</h1>
+        <p class="last-updated">Last updated: June 2026</p>
+
+        <h2>1. 30-Day Return Window</h2>
+        <p>You have <strong>30 days</strong> from the date of delivery to request a return. To be eligible:</p>
+        <ul>
+            <li>The product must be in its original condition — unused, undamaged</li>
+            <li>Original packaging must be intact</li>
+            <li>All accessories included (remote, USB-C cable, manual) must be returned</li>
+        </ul>
+
+        <div class="highlight-box">
+            <p><strong>Return shipping:</strong> We provide a prepaid return label. You will not pay for return shipping.</p>
+        </div>
+
+        <h2>2. How to Initiate a Return</h2>
+        <ol>
+            <li>Email <strong>lumaworldshop@gmail.com</strong> with your order number and reason for return</li>
+            <li>We will send you a prepaid return shipping label within 1 business day</li>
+            <li>Pack the product securely in its original packaging</li>
+            <li>Drop off at any authorized shipping location</li>
+            <li>Refund is processed within 5-7 business days after we receive the item</li>
+        </ol>
+
+        <h2>3. Refund Processing</h2>
+        <ul>
+            <li>Refunds are issued to the original payment method</li>
+            <li>Processing time: 5-7 business days after we receive your return</li>
+            <li>You will receive an email confirmation when the refund is processed</li>
+            <li>Your bank may take an additional 3-5 business days to post the refund to your account</li>
+        </ul>
+
+        <h2>4. Damaged or Defective Products</h2>
+        <p>If your product arrives damaged or defective:</p>
+        <ul>
+            <li>Contact us within <strong>48 hours</strong> of delivery with photos of the damage</li>
+            <li>We will send a replacement immediately — no need to return the damaged item</li>
+            <li>If a replacement is unavailable, we will issue a full refund including original shipping costs</li>
+        </ul>
+
+        <h2>5. Non-Returnable Items</h2>
+        <p>The following cannot be returned:</p>
+        <ul>
+            <li>Products showing signs of use or damage caused by the customer</li>
+            <li>Products returned after the 30-day window</li>
+            <li>Products without original packaging or missing accessories</li>
+        </ul>
+
+        <h2>6. Exchanges</h2>
+        <p>Need a different color? Contact <strong>lumaworldshop@gmail.com</strong> within 30 days of delivery. We will ship the replacement once we receive your return.</p>
+
+        <h2>7. Cancellations</h2>
+        <p>You can cancel your order for a full refund if it has not yet shipped. Once the order has entered transit, you will need to initiate a standard return (see above).</p>
+
+        <h2>8. Late or Missing Refunds</h2>
+        <p>If you have not received your refund within 14 business days of initiating the return:</p>
+        <ol>
+            <li>Check your bank statement again (some banks take longer)</li>
+            <li>Contact your credit card company</li>
+            <li>If still unresolved, email <strong>lumaworldshop@gmail.com</strong> and we will investigate</li>
+        </ol>
+
+        <h2>9. Contact for Returns</h2>
+        <p>Email: <strong>lumaworldshop@gmail.com</strong><br>
+        Response time: Within 1 business day</p>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer-links">
+            <a href="lunadude.html">Home</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="returns-refund-policy.html">Returns & Refunds</a>
+        </div>
+        <p>&copy; 2026 LumaWorld. All rights reserved.</p>
+    </footer>
+
+    <script>
+    // ===== LIVE ANNOUNCEMENTS =====
+    function announceChange(msg) {
+        var el = document.getElementById('a11yAnnounce');
+        if (el) { el.textContent = ''; setTimeout(function(){ el.textContent = msg; }, 100); }
+    }
+
+    // ===== TEXT-TO-SPEECH =====
+    (function() {
+        var readBtn = document.getElementById('ttsReadBtn');
+        var stopBtn = document.getElementById('ttsStopBtn');
+        if (!readBtn || !stopBtn) return;
+        if (!('speechSynthesis' in window)) { readBtn.style.display = 'none'; return; }
+
+        var currentUtterance = null;
+
+        readBtn.addEventListener('click', function() {
+            if (currentUtterance) { window.speechSynthesis.cancel(); }
+            var mainContent = document.getElementById('main');
+            if (!mainContent) return;
+            var text = mainContent.innerText;
+            if (text.length > 10000) { text = text.substring(0, 10000) + '. Text truncated for speech.'; }
+            currentUtterance = new SpeechSynthesisUtterance(text);
+            currentUtterance.rate = 0.95;
+            currentUtterance.pitch = 1;
+            currentUtterance.lang = 'en-US';
+            currentUtterance.onend = function() {
+                readBtn.style.display = '';
+                stopBtn.style.display = 'none';
+                readBtn.setAttribute('aria-pressed', 'false');
+                currentUtterance = null;
+            };
+            readBtn.style.display = 'none';
+            stopBtn.style.display = '';
+            readBtn.setAttribute('aria-pressed', 'true');
+            window.speechSynthesis.speak(currentUtterance);
+            announceChange('Reading page aloud');
+        });
+
+        stopBtn.addEventListener('click', function() {
+            window.speechSynthesis.cancel();
+            readBtn.style.display = '';
+            stopBtn.style.display = 'none';
+            readBtn.setAttribute('aria-pressed', 'false');
+            currentUtterance = null;
+            announceChange('Speech stopped');
+        });
+    })();
+
+    // ===== ACCESSIBILITY SYSTEM =====
+    (function() {
+        var toggle = document.getElementById('a11yToggle');
+        var panel = document.getElementById('a11yPanel');
+        var html = document.documentElement;
+
+        if (!toggle || !panel) return;
+
+        // Toggle panel open/close
+        toggle.addEventListener('click', function() {
+            var isOpen = panel.classList.contains('open');
+            if (isOpen) {
+                panel.classList.remove('open');
+                panel.setAttribute('aria-hidden', 'true');
+                toggle.setAttribute('aria-expanded', 'false');
+                announceChange('Accessibility panel closed');
+            } else {
+                panel.classList.add('open');
+                panel.setAttribute('aria-hidden', 'false');
+                toggle.setAttribute('aria-expanded', 'true');
+                announceChange('Accessibility panel opened');
+                var firstBtn = panel.querySelector('.a11y-toggle-btn');
+                if (firstBtn) firstBtn.focus();
+            }
+        });
+
+        // Close panel on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && panel.classList.contains('open')) {
+                panel.classList.remove('open');
+                panel.setAttribute('aria-hidden', 'true');
+                toggle.setAttribute('aria-expanded', 'false');
+                toggle.focus();
+                announceChange('Accessibility panel closed');
+            }
+        });
+
+        // Close panel when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!panel.contains(e.target) && !toggle.contains(e.target) && panel.classList.contains('open')) {
+                panel.classList.remove('open');
+                panel.setAttribute('aria-hidden', 'true');
+                toggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // High Contrast
+        var contrastBtn = document.getElementById('a11yContrast');
+        contrastBtn.addEventListener('click', function() {
+            var isActive = html.classList.toggle('a11y-high-contrast');
+            contrastBtn.classList.toggle('active');
+            contrastBtn.setAttribute('aria-checked', isActive);
+            contrastBtn.textContent = isActive ? 'On' : 'Off';
+            announceChange(isActive ? 'High contrast mode enabled' : 'High contrast mode disabled');
+        });
+
+        // Large Text
+        var largeTextBtn = document.getElementById('a11yLargeText');
+        largeTextBtn.addEventListener('click', function() {
+            var isActive = html.classList.toggle('a11y-large-text');
+            largeTextBtn.classList.toggle('active');
+            largeTextBtn.setAttribute('aria-checked', isActive);
+            largeTextBtn.textContent = isActive ? 'On' : 'Off';
+            announceChange(isActive ? 'Large text mode enabled' : 'Large text mode disabled');
+        });
+
+        // Reduced Motion
+        var reducedMotionBtn = document.getElementById('a11yReducedMotion');
+        reducedMotionBtn.addEventListener('click', function() {
+            var isActive = html.classList.toggle('a11y-reduced-motion');
+            reducedMotionBtn.classList.toggle('active');
+            reducedMotionBtn.setAttribute('aria-checked', isActive);
+            reducedMotionBtn.textContent = isActive ? 'On' : 'Off';
+            announceChange(isActive ? 'Reduced motion enabled' : 'Reduced motion disabled');
+        });
+
+        // Dyslexia Font
+        var dyslexiaBtn = document.getElementById('a11yDyslexia');
+        dyslexiaBtn.addEventListener('click', function() {
+            var isActive = html.classList.toggle('a11y-dyslexia');
+            dyslexiaBtn.classList.toggle('active');
+            dyslexiaBtn.setAttribute('aria-checked', isActive);
+            dyslexiaBtn.textContent = isActive ? 'On' : 'Off';
+            announceChange(isActive ? 'Dyslexia-friendly font enabled' : 'Dyslexia-friendly font disabled');
+        });
+
+        // Keyboard navigation within panel
+        var panelBtns = panel.querySelectorAll('.a11y-toggle-btn');
+        panelBtns.forEach(function(btn, idx) {
+            btn.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                    e.preventDefault();
+                    var next = panelBtns[idx + 1];
+                    if (next) next.focus();
+                } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                    e.preventDefault();
+                    var prev = panelBtns[idx - 1];
+                    if (prev) prev.focus();
+                } else if (e.key === 'Home') {
+                    e.preventDefault();
+                    panelBtns[0].focus();
+                } else if (e.key === 'End') {
+                    e.preventDefault();
+                    panelBtns[panelBtns.length - 1].focus();
+                }
+            });
+        });
+
+        // Auto-detect prefers-reduced-motion
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            html.classList.add('a11y-reduced-motion');
+            reducedMotionBtn.classList.add('active');
+            reducedMotionBtn.setAttribute('aria-checked', 'true');
+            reducedMotionBtn.textContent = 'On';
+        }
+
+        // Auto-detect prefers-contrast
+        if (window.matchMedia && window.matchMedia('(prefers-contrast: more)').matches) {
+            html.classList.add('a11y-high-contrast');
+            contrastBtn.classList.add('active');
+            contrastBtn.setAttribute('aria-checked', 'true');
+            contrastBtn.textContent = 'On';
+        }
+    })();
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(self)">
+    <meta name="description" content="Returns and Refund Policy - LumaWorld">
+    <title>Returns & Refund Policy - LumaWorld</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root{--bg:#06060f;--surface:#0c0c1d;--card:#121228;--elev:#1a1a38;--pur:#8b5cf6;--pl:#a78bfa;--bl:#60a5fa;--te:#2dd4bf;--rd:#f87171;--tx:#f1f0ff;--tm:#a8a7c7;--td:#6b6a8a;--bd:rgba(139,92,246,.12);--bh:rgba(139,92,246,.3)}
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+        body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--tx);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+        h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif}
+        img{max-width:100%;height:auto;display:block}
+        .skip-link{position:absolute;top:-40px;left:0;background:#8b5cf6;color:#fff;padding:8px 16px;z-index:1000;border-radius:0 0 8px 0;font-size:.9rem;text-decoration:none;transition:top .2s}
+        .skip-link:focus{top:0}
+        *:focus-visible{outline:2px solid #8b5cf6;outline-offset:2px}
+        .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+        .a11y-toggle{position:fixed;bottom:20px;left:20px;z-index:9999;width:48px;height:48px;border-radius:50%;background:#8b5cf6;border:2px solid #a78bfa;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(139,92,246,.4);transition:all .2s;font-size:1.2rem}
+        .a11y-toggle:hover,.a11y-toggle:focus{transform:scale(1.1);box-shadow:0 6px 24px rgba(139,92,246,.6);outline:2px solid #fff;outline-offset:2px}
+        .a11y-toggle[aria-expanded="true"]{background:#6d28d9}
+        .a11y-panel{position:fixed;bottom:80px;left:20px;z-index:9999;background:#121228;border:1px solid rgba(139,92,246,.3);border-radius:16px;padding:1.25rem;min-width:240px;box-shadow:0 8px 32px rgba(0,0,0,.5);display:none}
+        .a11y-panel.open{display:block}
+        .a11y-panel h3{font-size:.9rem;font-weight:600;color:#a78bfa;margin-bottom:.75rem;font-family:'Space Grotesk',sans-serif}
+        .a11y-option{display:flex;align-items:center;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid rgba(139,92,246,.1)}
+        .a11y-option:last-child{border-bottom:none}
+        .a11y-option label{font-size:.85rem;color:#a8a7c7;cursor:pointer}
+        .a11y-toggle-btn{padding:.3rem .6rem;background:rgba(139,92,246,.15);border:1px solid rgba(139,92,246,.3);border-radius:8px;color:#a78bfa;font-size:.75rem;font-weight:600;cursor:pointer;transition:all .15s}
+        .a11y-toggle-btn:hover,.a11y-toggle-btn.active{background:#8b5cf6;color:#fff}
+        .a11y-toggle-btn:focus{outline:2px solid #a78bfa;outline-offset:2px}
+        .a11y-high-contrast{--bg:#000000;--card:#1a1a1a;--tx:#ffffff;--tm:#e0e0e0;--td:#b0b0b0;--pur:#ffff00;--pl:#ffff00;--te:#00ff00;--bd:rgba(255,255,0,.3)}
+        .a11y-large-text{font-size:120%}
+        .a11y-dyslexia{font-family:'Comic Sans MS','Chalkboard SE','OpenDyslexic',sans-serif;letter-spacing:.05em;word-spacing:.1em}
+        .a11y-reduced-motion *,.a11y-reduced-motion *::before,.a11y-reduced-motion *::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+        .tts-btn{display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1rem;background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.25);border-radius:100px;color:var(--pl);font-size:.8rem;font-weight:600;cursor:pointer;transition:all .2s}
+        .tts-btn:hover{background:rgba(139,92,246,.2);color:#fff}
+        .tts-btn:focus{outline:2px solid #a78bfa;outline-offset:2px}
+        .tts-btn[aria-pressed="true"]{background:#8b5cf6;color:#fff}
+        .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;background:rgba(6,6,15,.82);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--bd)}
+        .nl{font-family:'Space Grotesk',sans-serif;font-size:1.35rem;font-weight:700;letter-spacing:-.02em;background:linear-gradient(135deg,var(--pl),var(--bl),var(--te));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none}
+        .nll{display:flex;gap:2rem;list-style:none}
+        .nll a{color:var(--tm);text-decoration:none;font-size:.875rem;font-weight:500;transition:color .15s}
+        .nll a:hover{color:var(--tx)}
+        .container{max-width:800px;margin:0 auto;padding:8rem 2rem 4rem}
+        h1{font-size:clamp(2rem,4vw,2.75rem);font-weight:700;margin-bottom:.5rem;letter-spacing:-.02em}
+        .last-updated{font-size:.85rem;color:var(--td);margin-bottom:3rem}
+        h2{font-size:1.35rem;font-weight:600;margin:2.5rem 0 1rem;color:var(--pl)}
+        h3{font-size:1.05rem;font-weight:600;margin:1.5rem 0 .5rem;color:var(--tx)}
+        p{color:var(--tm);margin-bottom:1rem;font-size:.95rem}
+        ul{margin:0 0 1rem 1.5rem;color:var(--tm);font-size:.95rem}
+        li{margin-bottom:.4rem}
+        strong{color:var(--tx)}
+        a{color:var(--pl);text-decoration:none}
+        a:hover{text-decoration:underline}
+        .highlight-box{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:1.25rem;margin:1.5rem 0}
+        .highlight-box p{margin-bottom:0}
+        .note{color:var(--rd);font-weight:600}
+        .footer{padding:2rem;border-top:1px solid var(--bd);text-align:center}
+        .footer p{font-size:.8rem;color:var(--td)}
+        .footer-links{display:flex;justify-content:center;gap:1.5rem;margin-bottom:1rem}
+        .footer-links a{color:var(--tm);text-decoration:none;font-size:.85rem}
+        .footer-links a:hover{color:var(--tx)}
+        @media(max-width:600px){
+            .container{padding:6rem 1.25rem 3rem}
+            .nll{display:none}
+        }
+        @media(prefers-reduced-motion:reduce){
+            *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+        }
+        @media(prefers-contrast:more){
+            *:focus-visible{outline:3px solid #ffff00!important;outline-offset:3px!important}
+        }
+    </style>
+</head>
+<body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <!-- ACCESSIBILITY: Live region for screen reader announcements -->
+    <div id="a11yAnnounce" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- ACCESSIBILITY: Text-to-Speech controls -->
+    <div style="position:fixed;top:20px;right:20px;z-index:9999;display:flex;gap:.5rem">
+        <button class="tts-btn" id="ttsReadBtn" aria-label="Read page aloud" title="Read page aloud">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+            Listen
+        </button>
+        <button class="tts-btn" id="ttsStopBtn" aria-label="Stop reading" title="Stop reading" style="display:none">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>
+            Stop
+        </button>
+    </div>
+
+    <!-- ACCESSIBILITY: Accessibility Toggle Button -->
+    <button class="a11y-toggle" id="a11yToggle" aria-label="Open accessibility settings" aria-expanded="false" aria-controls="a11yPanel">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
+    </button>
+
+    <!-- ACCESSIBILITY: Accessibility Panel -->
+    <div class="a11y-panel" id="a11yPanel" role="dialog" aria-label="Accessibility settings" aria-hidden="true">
+        <h3>Accessibility Settings</h3>
+        <div class="a11y-option">
+            <label for="a11yContrast">High Contrast</label>
+            <button class="a11y-toggle-btn" id="a11yContrast" role="switch" aria-checked="false" aria-label="Toggle high contrast mode">Off</button>
+        </div>
+        <div class="a11y-option">
+            <label for="a11yLargeText">Large Text</label>
+            <button class="a11y-toggle-btn" id="a11yLargeText" role="switch" aria-checked="false" aria-label="Toggle large text mode">Off</button>
+        </div>
+        <div class="a11y-option">
+            <label for="a11yReducedMotion">Reduced Motion</label>
+            <button class="a11y-toggle-btn" id="a11yReducedMotion" role="switch" aria-checked="false" aria-label="Toggle reduced motion">Off</button>
+        </div>
+        <div class="a11y-option">
+            <label for="a11yDyslexia">Dyslexia Font</label>
+            <button class="a11y-toggle-btn" id="a11yDyslexia" role="switch" aria-checked="false" aria-label="Toggle dyslexia-friendly font">Off</button>
+        </div>
+    </div>
+
+    <nav class="nav" role="navigation" aria-label="Main">
+        <a href="lunadude.html" class="nl" aria-label="LumaWorld Home">LumaWorld</a>
+        <ul class="nll">
+            <li><a href="lunadude.html#features">Features</a></li>
+            <li><a href="lunadude.html#specs">Specs</a></li>
+            <li><a href="privacy-policy.html">Privacy</a></li>
+        </ul>
+    </nav>
+
+    <main id="main" class="container">
+        <h1>Returns & Refund Policy</h1>
+        <p class="last-updated">Last updated: June 2026</p>
+
+        <h2>1. 30-Day Return Window</h2>
+        <p>You have <strong>30 days</strong> from the date of delivery to request a return. To be eligible:</p>
+        <ul>
+            <li>The product must be in its original condition — unused, undamaged</li>
+            <li>Original packaging must be intact</li>
+            <li>All accessories included (remote, USB-C cable, manual) must be returned</li>
+        </ul>
+
+        <div class="highlight-box">
+            <p><strong>Return shipping:</strong> We provide a prepaid return label. You will not pay for return shipping.</p>
+        </div>
+
+        <h2>2. How to Initiate a Return</h2>
+        <ol>
+            <li>Email <strong>lumaworldshop@gmail.com</strong> with your order number and reason for return</li>
+            <li>We will send you a prepaid return shipping label within 1 business day</li>
+            <li>Pack the product securely in its original packaging</li>
+            <li>Drop off at any authorized shipping location</li>
+            <li>Refund is processed within 5-7 business days after we receive the item</li>
+        </ol>
+
+        <h2>3. Refund Processing</h2>
+        <ul>
+            <li>Refunds are issued to the original payment method</li>
+            <li>Processing time: 5-7 business days after we receive your return</li>
+            <li>You will receive an email confirmation when the refund is processed</li>
+            <li>Your bank may take an additional 3-5 business days to post the refund to your account</li>
+        </ul>
+
+        <h2>4. Damaged or Defective Products</h2>
+        <p>If your product arrives damaged or defective:</p>
+        <ul>
+            <li>Contact us within <strong>48 hours</strong> of delivery with photos of the damage</li>
+            <li>We will send a replacement immediately — no need to return the damaged item</li>
+            <li>If a replacement is unavailable, we will issue a full refund including original shipping costs</li>
+        </ul>
+
+        <h2>5. Non-Returnable Items</h2>
+        <p>The following cannot be returned:</p>
+        <ul>
+            <li>Products showing signs of use or damage caused by the customer</li>
+            <li>Products returned after the 30-day window</li>
+            <li>Products without original packaging or missing accessories</li>
+        </ul>
+
+        <h2>6. Exchanges</h2>
+        <p>Need a different color? Contact <strong>lumaworldshop@gmail.com</strong> within 30 days of delivery. We will ship the replacement once we receive your return.</p>
+
+        <h2>7. Cancellations</h2>
+        <p>You can cancel your order for a full refund if it has not yet shipped. Once the order has entered transit, you will need to initiate a standard return (see above).</p>
+
+        <h2>8. Late or Missing Refunds</h2>
+        <p>If you have not received your refund within 14 business days of initiating the return:</p>
+        <ol>
+            <li>Check your bank statement again (some banks take longer)</li>
+            <li>Contact your credit card company</li>
+            <li>If still unresolved, email <strong>lumaworldshop@gmail.com</strong> and we will investigate</li>
+        </ol>
+
+        <h2>9. Contact for Returns</h2>
+        <p>Email: <strong>lumaworldshop@gmail.com</strong><br>
+        Response time: Within 1 business day</p>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer-links">
+            <a href="lunadude.html">Home</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="returns-refund-policy.html">Returns & Refunds</a>
+        </div>
+        <p>&copy; 2026 LumaWorld. All rights reserved.</p>
+    </footer>
+
+    <script>
+    // ===== LIVE ANNOUNCEMENTS =====
+    function announceChange(msg) {
+        var el = document.getElementById('a11yAnnounce');
+        if (el) { el.textContent = ''; setTimeout(function(){ el.textContent = msg; }, 100); }
+    }
+
+    // ===== TEXT-TO-SPEECH =====
+    (function() {
+        var readBtn = document.getElementById('ttsReadBtn');
+        var stopBtn = document.getElementById('ttsStopBtn');
+        if (!readBtn || !stopBtn) return;
+        if (!('speechSynthesis' in window)) { readBtn.style.display = 'none'; return; }
+
+        var currentUtterance = null;
+
+        readBtn.addEventListener('click', function() {
+            if (currentUtterance) { window.speechSynthesis.cancel(); }
+            var mainContent = document.getElementById('main');
+            if (!mainContent) return;
+            var text = mainContent.innerText;
+            if (text.length > 10000) { text = text.substring(0, 10000) + '. Text truncated for speech.'; }
+            currentUtterance = new SpeechSynthesisUtterance(text);
+            currentUtterance.rate = 0.95;
+            currentUtterance.pitch = 1;
+            currentUtterance.lang = 'en-US';
+            currentUtterance.onend = function() {
+                readBtn.style.display = '';
+                stopBtn.style.display = 'none';
+                readBtn.setAttribute('aria-pressed', 'false');
+                currentUtterance = null;
+            };
+            readBtn.style.display = 'none';
+            stopBtn.style.display = '';
+            readBtn.setAttribute('aria-pressed', 'true');
+            window.speechSynthesis.speak(currentUtterance);
+            announceChange('Reading page aloud');
+        });
+
+        stopBtn.addEventListener('click', function() {
+            window.speechSynthesis.cancel();
+            readBtn.style.display = '';
+            stopBtn.style.display = 'none';
+            readBtn.setAttribute('aria-pressed', 'false');
+            currentUtterance = null;
+            announceChange('Speech stopped');
+        });
+    })();
+
+    // ===== ACCESSIBILITY SYSTEM =====
+    (function() {
+        var toggle = document.getElementById('a11yToggle');
+        var panel = document.getElementById('a11yPanel');
+        var html = document.documentElement;
+
+        if (!toggle || !panel) return;
+
+        // Toggle panel open/close
+        toggle.addEventListener('click', function() {
+            var isOpen = panel.classList.contains('open');
+            if (isOpen) {
+                panel.classList.remove('open');
+                panel.setAttribute('aria-hidden', 'true');
+                toggle.setAttribute('aria-expanded', 'false');
+                announceChange('Accessibility panel closed');
+            } else {
+                panel.classList.add('open');
+                panel.setAttribute('aria-hidden', 'false');
+                toggle.setAttribute('aria-expanded', 'true');
+                announceChange('Accessibility panel opened');
+                var firstBtn = panel.querySelector('.a11y-toggle-btn');
+                if (firstBtn) firstBtn.focus();
+            }
+        });
+
+        // Close panel on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && panel.classList.contains('open')) {
+                panel.classList.remove('open');
+                panel.setAttribute('aria-hidden', 'true');
+                toggle.setAttribute('aria-expanded', 'false');
+                toggle.focus();
+                announceChange('Accessibility panel closed');
+            }
+        });
+
+        // Close panel when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!panel.contains(e.target) && !toggle.contains(e.target) && panel.classList.contains('open')) {
+                panel.classList.remove('open');
+                panel.setAttribute('aria-hidden', 'true');
+                toggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // High Contrast
+        var contrastBtn = document.getElementById('a11yContrast');
+        contrastBtn.addEventListener('click', function() {
+            var isActive = html.classList.toggle('a11y-high-contrast');
+            contrastBtn.classList.toggle('active');
+            contrastBtn.setAttribute('aria-checked', isActive);
+            contrastBtn.textContent = isActive ? 'On' : 'Off';
+            announceChange(isActive ? 'High contrast mode enabled' : 'High contrast mode disabled');
+        });
+
+        // Large Text
+        var largeTextBtn = document.getElementById('a11yLargeText');
+        largeTextBtn.addEventListener('click', function() {
+            var isActive = html.classList.toggle('a11y-large-text');
+            largeTextBtn.classList.toggle('active');
+            largeTextBtn.setAttribute('aria-checked', isActive);
+            largeTextBtn.textContent = isActive ? 'On' : 'Off';
+            announceChange(isActive ? 'Large text mode enabled' : 'Large text mode disabled');
+        });
+
+        // Reduced Motion
+        var reducedMotionBtn = document.getElementById('a11yReducedMotion');
+        reducedMotionBtn.addEventListener('click', function() {
+            var isActive = html.classList.toggle('a11y-reduced-motion');
+            reducedMotionBtn.classList.toggle('active');
+            reducedMotionBtn.setAttribute('aria-checked', isActive);
+            reducedMotionBtn.textContent = isActive ? 'On' : 'Off';
+            announceChange(isActive ? 'Reduced motion enabled' : 'Reduced motion disabled');
+        });
+
+        // Dyslexia Font
+        var dyslexiaBtn = document.getElementById('a11yDyslexia');
+        dyslexiaBtn.addEventListener('click', function() {
+            var isActive = html.classList.toggle('a11y-dyslexia');
+            dyslexiaBtn.classList.toggle('active');
+            dyslexiaBtn.setAttribute('aria-checked', isActive);
+            dyslexiaBtn.textContent = isActive ? 'On' : 'Off';
+            announceChange(isActive ? 'Dyslexia-friendly font enabled' : 'Dyslexia-friendly font disabled');
+        });
+
+        // Keyboard navigation within panel
+        var panelBtns = panel.querySelectorAll('.a11y-toggle-btn');
+        panelBtns.forEach(function(btn, idx) {
+            btn.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                    e.preventDefault();
+                    var next = panelBtns[idx + 1];
+                    if (next) next.focus();
+                } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                    e.preventDefault();
+                    var prev = panelBtns[idx - 1];
+                    if (prev) prev.focus();
+                } else if (e.key === 'Home') {
+                    e.preventDefault();
+                    panelBtns[0].focus();
+                } else if (e.key === 'End') {
+                    e.preventDefault();
+                    panelBtns[panelBtns.length - 1].focus();
+                }
+            });
+        });
+
+        // Auto-detect prefers-reduced-motion
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            html.classList.add('a11y-reduced-motion');
+            reducedMotionBtn.classList.add('active');
+            reducedMotionBtn.setAttribute('aria-checked', 'true');
+            reducedMotionBtn.textContent = 'On';
+        }
+
+        // Auto-detect prefers-contrast
+        if (window.matchMedia && window.matchMedia('(prefers-contrast: more)').matches) {
+            html.classList.add('a11y-high-contrast');
+            contrastBtn.classList.add('active');
+            contrastBtn.setAttribute('aria-checked', 'true');
+            contrastBtn.textContent = 'On';
+        }
+    })();
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(self)">
+    <meta name="description" content="Privacy Policy - LumaWorld">
+    <title>Privacy Policy - LumaWorld</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root{--bg:#06060f;--surface:#0c0c1d;--card:#121228;--elev:#1a1a38;--pur:#8b5cf6;--pl:#a78bfa;--bl:#60a5fa;--te:#2dd4bf;--tx:#f1f0ff;--tm:#a8a7c7;--td:#6b6a8a;--bd:rgba(139,92,246,.12);--bh:rgba(139,92,246,.3)}
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+        body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--tx);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+        h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif}
+        img{max-width:100%;height:auto;display:block}
+        .skip-link{position:absolute;top:-40px;left:0;background:#8b5cf6;color:#fff;padding:8px 16px;z-index:1000;border-radius:0 0 8px 0;font-size:.9rem;text-decoration:none;transition:top .2s}
+        .skip-link:focus{top:0}
+        *:focus-visible{outline:2px solid #8b5cf6;outline-offset:2px}
+        .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+        .a11y-toggle{position:fixed;bottom:20px;left:20px;z-index:9999;width:48px;height:48px;border-radius:50%;background:#8b5cf6;border:2px solid #a78bfa;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(139,92,246,.4);transition:all .2s;font-size:1.2rem}
+        .a11y-toggle:hover,.a11y-toggle:focus{transform:scale(1.1);box-shadow:0 6px 24px rgba(139,92,246,.6);outline:2px solid #fff;outline-offset:2px}
+        .a11y-toggle[aria-expanded="true"]{background:#6d28d9}
+        .a11y-panel{position:fixed;bottom:80px;left:20px;z-index:9999;background:#121228;border:1px solid rgba(139,92,246,.3);border-radius:16px;padding:1.25rem;min-width:240px;box-shadow:0 8px 32px rgba(0,0,0,.5);display:none}
+        .a11y-panel.open{display:block}
+        .a11y-panel h3{font-size:.9rem;font-weight:600;color:#a78bfa;margin-bottom:.75rem;font-family:'Space Grotesk',sans-serif}
+        .a11y-option{display:flex;align-items:center;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid rgba(139,92,246,.1)}
+        .a11y-option:last-child{border-bottom:none}
+        .a11y-option label{font-size:.85rem;color:#a8a7c7;cursor:pointer}
+        .a11y-toggle-btn{padding:.3rem .6rem;background:rgba(139,92,246,.15);border:1px solid rgba(139,92,246,.3);border-radius:8px;color:#a78bfa;font-size:.75rem;font-weight:600;cursor:pointer;transition:all .15s}
+        .a11y-toggle-btn:hover,.a11y-toggle-btn.active{background:#8b5cf6;color:#fff}
+        .a11y-toggle-btn:focus{outline:2px solid #a78bfa;outline-offset:2px}
+        .a11y-high-contrast{--bg:#000000;--card:#1a1a1a;--tx:#ffffff;--tm:#e0e0e0;--td:#b0b0b0;--pur:#ffff00;--pl:#ffff00;--te:#00ff00;--bd:rgba(255,255,0,.3)}
+        .a11y-large-text{font-size:120%}
+        .a11y-dyslexia{font-family:'Comic Sans MS','Chalkboard SE','OpenDyslexic',sans-serif;letter-spacing:.05em;word-spacing:.1em}
+        .a11y-reduced-motion *,.a11y-reduced-motion *::before,.a11y-reduced-motion *::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+        .tts-btn{display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1rem;background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.25);border-radius:100px;color:var(--pl);font-size:.8rem;font-weight:600;cursor:pointer;transition:all .2s}
+        .tts-btn:hover{background:rgba(139,92,246,.2);color:#fff}
+        .tts-btn[aria-pressed="true"]{background:#8b5cf6;color:#fff}
+        .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;background:rgba(6,6,15,.82);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--bd)}
+        .nl{font-family:'Space Grotesk',sans-serif;font-size:1.35rem;font-weight:700;letter-spacing:-.02em;background:linear-gradient(135deg,var(--pl),var(--bl),var(--te));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none}
+        .nll{display:flex;gap:2rem;list-style:none}
+        .nll a{color:var(--tm);text-decoration:none;font-size:.875rem;font-weight:500;transition:color .15s}
+        .nll a:hover{color:var(--tx)}
+        .container{max-width:800px;margin:0 auto;padding:8rem 2rem 4rem}
+        h1{font-size:clamp(2rem,4vw,2.75rem);font-weight:700;margin-bottom:.5rem;letter-spacing:-.02em}
+        .last-updated{font-size:.85rem;color:var(--td);margin-bottom:3rem}
+        h2{font-size:1.35rem;font-weight:600;margin:2.5rem 0 1rem;color:var(--pl)}
+        h3{font-size:1.05rem;font-weight:600;margin:1.5rem 0 .5rem;color:var(--tx)}
+        p{color:var(--tm);margin-bottom:1rem;font-size:.95rem}
+        ul{margin:0 0 1rem 1.5rem;color:var(--tm);font-size:.95rem}
+        li{margin-bottom:.4rem}
+        strong{color:var(--tx)}
+        a{color:var(--pl);text-decoration:none}
+        a:hover{text-decoration:underline}
+        .footer{padding:2rem;border-top:1px solid var(--bd);text-align:center}
+        .footer p{font-size:.8rem;color:var(--td)}
+        .footer-links{display:flex;justify-content:center;gap:1.5rem;margin-bottom:1rem}
+        .footer-links a{color:var(--tm);text-decoration:none;font-size:.85rem}
+        .footer-links a:hover{color:var(--tx)}
+        @media(max-width:600px){
+            .container{padding:6rem 1.25rem 3rem}
+            .nll{display:none}
+        }
+        @media(prefers-reduced-motion:reduce){
+            *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+        }
+    </style>
+</head>
+<body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <nav class="nav" role="navigation" aria-label="Main">
+        <a href="lunadude.html" class="nl" aria-label="LumaWorld Home">LumaWorld</a>
+        <ul class="nll">
+            <li><a href="lunadude.html#features">Features</a></li>
+            <li><a href="lunadude.html#specs">Specs</a></li>
+            <li><a href="returns-refund-policy.html">Returns</a></li>
+        </ul>
+    </nav>
+
+    <main id="main" class="container">
+        <h1>Privacy Policy</h1>
+        <p class="last-updated">Last updated: June 2026</p>
+
+        <h2>1. Information We Collect</h2>
+        <p>When you make a purchase on LumaWorld, we collect the following information:</p>
+        <ul>
+            <li><strong>Contact information:</strong> Name, email address, shipping address</li>
+            <li><strong>Payment information:</strong> Processed securely through Stripe. We never store your full credit card number, CVV, or payment credentials on our servers.</li>
+            <li><strong>Order information:</strong> Products purchased, order date, transaction amount</li>
+            <li><strong>Technical information:</strong> IP address, browser type, device type — collected automatically for security and fraud prevention</li>
+        </ul>
+
+        <h2>2. How We Use Your Information</h2>
+        <p>We use your information only for:</p>
+        <ul>
+            <li>Processing and fulfilling your orders</li>
+            <li>Communicating order status and shipping updates</li>
+            <li>Preventing fraud and maintaining security</li>
+            <li>Complying with legal obligations (tax, accounting)</li>
+        </ul>
+        <p><strong>We never sell, rent, or share your personal information with third parties for marketing purposes.</strong></p>
+
+        <h2>3. Payment Security</h2>
+        <p>All payments are processed by <strong>Stripe</strong>, a PCI-DSS Level 1 certified payment processor. Your payment data is encrypted in transit using TLS 1.2+ and never touches our servers directly. Stripe's security practices are audited annually by independent third parties.</p>
+
+        <h2>4. Data Retention</h2>
+        <p>We retain order information for <strong>7 years</strong> to comply with tax and accounting regulations. You may request deletion of your personal data at any time by emailing <strong>lumaworldshop@gmail.com</strong>, subject to legal retention requirements.</p>
+
+        <h2>5. Cookies & Tracking</h2>
+        <p>LumaWorld does <strong>not</strong> use:</p>
+        <ul>
+            <li>Analytics cookies (no Google Analytics, no Facebook Pixel)</li>
+            <li>Advertising or tracking cookies</li>
+            <li>Third-party tracking scripts</li>
+        </ul>
+        <p>We use only strictly necessary session cookies required for basic site functionality (e.g., remembering your cart session). No personal data is collected through cookies.</p>
+
+        <h2>6. Third-Party Services</h2>
+        <p>We use the following trusted service providers, each with their own privacy practices:</p>
+        <ul>
+            <li><strong>Stripe</strong> — Payment processing (<a href="https://stripe.com/privacy" target="_blank" rel="noopener noreferrer">Stripe Privacy Policy</a>)</li>
+            <li><strong>GitHub Pages</strong> — Website hosting (static site, no server-side data collection)</li>
+            <li><strong>Your shipping carrier</strong> — Name and address shared solely for delivery purposes</li>
+        </ul>
+
+        <h2>7. Your Rights</h2>
+        <p>Depending on your location, you may have the right to:</p>
+        <ul>
+            <li>Access the personal data we hold about you</li>
+            <li>Request correction of inaccurate data</li>
+            <li>Request deletion of your data</li>
+            <li>Object to data processing</li>
+            <li>Data portability (receive your data in a machine-readable format)</li>
+        </ul>
+        <p>To exercise any of these rights, contact <strong>lumaworldshop@gmail.com</strong>. We will respond within 30 days.</p>
+
+        <h2>8. Security Measures</h2>
+        <p>We implement the following security measures:</p>
+        <ul>
+            <li>TLS/SSL encryption for all data in transit</li>
+            <li>Content Security Policy (CSP) headers to prevent code injection</li>
+            <li>X-Frame-Options and X-Content-Type-Options headers</li>
+            <li>Referrer-Policy set to strict-origin-when-cross-origin</li>
+            <li>No storage of sensitive payment data on our infrastructure</li>
+            <li>Static website architecture (no database, no server-side code execution)</li>
+        </ul>
+
+        <h2>9. Children's Privacy</h2>
+        <p>LumaWorld does not knowingly collect information from children under 16. If you believe a child has provided us with personal data, contact us immediately for deletion.</p>
+
+        <h2>10. Changes to This Policy</h2>
+        <p>We may update this privacy policy from time to time. Changes will be posted on this page with an updated "Last updated" date. We will notify you of material changes via email if you have an active order.</p>
+
+        <h2>11. Contact</h2>
+        <p>For privacy-related inquiries:<br>
+        Email: <strong>lumaworldshop@gmail.com</strong><br>
+        <br>
+        LumaWorld<br>
+        United States</p>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer-links">
+            <a href="lunadude.html">Home</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="returns-refund-policy.html">Returns & Refunds</a>
+        </div>
+        <p>&copy; 2026 LumaWorld. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+
