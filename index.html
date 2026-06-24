@@ -942,52 +942,12 @@
     </script>
 
     <!-- PayPal Checkout -->
-    <script src="https://www.paypal.com/sdk/js?client-id=Acm3-cmh8rAXDB4DNURTjuFTeUeFOGAU3skoyU-NXDMDH6p-livZTSVCinh5GKXdC9yp_nm-drNlDYQ1&currency=USD"></script>
-    <script>
-    function initPayPal() {
-        var container = document.getElementById('paypal-button-container');
-        if (!container) return;
-        if (typeof paypal === 'undefined') {
-            if (!container.getAttribute('data-retry')) {
-                container.setAttribute('data-retry', '1');
-                container.innerHTML = '<p style="color:#a8a7c7;font-size:.8rem;text-align:center">Loading payment...</p>';
-            }
-            setTimeout(initPayPal, 300);
-            return;
-        }
-        try {
-            paypal.Buttons({
-                style: {
-                    layout: 'vertical',
-                    color: 'blue',
-                    shape: 'pill',
-                    label: 'pay',
-                    height: 45
-                },
-                createOrder: function(data, actions) {
-                    return actions.order.create({
-                        purchase_units: [{
-                            description: 'LumaWorld Aurora Projector (H-B57)',
-                            amount: { value: '24.99', currency_code: 'USD' }
-                        }]
-                    });
-                },
-                onApprove: function(data, actions) {
-                    return actions.order.capture().then(function(details) {
-                        container.innerHTML = '<div style="text-align:center;padding:1rem"><div style="font-size:2rem;margin-bottom:.5rem">&#10003;</div><p style="color:#2dd4bf;font-weight:600;font-size:1.1rem">Payment Successful!</p><p style="color:#a8a7c7;font-size:.85rem;margin-top:.5rem">Thank you, ' + details.payer.name.given_name + '!<br>Check your email for confirmation.</p></div>';
-                    });
-                },
-                onError: function(err) {
-                    console.error('PayPal error:', err);
-                    container.innerHTML = '<p style="color:#f87171;font-size:.85rem;text-align:center">Payment error. Please try again or <a href="mailto:lumaworldshop@gmail.com" style="color:#a78bfa">contact us</a>.</p>';
-                }
-            }).render('#paypal-button-container');
-        } catch(e) {
-            console.error('PayPal init error:', e);
-            container.innerHTML = '<p style="color:#a8a7c7;font-size:.85rem;text-align:center">Unable to load PayPal.<br><a href="mailto:lumaworldshop@gmail.com" style="color:#a78bfa">Contact us</a> to order.</p>';
-        }
-    }
-    document.addEventListener('DOMContentLoaded', initPayPal);
-    </script>
+    <div id="paypal-button-container" style="max-width:220px;margin:0 auto">
+        <a href="https://www.paypal.com/paypalme/lumaworldshop/24.99" target="_blank" rel="noopener" style="display:block;text-align:center;padding:.75rem 1.5rem;background:#0070ba;color:#fff;border-radius:100px;text-decoration:none;font-weight:600;font-size:.95rem;transition:background .2s" onmouseover="this.style.background='#005ea6'" onmouseout="this.style.background='#0070ba'">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;margin-right:6px"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944 2.79a.642.642 0 0 1 .633-.544h6.693c2.226 0 3.783.592 4.627 1.756.395.545.636 1.145.728 1.837.097.721.043 1.582-.16 2.56-.484 2.307-1.46 3.89-2.9 4.7-1.388.783-3.14 1.18-5.203 1.18h-.488a.792.792 0 0 0-.782.67l-.544 3.45-.193 1.228a.395.395 0 0 1-.39.33H7.077z"/></svg>
+            Pay with PayPal
+        </a>
+        <p style="color:#6b6a8a;font-size:.7rem;text-align:center;margin-top:.5rem">or <a href="mailto:lumaworldshop@gmail.com" style="color:#a78bfa">contact us</a> to order</p>
+    </div>
 </body>
 </html>
