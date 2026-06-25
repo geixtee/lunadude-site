@@ -471,10 +471,10 @@
             <div class="pr" style="justify-content:center;margin-bottom:1.5rem">
                 <span class="pn">$24.99</span><span class="pw" aria-label="Original price $39.99">$39.99</span>
             </div>
-            <button class="bp" id="cta-final" onclick="buyNow()" aria-label="Buy Now for $24.99" style="font-size:1.1rem;padding:1rem 2.5rem">
+            <a id="buy-btn" href="https://buy.stripe.com/6oU28t89H4674kA3EQfYY00" target="_blank" rel="noopener" class="bp" style="font-size:1.1rem;padding:1rem 2.5rem;display:inline-flex;align-items:center;gap:.5rem">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-                Buy Now - $24.99
-            </button>
+                Buy Now — $24.99
+            </a>
         </div>
         <div class="hn">
             <p><strong>Our promise:</strong> We never fabricate reviews, ratings, or sales numbers. Product photos are of the actual item. All specifications are from the manufacturer and reflect real capabilities.</p>
@@ -572,7 +572,20 @@
             if (svgClouds) { svgClouds.classList.remove('visible'); svgClouds.classList.add('hidden'); }
             announceChange('Midnight Black variant selected — moonlit sky theme activated');
         }
+
+        // Update buy button link based on variant
+        var cleanLabel = label.replace(' variant', '');
+        var buyBtn = document.getElementById('buy-btn');
+        if (buyBtn && stripeLinks[cleanLabel]) {
+            buyBtn.href = stripeLinks[cleanLabel];
+        }
     }
+
+    // ===== STRIPE LINKS =====
+    var stripeLinks = {
+        'Midnight Black': 'https://buy.stripe.com/6oU28t89H4674kA3EQfYY00',
+        'Cloud White': 'https://buy.stripe.com/8x2dRbdu1fOPaIY7V6fYY01'
+    };
 
     // ===== SMOOTH SCROLL =====
     document.querySelectorAll('a[href^="#"]').forEach(function(a) {
@@ -939,12 +952,5 @@
     })();
     </script>
 
-    <!-- PayPal Checkout -->
-    <div id="paypal-button-container" style="max-width:220px;margin:0 auto">
-        <button onclick="window.location.href='https://www.paypal.com/paypalme/lumaworldshop/24.99'" style="display:block;width:100%;text-align:center;padding:.85rem 1.5rem;background:#0070ba;color:#fff;border-radius:100px;border:none;font-weight:600;font-size:1rem;cursor:pointer;transition:background .2s;font-family:inherit" onmouseover="this.style.background='#005ea6'" onmouseout="this.style.background='#0070ba'">
-            &#128179; Buy Now — $24.99
-        </button>
-        <p style="color:#6b6a8a;font-size:.7rem;text-align:center;margin-top:.6rem">Secure payment via PayPal<br>or <a href="mailto:lumaworldshop@gmail.com" style="color:#a78bfa">email us</a> to order</p>
-    </div>
 </body>
 </html>
