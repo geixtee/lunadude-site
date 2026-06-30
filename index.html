@@ -1,961 +1,884 @@
 <!DOCTYPE html>
-<html lang="en" class="theme-midnight">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(self)">
-    <meta name="description" content="LumaWorld Aurora Projector - Starry sky and aurora night light with Bluetooth speaker and white noise.">
-    <title>LumaWorld Aurora Projector - Starry Sky Night Light</title>
+    <meta name="description" content="Astronaut Star Galaxy Projector - Dense starfields and aurora colors projected onto your ceiling. Battery powered. Remote included. $24.99.">
+    <title>LumaWorld — Astronaut Star Galaxy Projector</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script defer src="/_vercel/insights/script.js"></script>
     <style>
-        :root{--bg:#06060f;--surface:#0c0c1d;--card:#121228;--elev:#1a1a38;--pur:#8b5cf6;--pl:#a78bfa;--bl:#60a5fa;--te:#2dd4bf;--td:#14b8a6;--rd:#f87171;--tx:#f1f0ff;--tm:#a8a7c7;--td2:#6b6a8a;--bd:rgba(139,92,246,.12);--bh:rgba(139,92,246,.3);--gl:0 0 80px rgba(139,92,246,.25);--rm:16px;--rl:24px;--rx:32px;--tf:150ms cubic-bezier(.4,0,.2,1);--tb:300ms cubic-bezier(.4,0,.2,1)}
-        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-        html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-        body{font-family:'Outfit','Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-        h1,h2,h3,h4,h5{font-family:'Space Grotesk','Segoe UI',system-ui,-apple-system,sans-serif}
-        img{max-width:100%;height:auto;display:block;transition:opacity .15s ease}
-
-        /* ACCESSIBILITY: Skip link */
-        .skip-link{position:absolute;top:-100px;left:0;background:#8b5cf6;color:#fff;padding:12px 20px;z-index:10000;border-radius:0 0 12px 0;font-size:.95rem;text-decoration:none;transition:top .2s;font-weight:600}
-        .skip-link:focus{top:0}
-
-        /* ACCESSIBILITY: Focus styles */
-        *:focus-visible{outline:3px solid #8b5cf6;outline-offset:2px}
-        button:focus-visible, a:focus-visible{border-radius:100px}
-
-        /* ACCESSIBILITY: Screen reader only */
-        .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-
-        /* ACCESSIBILITY: Text-to-speech button */
-        .tts-btn{display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1rem;background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.25);border-radius:100px;color:var(--pl);font-size:.8rem;font-weight:600;cursor:pointer;transition:all .2s}
-        .tts-btn:hover{background:rgba(139,92,246,.2);color:#fff}
-        .tts-btn:focus{outline:2px solid #a78bfa;outline-offset:2px}
-        .tts-btn[aria-pressed="true"]{background:#8b5cf6;color:#fff}
-
-        /* ACCESSIBILITY: Accessibility toggle button */
-        .a11y-toggle{position:fixed;bottom:20px;left:20px;z-index:9999;width:48px;height:48px;border-radius:50%;background:#8b5cf6;border:2px solid #a78bfa;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(139,92,246,.4);transition:all .2s;font-size:1.2rem}
-        .a11y-toggle:hover,.a11y-toggle:focus{transform:scale(1.1);box-shadow:0 6px 24px rgba(139,92,246,.6);outline:2px solid #fff;outline-offset:2px}
-        .a11y-toggle[aria-expanded="true"]{background:#6d28d9}
-
-        /* ACCESSIBILITY: Accessibility panel */
-        .a11y-panel{position:fixed;bottom:80px;left:20px;z-index:9999;background:#121228;border:1px solid rgba(139,92,246,.3);border-radius:16px;padding:1.25rem;min-width:240px;box-shadow:0 8px 32px rgba(0,0,0,.5);display:none}
-        .a11y-panel.open{display:block}
-        .a11y-panel h3{font-size:.9rem;font-weight:600;color:#a78bfa;margin-bottom:.75rem;font-family:'Space Grotesk',sans-serif}
-        .a11y-option{display:flex;align-items:center;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid rgba(139,92,246,.1)}
-        .a11y-option:last-child{border-bottom:none}
-        .a11y-option label{font-size:.85rem;color:#a8a7c7;cursor:pointer}
-        .a11y-toggle-btn{padding:.3rem .6rem;background:rgba(139,92,246,.15);border:1px solid rgba(139,92,246,.3);border-radius:8px;color:#a78bfa;font-size:.75rem;font-weight:600;cursor:pointer;transition:all .15s}
-        .a11y-toggle-btn:hover,.a11y-toggle-btn.active{background:#8b5cf6;color:#fff}
-        .a11y-toggle-btn:focus{outline:2px solid #a78bfa;outline-offset:2px}
-
-        /* ACCESSIBILITY: High Contrast Mode */
-        .a11y-high-contrast{--bg:#000000;--card:#1a1a1a;--tx:#ffffff;--tm:#e0e0e0;--td:#b0b0b0;--pur:#ffff00;--pl:#ffff00;--te:#00ff00;--bd:rgba(255,255,0,.3)}
-        .a11y-high-contrast img{filter:contrast(1.3)}
-        .a11y-high-contrast .fc{background:#1a1a1a;border-color:#ffff00}
-        .a11y-high-contrast .ct td{background:#1a1a1a}
-        .a11y-high-contrast .ct th{background:#2a2a2a}
-        .a11y-high-contrast .sc{background:#1a1a1a}
-        .a11y-high-contrast .cb{background:#1a1a1a;border-color:#ffff00}
-        .a11y-high-contrast .urg{background:rgba(255,255,0,.15);border-color:#ffff00;color:#ffff00}
-        .a11y-high-contrast .tbi{color:#e0e0e0}
-
-        /* ACCESSIBILITY: Large Text Mode */
-        .a11y-large-text{font-size:120%}
-        .a11y-large-text h1{font-size:clamp(2.6rem,6vw,4.2rem)}
-        .a11y-large-text .ht{font-size:clamp(2.6rem,6vw,4.2rem)}
-        .a11y-large-text .pn{font-size:3rem}
-
-        /* ACCESSIBILITY: Dyslexia-friendly font */
-        .a11y-dyslexia{font-family:'Comic Sans MS','Chalkboard SE','OpenDyslexic',sans-serif;letter-spacing:.05em;word-spacing:.1em}
-
-        /* ACCESSIBILITY: Focus indicator enhancement */
-        .a11y-high-contrast *:focus-visible{outline:3px solid #ffff00;outline-offset:3px}
-
-        #bgCanvas{position:fixed;inset:0;pointer-events:none;z-index:0}
-
-        /* SVG Cloud Animations */
-        @keyframes drift-cloud {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(calc(100vw + 400px)); }
+        :root {
+            --bg: #010106;
+            --card: rgba(10, 10, 28, 0.78);
+            --pur: #8b5cf6;
+            --pl: #a78bfa;
+            --bl: #60a5fa;
+            --te: #2dd4bf;
+            --rd: #f87171;
+            --gold: #fbbf24;
+            --pi: #f472b6;
+            --tx: #f1f0ff;
+            --tm: #a8a7c7;
+            --td2: #6b6a8a;
+            --bd: rgba(139, 92, 246, 0.07);
+            --bh: rgba(139, 92, 246, 0.22);
+            --rm: 16px;
+            --rl: 24px;
+            --rx: 32px;
+            --tf: 150ms cubic-bezier(.4, 0, .2, 1);
+            --tb: 300ms cubic-bezier(.4, 0, .2, 1);
         }
-        @keyframes glow-pulse {
-            0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
-            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.15); }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+        body { font-family: 'Outfit', system-ui, sans-serif; background: var(--bg); color: var(--tx); line-height: 1.65; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+        h1, h2, h3, h4, h5 { font-family: 'Space Grotesk', system-ui, sans-serif; }
+        img { max-width: 100%; height: auto; display: block; }
+
+        /* ===== CANVAS BACKGROUND ===== */
+        #bgCanvas { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+
+        /* ===== AMBIENT LAYER 1: Parallax starfield (3 depth layers) ===== */
+        .ambient-stars { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+        .ambient-stars .layer { position: absolute; inset: -20%; width: 140%; height: 140%; transition: transform 0.3s ease-out; will-change: transform; }
+        .ambient-stars .star { position: absolute; border-radius: 50%; background: white; }
+
+        /* ===== AMBIENT LAYER 2: Drifting gradient blobs ===== */
+        .ambient-blob { position: fixed; border-radius: 50%; pointer-events: none; z-index: 0; filter: blur(120px); }
+        .ambient-blob.blob-1 { width: 600px; height: 600px; top: -10%; left: -8%; background: radial-gradient(circle, rgba(139,92,246,0.25) 0%, rgba(139,92,246,0.08) 40%, transparent 70%); animation: drift-blob-1 25s ease-in-out infinite; }
+        .ambient-blob.blob-2 { width: 500px; height: 500px; bottom: -8%; right: -5%; background: radial-gradient(circle, rgba(45,212,191,0.18) 0%, rgba(45,212,191,0.06) 40%, transparent 70%); animation: drift-blob-2 30s ease-in-out infinite; }
+        @keyframes drift-blob-1 { 0%, 100% { transform: translate(0, 0) scale(1); } 33% { transform: translate(40px, 30px) scale(1.05); } 66% { transform: translate(-20px, 50px) scale(0.95); } }
+        @keyframes drift-blob-2 { 0%, 100% { transform: translate(0, 0) scale(1); } 33% { transform: translate(-30px, -20px) scale(1.08); } 66% { transform: translate(25px, -40px) scale(0.92); } }
+
+        /* Respect reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            .ambient-blob { animation: none !important; }
+            .ambient-stars .layer { transition: none !important; }
         }
-        .cloud-group{transition:opacity 1.5s ease}
-        #svgClouds{transition:opacity 1.5s ease}
-        #svgClouds.hidden{opacity:0;pointer-events:none}
-        #svgClouds.visible{opacity:1}
-        .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;background:rgba(6,6,15,.82);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--bd)}
-        .nl{font-family:'Space Grotesk',sans-serif;font-size:1.35rem;font-weight:700;letter-spacing:-.02em;background:linear-gradient(135deg,var(--pl),var(--bl),var(--te));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none}
-        .nll{display:flex;gap:2rem;list-style:none}
-        .nll a{color:var(--tm);text-decoration:none;font-size:.875rem;font-weight:500;transition:color var(--tf)}
-        .nll a:hover{color:var(--tx)}
-        .hero{position:relative;z-index:1;min-height:100vh;display:flex;align-items:center;padding:8rem 2rem 5rem}
-        .hi{max-width:1200px;margin:0 auto;width:100%;display:grid;grid-template-columns:1.1fr .9fr;gap:5rem;align-items:center}
-        .hc{max-width:560px}
-        .badge{display:inline-flex;align-items:center;gap:.5rem;padding:.35rem .85rem;margin-bottom:1.5rem;background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.2);border-radius:100px;font-size:.8rem;font-weight:600;color:var(--pl);letter-spacing:.02em}
-        .ht{font-size:clamp(2.5rem,5vw,3.75rem);font-weight:700;line-height:1.08;letter-spacing:-.03em;margin-bottom:1.5rem;background:linear-gradient(135deg,#fff 0%,var(--pl) 50%,var(--bl) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-        .hd{font-size:1.1rem;color:var(--tm);line-height:1.75;margin-bottom:2rem;max-width:480px}
-        .vs{margin-bottom:1.5rem}
-        .vlb{font-size:.75rem;font-weight:600;color:var(--tm);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.6rem}
-        .vlo{display:flex;gap:.6rem}
-        .vb{display:flex;align-items:center;gap:.5rem;padding:.55rem 1.1rem;background:rgba(255,255,255,.03);border:2px solid var(--bd);border-radius:var(--rm);cursor:pointer;transition:all var(--tf);font-size:.85rem;font-weight:600;color:var(--tm)}
-        .vb:hover{border-color:var(--bh);color:var(--tx)}
-        .vb.active{border-color:var(--pur);color:var(--tx);background:rgba(139,92,246,.06)}
-        .vd{width:16px;height:16px;border-radius:50%;border:2px solid rgba(255,255,255,.15)}
-        .vd.black{background:#1a1a2e}
-        .vd.white{background:#e8e8f0}
-        .urg{display:inline-flex;align-items:center;gap:.4rem;padding:.3rem .7rem;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);border-radius:6px;font-size:.75rem;font-weight:600;color:var(--rd);margin-bottom:1.5rem}
-        .urd{width:8px;height:8px;border-radius:50%;background:#ef4444;animation:pulse 2s ease-in-out infinite}
-        @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
-        .pr{display:flex;align-items:baseline;gap:1rem;margin-bottom:.5rem}
-        .pn{font-size:2.75rem;font-weight:700;color:var(--te);letter-spacing:-.02em}
-        .pw{font-size:1.25rem;color:var(--td2);text-decoration:line-through}
-        .ps{padding:.25rem .65rem;background:rgba(20,184,166,.12);border:1px solid rgba(20,184,166,.25);border-radius:6px;font-size:.8rem;font-weight:600;color:var(--te)}
-        .ha{display:flex;gap:1rem;margin-top:1.5rem;flex-wrap:wrap;align-items:center}
-        .bp{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 2rem;background:linear-gradient(135deg,var(--pur),#7c3aed);color:#fff;font-size:1rem;font-weight:600;border:none;border-radius:100px;cursor:pointer;box-shadow:0 8px 32px rgba(139,92,246,.35);transition:all var(--tb);text-decoration:none}
-        .bp:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(139,92,246,.5)}
-        .bs{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 2rem;background:rgba(255,255,255,.04);color:var(--tx);font-size:1rem;font-weight:500;border:1px solid var(--bd);border-radius:100px;cursor:pointer;transition:all var(--tb);text-decoration:none}
-        .bs:hover{background:rgba(255,255,255,.07);border-color:var(--bh)}
-        .hv{position:relative;display:flex;align-items:center;justify-content:center}
-        .hw{position:relative;width:100%;max-width:480px;border-radius:var(--rx);overflow:hidden;border:1px solid var(--bd);box-shadow:var(--gl);aspect-ratio:1/1}
-        .hw img{width:100%;height:100%;object-fit:cover;display:block}
-        .tb{position:relative;z-index:1;padding:1.5rem 2rem;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);background:rgba(12,12,29,.6)}
-        .ti{max-width:900px;margin:0 auto;display:flex;justify-content:center;gap:3rem;flex-wrap:wrap}
-        .tbi{display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:var(--td2);font-weight:500}
-        .tbi svg{color:var(--te);flex-shrink:0}
-        .sec{position:relative;z-index:1;padding:6rem 2rem}
-        .si{max-width:1100px;margin:0 auto}
-        .sh{text-align:center;margin-bottom:4rem}
-        .sl{display:inline-block;font-size:.75rem;font-weight:600;color:var(--pl);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem}
-        .st{font-size:clamp(2rem,4vw,2.75rem);font-weight:700;letter-spacing:-.02em;margin-bottom:1rem}
-        .sd{font-size:1.05rem;color:var(--tm);max-width:520px;margin:0 auto;line-height:1.7}
-        .fg{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;max-width:900px;margin:0 auto}
-        .fc{padding:2rem;background:var(--card);border:1px solid var(--bd);border-radius:var(--rl);transition:all var(--tb)}
-        .fc:hover{border-color:var(--bh);transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,.3)}
-        .fi{width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:rgba(139,92,246,.1);border-radius:12px;margin-bottom:1.25rem}
-        .ft{font-size:1.1rem;font-weight:600;margin-bottom:.5rem}
-        .ftx{font-size:.9rem;color:var(--tm);line-height:1.65}
-        .gg{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.25rem}
-        .gc{position:relative;border-radius:var(--rl);overflow:hidden;aspect-ratio:4/3;background:var(--card);border:1px solid var(--bd);transition:all var(--tb)}
-        .gc:hover{transform:scale(1.015);border-color:var(--bh)}
-        .gc img{width:100%;height:100%;object-fit:cover}
-        .gl{position:absolute;bottom:0;left:0;right:0;padding:1rem;background:linear-gradient(transparent,rgba(6,6,15,.92));font-size:.85rem;color:var(--tm);font-weight:500}
-        .sc{background:var(--card);border:1px solid var(--bd);border-radius:var(--rx);padding:3rem}
-        .sl2{display:grid;grid-template-columns:1fr 1fr}
-        .sr{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.25rem;border-bottom:1px solid var(--bd);transition:background var(--tf)}
-        .sr:hover{background:rgba(139,92,246,.04)}
-        .sr:last-child{border-bottom:none}
-        .sk{font-size:.85rem;color:var(--td2);font-weight:500}
-        .sv{font-size:.9rem;color:var(--tx);font-weight:600;text-align:right}
-        .ct{width:100%;border-collapse:separate;border-spacing:0;border-radius:var(--rl);overflow:hidden;border:1px solid var(--bd)}
-        .ct th{padding:1.1rem 1.5rem;text-align:left;font-size:.85rem;font-weight:600;background:var(--elev);border-bottom:1px solid var(--bd)}
-        .ct th:nth-child(3){background:rgba(20,184,166,.08);color:var(--te)}
-        .ct td{padding:1rem 1.5rem;border-bottom:1px solid var(--bd);font-size:.9rem;background:var(--card)}
-        .ct tr:last-child td{border-bottom:none}
-        .hl{color:var(--te);font-weight:600}
-        .ck{color:var(--te)}
-        .cx{color:var(--td2)}
-        .kl{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;max-width:700px;margin:0 auto}
-        .ki{display:flex;align-items:center;gap:.75rem;padding:1rem 1.25rem;background:var(--card);border:1px solid var(--bd);border-radius:var(--rm);font-size:.9rem;font-weight:500}
-        .kc{color:var(--te);font-weight:700}
-        .cs{text-align:center;padding:5rem 2rem;position:relative;z-index:1}
-        .cb{max-width:640px;margin:0 auto;padding:4rem 3rem;background:linear-gradient(145deg,rgba(139,92,246,.08),rgba(96,165,250,.04));border:1px solid var(--bd);border-radius:var(--rx)}
-        .hn{max-width:600px;margin:0 auto 3rem;text-align:center;padding:1.5rem}
-        .hn p{font-size:.85rem;color:var(--td2);line-height:1.6}
-        .hn strong{color:var(--tm)}
-        .ft{position:relative;z-index:1;padding:3rem 2rem;border-top:1px solid var(--bd);text-align:center}
-        .fl{display:flex;justify-content:center;gap:2rem;margin-bottom:1.25rem;flex-wrap:wrap}
-        .fl a{color:var(--tm);text-decoration:none;font-size:.85rem;transition:color var(--tf)}
-        .fl a:hover{color:var(--tx)}
-        .ft p{font-size:.8rem;color:var(--td2)}
-        @media(max-width:900px){
-            .hi{grid-template-columns:1fr;gap:3rem;text-align:center}
-            .hc{max-width:100%}
-            .hd{max-width:100%}
-            .pr{justify-content:center}
-            .ha{justify-content:center}
-            .hv{order:-1}
-            .hw{max-width:360px;margin:0 auto}
-            .sl2{grid-template-columns:1fr}
-            .nll{display:none}
-            .vlo{justify-content:center}
+
+        /* ===== ACCESSIBILITY ===== */
+        .skip-link { position: absolute; top: -100px; left: 0; background: #8b5cf6; color: #fff; padding: 12px 20px; z-index: 10000; border-radius: 0 0 12px 0; font-size: .95rem; text-decoration: none; transition: top .2s; font-weight: 600; }
+        .skip-link:focus { top: 0; }
+        *:focus-visible { outline: 3px solid #8b5cf6; outline-offset: 2px; }
+        button:focus-visible, a:focus-visible { border-radius: 100px; }
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+        .tts-btn { display: inline-flex; align-items: center; gap: .4rem; padding: .5rem 1rem; background: rgba(139, 92, 246, .1); border: 1px solid rgba(139, 92, 246, .25); border-radius: 100px; color: var(--pl); font-size: .8rem; font-weight: 600; cursor: pointer; transition: all .2s; font-family: inherit; }
+        .tts-btn:hover { background: rgba(139, 92, 246, .2); color: #fff; }
+        .tts-btn[aria-pressed="true"] { background: #8b5cf6; color: #fff; }
+
+        .a11y-toggle { position: fixed; bottom: 20px; left: 20px; z-index: 9999; width: 48px; height: 48px; border-radius: 50%; background: #8b5cf6; border: 2px solid #a78bfa; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(139, 92, 246, .4); transition: all .2s; font-size: 1.2rem; }
+        .a11y-toggle:hover { transform: scale(1.1); box-shadow: 0 6px 24px rgba(139, 92, 246, .6); }
+        .a11y-toggle[aria-expanded="true"] { background: #6d28d9; }
+
+        .a11y-panel { position: fixed; bottom: 80px; left: 20px; z-index: 9999; background: #121228; border: 1px solid rgba(139, 92, 246, .3); border-radius: 16px; padding: 1.25rem; min-width: 240px; box-shadow: 0 8px 32px rgba(0, 0, 0, .5); display: none; }
+        .a11y-panel.open { display: block; }
+        .a11y-panel h3 { font-size: .9rem; font-weight: 600; color: #a78bfa; margin-bottom: .75rem; font-family: 'Space Grotesk', sans-serif; }
+        .a11y-option { display: flex; align-items: center; justify-content: space-between; padding: .5rem 0; border-bottom: 1px solid rgba(139, 92, 246, .1); }
+        .a11y-option:last-child { border-bottom: none; }
+        .a11y-option label { font-size: .85rem; color: #a8a7c7; cursor: pointer; }
+        .a11y-toggle-btn { padding: .3rem .6rem; background: rgba(139, 92, 246, .15); border: 1px solid rgba(139, 92, 246, .3); border-radius: 8px; color: #a78bfa; font-size: .75rem; font-weight: 600; cursor: pointer; transition: all .15s; font-family: inherit; }
+        .a11y-toggle-btn:hover, .a11y-toggle-btn.active { background: #8b5cf6; color: #fff; }
+
+        .a11y-high-contrast { --bg: #000; --card: rgba(20, 20, 20, .95); --tx: #fff; --tm: #e0e0e0; --td2: #b0b0b0; --pur: #ff0; --pl: #ff0; --bl: #0bf; --te: #0f0; --bd: rgba(255, 255, 0, .3); }
+        .a11y-high-contrast img { filter: contrast(1.3); }
+        .a11y-large-text { font-size: 120%; }
+        .a11y-large-text .ht { font-size: clamp(2.6rem, 6vw, 4.2rem); }
+        .a11y-large-text .pn { font-size: 3rem; }
+        .a11y-dyslexia, .a11y-dyslexia * { font-family: 'Comic Sans MS', 'Chalkboard SE', 'OpenDyslexic', sans-serif !important; letter-spacing: .05em !important; word-spacing: .1em !important; line-height: 1.8 !important; }
+        .a11y-dyslexia h1, .a11y-dyslexia h2, .a11y-dyslexia h3 { font-family: 'Comic Sans MS', 'Chalkboard SE', 'OpenDyslexic', sans-serif !important; }
+        .a11y-high-contrast *:focus-visible { outline: 3px solid #ff0; outline-offset: 3px; }
+
+        /* ===== NAV ===== */
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; background: rgba(1, 1, 6, .82); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--bd); }
+        .nl { font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; font-weight: 700; letter-spacing: -.02em; background: linear-gradient(135deg, var(--pl), var(--bl), var(--te)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none; transition: opacity .2s; }
+        .nl:hover { opacity: .8; }
+        .nll { display: flex; gap: 2rem; list-style: none; }
+        .nll a { color: var(--tm); text-decoration: none; font-size: .875rem; font-weight: 500; transition: color var(--tf); position: relative; padding: 4px 0; }
+        .nll a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: linear-gradient(90deg, var(--pur), var(--te)); transition: width var(--tb); border-radius: 2px; }
+        .nll a:hover { color: var(--tx); }
+        .nll a:hover::after { width: 100%; }
+
+        /* ===== HERO ===== */
+        .hero { position: relative; z-index: 2; min-height: 100vh; display: flex; align-items: center; padding: 8rem 2rem 5rem; }
+        .hi { max-width: 1200px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1.1fr .9fr; gap: 5rem; align-items: center; }
+        .hc { max-width: 560px; }
+        .hero-icon { width: 80px; height: 80px; margin-bottom: 1.5rem; }
+        .hero-icon img { width: 100%; height: 100%; }
+        .ht { font-size: clamp(2.8rem, 5.5vw, 4.2rem); font-weight: 700; line-height: 1.05; letter-spacing: -.03em; margin-bottom: 1.5rem; background: linear-gradient(135deg, #fff 0%, var(--pl) 35%, var(--bl) 65%, var(--te) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hd { font-size: 1.15rem; color: var(--tm); line-height: 1.8; margin-bottom: 2rem; max-width: 490px; }
+        .urg { display: inline-flex; align-items: center; gap: .5rem; padding: .4rem .85rem; background: rgba(239, 68, 68, .07); border: 1px solid rgba(239, 68, 68, .18); border-radius: 100px; font-size: .78rem; font-weight: 600; color: var(--rd); margin-bottom: 1.5rem; }
+        .urd { width: 7px; height: 7px; border-radius: 50%; background: #ef4444; animation: pulse 2s ease-in-out infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .4; transform: scale(.8); } }
+        .pr { display: flex; align-items: baseline; gap: 1rem; margin-bottom: .5rem; }
+        .pn { font-size: 2.75rem; font-weight: 700; color: var(--te); letter-spacing: -.02em; font-family: 'Space Grotesk', sans-serif; }
+        .pw { font-size: 1.25rem; color: var(--td2); text-decoration: line-through; }
+        .ps { padding: .25rem .65rem; background: rgba(20, 184, 166, .1); border: 1px solid rgba(20, 184, 166, .2); border-radius: 6px; font-size: .8rem; font-weight: 600; color: var(--te); }
+        .ha { display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap; align-items: center; }
+        .bp { display: inline-flex; align-items: center; gap: .5rem; padding: .9rem 2.2rem; background: linear-gradient(135deg, var(--pur), #7c3aed); color: #fff; font-size: 1.05rem; font-weight: 600; border: none; border-radius: 100px; cursor: pointer; box-shadow: 0 0 24px rgba(139, 92, 246, .25), 0 8px 32px rgba(139, 92, 246, .2); transition: all var(--tb); text-decoration: none; position: relative; overflow: hidden; }
+        .bp::before { content: ''; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(135deg, transparent 40%, rgba(255, 255, 255, .12) 50%, transparent 60%); transform: translateX(-100%); transition: transform .7s; }
+        .bp:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 0 48px rgba(139, 92, 246, .4), 0 16px 48px rgba(139, 92, 246, .3); }
+        .bp:hover::before { transform: translateX(100%); }
+        .bp:active { transform: translateY(-1px) scale(0.99); }
+        .bs { display: inline-flex; align-items: center; gap: .5rem; padding: .9rem 2.2rem; background: rgba(255, 255, 255, .03); color: var(--tx); font-size: 1.05rem; font-weight: 500; border: 1px solid var(--bd); border-radius: 100px; cursor: pointer; transition: all var(--tb); text-decoration: none; }
+        .bs:hover { background: rgba(255, 255, 255, .06); border-color: var(--bh); transform: translateY(-2px); }
+        .hv { position: relative; display: flex; align-items: center; justify-content: center; }
+        .hv::before { content: ''; position: absolute; width: 140%; height: 140%; background: radial-gradient(ellipse, rgba(139, 92, 246, .1) 0%, rgba(96, 165, 250, .05) 40%, transparent 70%); border-radius: 50%; filter: blur(60px); z-index: 0; }
+        .hw { position: relative; width: 100%; max-width: 480px; border-radius: var(--rx); overflow: hidden; z-index: 1; border: 1px solid var(--bd); box-shadow: 0 0 60px rgba(139, 92, 246, .12), 0 24px 64px rgba(0, 0, 0, .4); aspect-ratio: 1/1; background: linear-gradient(135deg, rgba(139, 92, 246, .04), rgba(96, 165, 250, .02)); transition: box-shadow var(--tb), border-color var(--tb), transform var(--tb); }
+        .hw:hover { border-color: var(--bh); box-shadow: 0 0 80px rgba(139, 92, 246, .22), 0 24px 64px rgba(0, 0, 0, .5); transform: scale(1.01); }
+        .hw img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s ease; }
+        .hw:hover img { transform: scale(1.04); }
+
+        /* ===== TRUST BAR ===== */
+        .tb { position: relative; z-index: 2; padding: 1.5rem 2rem; border-top: 1px solid var(--bd); border-bottom: 1px solid var(--bd); background: rgba(4, 4, 14, .55); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+        .ti { max-width: 900px; margin: 0 auto; display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
+        .tbi { display: flex; align-items: center; gap: .5rem; font-size: .82rem; color: var(--td2); font-weight: 500; }
+        .tbi svg { color: var(--te); flex-shrink: 0; }
+
+        /* ===== SECTIONS ===== */
+        .sec { position: relative; z-index: 2; padding: 6rem 2rem; }
+        .si { max-width: 1100px; margin: 0 auto; }
+        .sh { text-align: center; margin-bottom: 4rem; }
+        .sl { display: inline-block; font-size: .72rem; font-weight: 600; color: var(--pl); text-transform: uppercase; letter-spacing: .14em; margin-bottom: .75rem; padding: .35rem .9rem; background: rgba(139, 92, 246, .07); border: 1px solid rgba(139, 92, 246, .12); border-radius: 100px; }
+        .st { font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 700; letter-spacing: -.02em; margin-bottom: 1rem; }
+        .sd { font-size: 1.05rem; color: var(--tm); max-width: 540px; margin: 0 auto; line-height: 1.75; }
+
+        .fg { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; max-width: 860px; margin: 0 auto; }
+        .fc { padding: 2rem; background: var(--card); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid var(--bd); border-radius: var(--rl); transition: all var(--tb); position: relative; overflow: hidden; }
+        .fc::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--bh), transparent); opacity: 0; transition: opacity var(--tb); }
+        .fc:hover { border-color: var(--bh); transform: translateY(-5px); box-shadow: 0 20px 60px rgba(0, 0, 0, .25), 0 0 40px rgba(139, 92, 246, .06); }
+        .fc:hover::before { opacity: 1; }
+        .fi { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(139, 92, 246, .12), rgba(96, 165, 250, .08)); border-radius: 14px; margin-bottom: 1.25rem; box-shadow: 0 0 16px rgba(139, 92, 246, .08); }
+        .ft { font-size: 1.1rem; font-weight: 600; margin-bottom: .5rem; }
+        .ftx { font-size: .9rem; color: var(--tm); line-height: 1.65; }
+
+        .hs { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; max-width: 860px; margin: 0 auto; }
+        .hn2 { text-align: center; padding: 2.5rem 2rem; background: var(--card); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid var(--bd); border-radius: var(--rl); transition: all var(--tb); }
+        .hn2:hover { border-color: var(--bh); transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0, 0, 0, .2); }
+        .hs-n { font-size: 3rem; font-weight: 700; font-family: 'Space Grotesk', sans-serif; background: linear-gradient(135deg, var(--pur), var(--pl)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: .75rem; line-height: 1; }
+        .hs-t { font-size: 1.1rem; font-weight: 600; margin-bottom: .5rem; }
+        .hs-d { font-size: .9rem; color: var(--tm); line-height: 1.65; }
+
+        .gg { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; }
+        .gc { position: relative; border-radius: var(--rl); overflow: hidden; aspect-ratio: 4/3; background: #08081a; border: 1px solid var(--bd); transition: all var(--tb); }
+        .gc::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(1, 1, 6, .88) 100%); opacity: .65; transition: opacity var(--tb); }
+        .gc:hover { transform: scale(1.02); border-color: var(--bh); box-shadow: 0 16px 48px rgba(0, 0, 0, .35), 0 0 30px rgba(139, 92, 246, .08); }
+        .gc:hover::after { opacity: 1; }
+        .gc img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+        .gc:hover img { transform: scale(1.05); }
+        .gl { position: absolute; bottom: 0; left: 0; right: 0; padding: 1rem 1.25rem; font-size: .85rem; color: var(--tx); font-weight: 500; z-index: 2; background: none; }
+
+        .sc { background: var(--card); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid var(--bd); border-radius: var(--rx); padding: 3rem; }
+        .sl2 { display: grid; grid-template-columns: 1fr 1fr; }
+        .sr { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.25rem; border-bottom: 1px solid var(--bd); transition: background var(--tf); }
+        .sr:hover { background: rgba(139, 92, 246, .03); }
+        .sr:last-child { border-bottom: none; }
+        .sk { font-size: .85rem; color: var(--td2); font-weight: 500; }
+        .sv { font-size: .9rem; color: var(--tx); font-weight: 600; text-align: right; }
+
+        .kl { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; max-width: 700px; margin: 0 auto; }
+        .ki { display: flex; align-items: center; gap: .75rem; padding: 1rem 1.25rem; background: var(--card); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--bd); border-radius: var(--rm); font-size: .9rem; font-weight: 500; transition: all var(--tb); }
+        .ki:hover { border-color: var(--bh); background: rgba(10, 10, 28, .85); }
+        .kc { color: var(--te); font-weight: 700; flex-shrink: 0; }
+
+        .faq { max-width: 700px; margin: 0 auto; }
+        .fq { border: 1px solid var(--bd); border-radius: var(--rm); margin-bottom: 1rem; overflow: hidden; background: var(--card); backdrop-filter: blur(12px); }
+        .fq-q { width: 100%; text-align: left; padding: 1.25rem 1.5rem; background: transparent; border: none; color: var(--tx); font-size: 1rem; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; transition: background var(--tf); font-family: inherit; }
+        .fq-q:hover { background: rgba(139, 92, 246, .05); }
+        .fq-q svg { flex-shrink: 0; transition: transform var(--tf); color: var(--pl); }
+        .fq-q[aria-expanded="true"] svg { transform: rotate(180deg); }
+        .fq-a { display: grid; grid-template-rows: 0fr; transition: grid-template-rows var(--tb); }
+        .fq-a.open { grid-template-rows: 1fr; }
+        .faq-inner { overflow: hidden; }
+        .faq-body { padding: 0 1.5rem 1.25rem; font-size: .95rem; color: var(--tm); line-height: 1.7; }
+
+        .cs { text-align: center; padding: 6rem 2rem; position: relative; z-index: 2; }
+        .cb { max-width: 640px; margin: 0 auto; padding: 4rem 3rem; background: linear-gradient(145deg, rgba(139, 92, 246, .07), rgba(96, 165, 250, .03)); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid var(--bd); border-radius: var(--rx); position: relative; overflow: hidden; }
+        .cb::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(ellipse at center, rgba(139, 92, 246, .04) 0%, transparent 60%); animation: rotate-glow 25s linear infinite; }
+        @keyframes rotate-glow { to { transform: rotate(360deg); } }
+        .cb > * { position: relative; z-index: 1; }
+        .hn { max-width: 600px; margin: 0 auto; text-align: center; padding: 1.5rem; }
+        .hn p { font-size: .85rem; color: var(--td2); line-height: 1.6; }
+        .hn strong { color: var(--tm); }
+
+        .ft { position: relative; z-index: 2; padding: 3rem 2rem; border-top: 1px solid var(--bd); text-align: center; background: rgba(1, 1, 6, .65); backdrop-filter: blur(12px); }
+        .fl { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1.25rem; flex-wrap: wrap; }
+        .fl a { color: var(--tm); text-decoration: none; font-size: .85rem; transition: color var(--tf); }
+        .fl a:hover { color: var(--tx); }
+        .ft p { font-size: .8rem; color: var(--td2); }
+
+        @media (max-width: 900px) {
+            .hi { grid-template-columns: 1fr; gap: 3rem; text-align: center; }
+            .hc { max-width: 100%; } .hd { max-width: 100%; }
+            .pr { justify-content: center; } .ha { justify-content: center; }
+            .hv { order: -1; } .hw { max-width: 360px; margin: 0 auto; }
+            .sl2 { grid-template-columns: 1fr; } .nll { display: none; }
         }
-        @media(max-width:600px){
-            .sec{padding:4rem 1.25rem}
-            .hero{padding:6rem 1.25rem 3rem}
-            .cb{padding:2.5rem 1.5rem}
-            .ct th,.ct td{padding:.75rem 1rem;font-size:.8rem}
+        @media (max-width: 600px) {
+            .sec { padding: 4rem 1.25rem; } .hero { padding: 6rem 1.25rem 3rem; }
+            .cb { padding: 2.5rem 1.5rem; } .sc { padding: 1.5rem; } .nav { padding: .75rem 1.25rem; }
         }
-        @media(prefers-reduced-motion:reduce){
-            *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+            * { scroll-behavior: auto !important; }
         }
     </style>
 </head>
 <body>
-    <!-- ACCESSIBILITY: Skip to main content -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-
-    <!-- ACCESSIBILITY: Live region for screen reader announcements -->
-    <div id="a11yAnnounce" class="sr-only" aria-live="polite" aria-atomic="true"></div>
-
-    <!-- ACCESSIBILITY: Text-to-Speech controls (inline below nav) -->
-    <div id="ttsBar" style="position:fixed;top:60px;right:20px;z-index:9999;display:flex;gap:.5rem">
-        <button class="tts-btn" id="ttsReadBtn" aria-label="Read page aloud" title="Read page aloud">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
-            Listen
-        </button>
-        <button class="tts-btn" id="ttsStopBtn" aria-label="Stop reading" title="Stop reading" style="display:none">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>
-            Stop
-        </button>
-    </div>
-
-    <!-- ACCESSIBILITY: Accessibility Toggle Button -->
-    <button class="a11y-toggle" id="a11yToggle" aria-label="Open accessibility settings" aria-expanded="false" aria-controls="a11yPanel">
-        <span aria-hidden="true">&#9851;</span>
-    </button>
-
-    <!-- ACCESSIBILITY: Accessibility Panel -->
-    <div class="a11y-panel" id="a11yPanel" role="dialog" aria-label="Accessibility settings" aria-hidden="true">
-        <h3>Accessibility Settings</h3>
-        <div class="a11y-option">
-            <label for="a11yContrast">High Contrast</label>
-            <button class="a11y-toggle-btn" id="a11yContrast" role="switch" aria-checked="false" aria-label="Toggle high contrast mode">Off</button>
-        </div>
-        <div class="a11y-option">
-            <label for="a11yLargeText">Large Text</label>
-            <button class="a11y-toggle-btn" id="a11yLargeText" role="switch" aria-checked="false" aria-label="Toggle large text mode">Off</button>
-        </div>
-        <div class="a11y-option">
-            <label for="a11yReducedMotion">Reduced Motion</label>
-            <button class="a11y-toggle-btn" id="a11yReducedMotion" role="switch" aria-checked="false" aria-label="Toggle reduced motion">Off</button>
-        </div>
-        <div class="a11y-option">
-            <label for="a11yDyslexia">Dyslexia Font</label>
-            <button class="a11y-toggle-btn" id="a11yDyslexia" role="switch" aria-checked="false" aria-label="Toggle dyslexia-friendly font">Off</button>
-        </div>
-    </div>
-
     <canvas id="bgCanvas" aria-hidden="true"></canvas>
 
-    <!-- SVG Cloud Layer (Cloud White theme) -->
-    <div id="svgClouds" class="hidden" aria-hidden="true" style="position:fixed;inset:0;pointer-events:none;z-index:0">
-        <div class="cloud-group" style="position:absolute;left:-10%;top:15%;width:350px;height:140px;animation:drift-cloud 35s linear infinite">
-            <svg viewBox="0 0 350 140" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                <ellipse cx="120" cy="90" rx="80" ry="40" fill="white" fill-opacity="0.4"/>
-                <ellipse cx="180" cy="70" rx="90" ry="50" fill="white" fill-opacity="0.5"/>
-                <ellipse cx="250" cy="85" rx="70" ry="35" fill="white" fill-opacity="0.35"/>
-                <ellipse cx="150" cy="60" rx="60" ry="40" fill="white" fill-opacity="0.45"/>
-            </svg>
-        </div>
-        <div class="cloud-group" style="position:absolute;left:25%;top:30%;width:400px;height:160px;animation:drift-cloud 45s linear infinite;animation-delay:-10s">
-            <svg viewBox="0 0 400 160" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                <ellipse cx="140" cy="100" rx="90" ry="45" fill="white" fill-opacity="0.35"/>
-                <ellipse cx="220" cy="80" rx="100" ry="55" fill="white" fill-opacity="0.4"/>
-                <ellipse cx="300" cy="95" rx="80" ry="40" fill="white" fill-opacity="0.3"/>
-                <ellipse cx="180" cy="65" rx="70" ry="45" fill="white" fill-opacity="0.4"/>
-            </svg>
-        </div>
-        <div class="cloud-group" style="position:absolute;left:45%;top:10%;width:320px;height:130px;animation:drift-cloud 30s linear infinite;animation-delay:-5s">
-            <svg viewBox="0 0 320 130" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                <ellipse cx="110" cy="80" rx="75" ry="38" fill="white" fill-opacity="0.5"/>
-                <ellipse cx="170" cy="60" rx="85" ry="48" fill="white" fill-opacity="0.55"/>
-                <ellipse cx="240" cy="75" rx="65" ry="32" fill="white" fill-opacity="0.4"/>
-            </svg>
-        </div>
-        <div class="cloud-group" style="position:absolute;left:65%;top:35%;width:380px;height:150px;animation:drift-cloud 50s linear infinite;animation-delay:-20s">
-            <svg viewBox="0 0 380 150" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                <ellipse cx="130" cy="95" rx="85" ry="42" fill="white" fill-opacity="0.4"/>
-                <ellipse cx="200" cy="70" rx="95" ry="52" fill="white" fill-opacity="0.45"/>
-                <ellipse cx="280" cy="90" rx="75" ry="38" fill="white" fill-opacity="0.35"/>
-                <ellipse cx="160" cy="55" rx="65" ry="40" fill="white" fill-opacity="0.5"/>
-            </svg>
-        </div>
-        <div class="cloud-group" style="position:absolute;left:85%;top:20%;width:300px;height:120px;animation:drift-cloud 40s linear infinite;animation-delay:-15s">
-            <svg viewBox="0 0 300 120" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                <ellipse cx="100" cy="75" rx="70" ry="35" fill="white" fill-opacity="0.45"/>
-                <ellipse cx="160" cy="55" rx="80" ry="45" fill="white" fill-opacity="0.5"/>
-                <ellipse cx="230" cy="70" rx="60" ry="30" fill="white" fill-opacity="0.35"/>
-            </svg>
-        </div>
-        <div class="cloud-group" style="position:absolute;left:10%;top:50%;width:340px;height:140px;animation:drift-cloud 55s linear infinite;animation-delay:-30s">
-            <svg viewBox="0 0 340 140" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                <ellipse cx="115" cy="85" rx="78" ry="39" fill="white" fill-opacity="0.4"/>
-                <ellipse cx="175" cy="65" rx="88" ry="46" fill="white" fill-opacity="0.5"/>
-                <ellipse cx="245" cy="80" rx="68" ry="34" fill="white" fill-opacity="0.35"/>
-                <ellipse cx="140" cy="55" rx="58" ry="38" fill="white" fill-opacity="0.45"/>
-            </svg>
-        </div>
-        <div class="cloud-group" style="position:absolute;left:50%;top:55%;width:360px;height:145px;animation:drift-cloud 38s linear infinite;animation-delay:-8s">
-            <svg viewBox="0 0 360 145" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-                <ellipse cx="125" cy="88" rx="82" ry="41" fill="white" fill-opacity="0.38"/>
-                <ellipse cx="190" cy="68" rx="92" ry="49" fill="white" fill-opacity="0.45"/>
-                <ellipse cx="260" cy="83" rx="72" ry="36" fill="white" fill-opacity="0.32"/>
-                <ellipse cx="155" cy="58" rx="62" ry="40" fill="white" fill-opacity="0.48"/>
-            </svg>
-        </div>
-        <!-- Pulsing glow center -->
-        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(180,200,255,0.12) 0%,transparent 70%);animation:glow-pulse 4s ease-in-out infinite"></div>
-        <!-- Mist overlay -->
-        <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 0%,rgba(180,200,255,0.03) 50%,transparent 100%)"></div>
+    <!-- AMBIENT LAYER 1: Parallax starfield (3 depth layers, mouse-reactive) -->
+    <div class="ambient-stars" aria-hidden="true">
+        <div class="layer" id="stars-layer-1"></div>
+        <div class="layer" id="stars-layer-2"></div>
+        <div class="layer" id="stars-layer-3"></div>
+    </div>
+
+    <!-- AMBIENT LAYER 2: Drifting gradient blobs -->
+    <div class="ambient-blob blob-1" aria-hidden="true"></div>
+    <div class="ambient-blob blob-2" aria-hidden="true"></div>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <div id="a11yAnnounce" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+    <div id="ttsBar" style="position:fixed;top:68px;right:20px;z-index:9999;display:flex;gap:.5rem">
+        <button class="tts-btn" id="ttsReadBtn" aria-label="Read page aloud" aria-describedby="tts-desc"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>Listen</button>
+        <span id="tts-desc" class="sr-only">Reads the page content aloud using your browser's text-to-speech</span>
+        <button class="tts-btn" id="ttsStopBtn" aria-label="Stop reading" style="display:none"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>Stop</button>
+    </div>
+
+    <button class="a11y-toggle" id="a11yToggle" aria-label="Open accessibility settings" aria-expanded="false" aria-controls="a11yPanel"><span aria-hidden="true">&#9851;</span></button>
+    <div class="a11y-panel" id="a11yPanel" role="dialog" aria-label="Accessibility settings" aria-hidden="true">
+        <h3>Accessibility Settings</h3>
+        <div class="a11y-option"><label for="a11yContrast">High Contrast</label><button class="a11y-toggle-btn" id="a11yContrast" role="switch" aria-checked="false" aria-label="Toggle high contrast mode">Off</button></div>
+        <div class="a11y-option"><label for="a11yLargeText">Large Text</label><button class="a11y-toggle-btn" id="a11yLargeText" role="switch" aria-checked="false" aria-label="Toggle large text mode">Off</button></div>
+        <div class="a11y-option"><label for="a11yReducedMotion">Reduced Motion</label><button class="a11y-toggle-btn" id="a11yReducedMotion" role="switch" aria-checked="false" aria-label="Toggle reduced motion">Off</button></div>
+        <div class="a11y-option"><label for="a11yDyslexia">Dyslexia Font</label><button class="a11y-toggle-btn" id="a11yDyslexia" role="switch" aria-checked="false" aria-label="Toggle dyslexia-friendly font">Off</button></div>
     </div>
 
     <nav class="nav" role="navigation" aria-label="Main">
-        <a href="" class="nl" aria-label="LumaWorld Home">LumaWorld</a>
+        <a href="/" class="nl" aria-label="LumaWorld Home">LumaWorld</a>
         <ul class="nll" role="menubar">
             <li role="none"><a href="#features" role="menuitem">Features</a></li>
             <li role="none"><a href="#gallery" role="menuitem">Gallery</a></li>
             <li role="none"><a href="#specs" role="menuitem">Specs</a></li>
-            <li role="none"><a href="#compare" role="menuitem">Compare</a></li>
+            <li role="none"><a href="#faq" role="menuitem">FAQ</a></li>
         </ul>
     </nav>
 
-    <main id="main-content">
+    <main id="main-content" aria-label="Main content">
     <section class="hero" id="hero" aria-labelledby="hero-title">
         <div class="hi">
             <div class="hc">
-                <div class="badge" aria-label="Holiday Gift Pick 2026">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                    Holiday Gift Pick 2026
-                </div>
-                <h1 class="ht" id="hero-title">Drift Off Under<br>a Sky Full of Stars</h1>
-                <p class="hd">Fills your ceiling in flowing aurora light and twinkling stars. Built-in white noise via Bluetooth helps you unwind. No apps, no complexity — just plug it in and look up.</p>
-                <div class="vs" role="radiogroup" aria-label="Color variant selection">
-                    <div class="vlb">Choose your color</div>
-                    <div class="vlo">
-                        <button class="vb active" data-img="loom/blackprojector.jpg" onclick="selectVariant(this)" role="radio" aria-checked="true" aria-label="Midnight Black variant">
-                            <span class="vd black" aria-hidden="true"></span> Midnight Black
-                        </button>
-                        <button class="vb" data-img="loom/whiteprojector.jpg" onclick="selectVariant(this)" role="radio" aria-checked="false" aria-label="Cloud White variant">
-                            <span class="vd white" aria-hidden="true"></span> Cloud White
-                        </button>
-                    </div>
-                </div>
+                <h1 class="ht" id="hero-title">Your Ceiling Becomes the Galaxy</h1>
+                <p class="hd">Dense starfields and aurora colors projected live onto your ceiling. Batteries included. No cords. Just look up.</p>
                 <div class="urg" aria-label="Limited stock available"><span class="urd" aria-hidden="true"></span>Limited stock available</div>
-                <div class="pr">
-                    <span class="pn">$24.99</span>
-                    <span class="pw" aria-label="Original price $39.99">$39.99</span>
-                    <span class="ps">Save 38%</span>
-                </div>
+                <div class="pr"><span class="pn">$24.99</span><span class="pw" aria-label="Original price $34.99">$34.99</span><span class="ps">Save 29%</span></div>
                 <div class="ha">
-                    <a id="buy-btn" href="https://buy.stripe.com/6oU28t89H4674kA3EQfYY00" target="_blank" rel="noopener" class="bp" style="font-size:1.1rem;padding:1rem 2.5rem;display:inline-flex;align-items:center;gap:.5rem">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-                        Buy Now — $24.99
-                    </a>
-                    <a href="#features" class="bs">How It Works</a>
+                    <button id="buy-btn" onclick="buyNow()" class="bp" aria-label="Buy now for $24.99"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Get Yours</button>
+                    <a href="#how-it-works" class="bs">How It Works</a>
                 </div>
             </div>
             <div class="hv">
-                <div class="hw">
-                    <img src="loom/blackprojector.jpg" alt="Aurora Projector Midnight Black front view" id="heroImg" fetchpriority="high">
-                </div>
+                <div class="hw"><img src="img-1.jpg" alt="Astronaut Star Galaxy Projector" id="heroImg"></div>
             </div>
         </div>
     </section>
 
-    <div class="tb" role="region" aria-label="Trust badges">
-        <div class="ti">
-            <div class="tbi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-4"/><path d="M8 11l4 4 6-6"/></svg>Free Shipping</div>
-            <div class="tbi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>Remote Included</div>
-            <div class="tbi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Fast Dispatch</div>
-        </div>
-    </div>
+    <div class="tb" role="region" aria-label="Trust badges"><div class="ti">
+        <div class="tbi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-4"/><path d="M8 11l4 4 6-6"/></svg>Free Shipping (7-10 days)</div>
+        <div class="tbi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>Remote Included</div>
+        <div class="tbi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="10" rx="2"/><path d="M22 10v4"/></svg>Batteries Included</div>
+    </div></div>
 
-    <section class="sec" id="features" aria-labelledby="features-title">
-        <div class="si">
-            <div class="sh">
-                <span class="sl">What It Actually Does</span>
-                <h2 class="st" id="features-title">Built for Relaxation</h2>
-                <p class="sd">Three features that turn your bedroom into a retreat.</p>
-            </div>
-            <div class="fg">
-                <div class="fc">
-                    <div class="fi" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/><path d="M2 22h20"/><path d="M12 2v4M4.93 4.93l2.83 2.83M19.07 4.93l-2.83 2.83M12 18v4"/></svg></div>
-                    <h3 class="ft">Aurora Ceiling Projection</h3>
-                    <p class="ftx">Blankets your ceiling in flowing aurora, stars, and moon — covers up to 30 m².</p>
-                </div>
-                <div class="fc">
-                    <div class="fi" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></div>
-                    <h3 class="ft">Built-in White Noise</h3>
-                    <p class="ftx">Bluetooth speaker connects to your phone. Play white noise or nature sounds to unwind.</p>
-                </div>
-                <div class="fc">
-                    <div class="fi" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
-                    <h3 class="ft">Remote Control Included</h3>
-                    <p class="ftx">Change color, brightness, mode, and timer from your bed. No app needed.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <section class="sec" id="how-it-works" aria-labelledby="hiw-title"><div class="si"><div class="sh"><span class="sl">How It Works</span><h2 class="st" id="hiw-title">No Cords. No Setup. Just Glow.</h2><p class="sd">Three simple steps to transform any room.</p></div><div class="hs">
+        <div class="hn2"><div class="hs-n">1</div><h3 class="hs-t">Insert the included batteries</h3><p class="hs-d">Batteries are already in the box. No USB cable needed — place it anywhere.</p></div>
+        <div class="hn2"><div class="hs-n">2</div><h3 class="hs-t">Aim the astronaut's head</h3><p class="hs-d">The head rotates 360 degrees. Point it at your ceiling, angle it your way.</p></div>
+        <div class="hn2"><div class="hs-n">3</div><h3 class="hs-t">Use the remote to choose your mode</h3><p class="hs-d">Switch between colors, brightness, and light patterns from your bed.</p></div>
+    </div></div></section>
 
-    <section class="sec" id="gallery" aria-labelledby="gallery-title">
-        <div class="si">
-            <div class="sh">
-                <span class="sl">Product Photos</span>
-                <h2 class="st" id="gallery-title">What It Looks Like</h2>
-                <p class="sd">Real photos of the actual product. No AI generation.</p>
-            </div>
-            <div class="gg">
-                <div class="gc"><img src="loom/blackprojector.jpg" alt="Aurora Projector Midnight Black front product view"><span class="gl">Midnight Black - Front</span></div>
-                <div class="gc"><img src="loom/lightmodes.jpg" alt="Aurora Projector with light on projecting stars"><span class="gl">Bedroom - Star Mode</span></div>
-                <div class="gc"><img src="loom/lightmodes.jpg" alt="Aurora Projector showing different color modes"><span class="gl">Living Room - Aurora Mode</span></div>
-                <div class="gc"><img src="loom/whiteprojector.jpg" alt="Aurora Projector Cloud White front view"><span class="gl">Cloud White - Front</span></div>
-                <div class="gc"><img src="loom/blackprojectorON.jpg" alt="Cloud White projector casting ambient glow"><span class="gl">Bedroom - Ambient Glow</span></div>
-            </div>
-        </div>
-    </section>
+    <section class="sec" id="features" aria-labelledby="features-title"><div class="si"><div class="sh"><span class="sl">Features</span><h2 class="st" id="features-title">What Makes It Different</h2><p class="sd">One projector. Multiple ways to use it.</p></div><div class="fg">
+        <div class="fc"><div class="fi" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></div><h3 class="ft">Laser Star Dots</h3><p class="ftx">Dense, pinpoint laser stars scattered across your ceiling. Sharp, realistic star points — not smudged blobs.</p></div>
+        <div class="fc"><div class="fi" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20"/><path d="M2 12l5-5"/><path d="M2 12l5 5"/><path d="M22 12l-5-5"/><path d="M22 12l-5 5"/></svg></div><h3 class="ft">Aurora Nebula Colors</h3><p class="ftx">Flowing blue, purple, green, and pink nebula colors. Multiple modes via remote.</p></div>
+        <div class="fc"><div class="fi" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-18 0"/><path d="M21 12a9 9 0 0 0-9-9"/><circle cx="12" cy="12" r="4"/></svg></div><h3 class="ft">360-Degree Adjustable Head</h3><p class="ftx">The head rotates a full 360 degrees. Point it wherever you want the projection.</p></div>
+                <div class="fc"><div class="fi" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div><h3 class="ft">Multiple Modes via Remote</h3><p class="ftx">Change colors, brightness, and pattern speed from across the room. No app to download.</p></div>
+                <div class="fc"><div class="fi" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="10" rx="2"/><path d="M22 10v4"/></svg></div><h3 class="ft">Battery Powered</h3><p class="ftx">Runs on batteries (included). No cords, no outlet needed. Place it anywhere.</p></div>
+    </div></div></section>
 
-    <section class="sec" id="specs" aria-labelledby="specs-title">
-        <div class="si">
-            <div class="sh">
-                <span class="sl">The Details</span>
-                <h2 class="st" id="specs-title">Technical Specifications</h2>
-                <p class="sd">From the manufacturer. Nothing added, nothing removed.</p>
-            </div>
-            <div class="sc">
-                <div class="sl2">
-                    <div class="sr"><span class="sk">Colors Available</span><span class="sv">Midnight Black, Cloud White</span></div>
-                    <div class="sr"><span class="sk">Power</span><span class="sv">USB (5V)</span></div>
-                    <div class="sr"><span class="sk">Coverage</span><span class="sv">Full ceiling (up to 30 m²)</span></div>
-                    <div class="sr"><span class="sk">Sound</span><span class="sv">Built-in white noise via Bluetooth</span></div>
-                    <div class="sr"><span class="sk">Remote Included</span><span class="sv">Yes</span></div>
-                    <div class="sr"><span class="sk">Model</span><span class="sv">H-B57</span></div>
-                    <div class="sr"><span class="sk">Material</span><span class="sv">ABS (Rectangle, 20cm)</span></div>
-                    </div>
-            </div>
-        </div>
-    </section>
+    <section class="sec" aria-labelledby="kit-title"><div class="si"><div class="sh"><span class="sl">What You Get</span><h2 class="st" id="kit-title">Everything in the Box</h2></div><div class="kl">
+        <div class="ki"><span class="kc" aria-hidden="true">✓</span>Astronaut Projector Unit x 1</div>
+        <div class="ki"><span class="kc" aria-hidden="true">✓</span>Remote Control x 1</div>
+        <div class="ki"><span class="kc" aria-hidden="true">✓</span>Batteries (Included)</div>
+        <div class="ki"><span class="kc" aria-hidden="true">✓</span>User Manual x 1</div>
+    </div></div></section>
 
-    <section class="sec" id="compare" aria-labelledby="compare-title">
-        <div class="si">
-            <div class="sh">
-                <span class="sl">Why This One</span>
-                <h2 class="st" id="compare-title">How It Compares</h2>
-                <p class="sd">LumaWorld Aurora vs. a basic bedroom lamp vs. a typical competitor projector.</p>
-            </div>
-            <div style="overflow-x:auto">
-                <table class="ct" role="table" aria-label="Product comparison table">
-                    <thead><tr><th>Feature</th><th>Basic Lamp</th><th>Competitor Projector</th><th>LumaWorld Aurora</th></tr></thead>
-                    <tbody>
-                        <tr><td>Aurora Projection</td><td class="cx">✗</td><td><span class="cx">✗</span></td><td class="hl"><span class="ck">✓</span> Flowing aurora + stars</td></tr>
-                        <tr><td>White Noise</td><td class="cx">✗</td><td><span class="cx">✗</span></td><td class="hl"><span class="ck">✓</span> Built-in Bluetooth</td></tr>
-                        <tr><td>Price</td><td>$15</td><td>$34.99+</td><td class="hl">$24.99</td></tr>
-                        <tr><td>Remote Control</td><td class="cx">✗</td><td><span class="cx">✗</span></td><td class="hl"><span class="ck">✓</span> Full function</td></tr>
-                        <tr><td>Coverage</td><td>Desk only</td><td>10-15 m²</td><td class="hl">Up to 30 m²</td></tr>
-                        <tr><td>Color Options</td><td>1 color</td><td>1 color</td><td class="hl">2 colors available</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
+    <section class="sec" id="gallery" aria-labelledby="gallery-title"><div class="si"><div class="sh"><span class="sl">Real Room Photos</span><h2 class="st" id="gallery-title">See It In Action</h2><p class="sd">Actual ceiling projections in real rooms.</p></div><div class="gg">
+        <div class="gc"><img src="img-3a.jpg" alt="Blue starfield ceiling projection with laser dots"><span class="gl">Blue Starfield — Living Room</span></div>
+        <div class="gc"><img src="img-3b.png" alt="Green teal aurora waves ceiling projection"><span class="gl">Aurora Waves — Studio</span></div>
+        <div class="gc"><img src="img_4__shows_it_can_be_used_in_a_car_or_desk_in_room_.png" alt="Projector casting pink nebula in a room setting"><span class="gl">Pink Nebula — Bedroom</span></div>
+        <div class="gc"><img src="img-5.jpg" alt="Full bedroom with galaxy projection covering ceiling and walls"><span class="gl">Full Room Coverage — Bedroom</span></div>
+    </div></div></section>
 
-    <section class="sec" id="kit" aria-labelledby="kit-title">
-        <div class="si">
-            <div class="sh"><span class="sl">Unbox It</span><h2 class="st" id="kit-title">What's In The Box</h2></div>
-            <div class="kl">
-                <div class="ki"><span class="kc" aria-hidden="true">✓</span>Aurora Projector × 1</div>
-                <div class="ki"><span class="kc" aria-hidden="true">✓</span>Remote Control × 1</div>
-                <div class="ki"><span class="kc" aria-hidden="true">✓</span>USB-C Cable × 1</div>
-                <div class="ki"><span class="kc" aria-hidden="true">✓</span>User Manual × 1</div>
-            </div>
-        </div>
-    </section>
+    <section class="sec" id="specs" aria-labelledby="specs-title"><div class="si"><div class="sh"><span class="sl">The Details</span><h2 class="st" id="specs-title">Specifications</h2></div><div class="sc"><div class="sl2">
+        <div class="sr"><span class="sk">Product</span><span class="sv">Star Projector Galaxy Night Light</span></div>
+        <div class="sr"><span class="sk">Type</span><span class="sv">Atmosphere Light</span></div>
+        <div class="sr"><span class="sk">Power</span><span class="sv">Battery (3V, included)</span></div>
+        <div class="sr"><span class="sk">Remote Included</span><span class="sv">Yes</span></div>
+        <div class="sr"><span class="sk">Bulbs Included</span><span class="sv">Yes</span></div>
+        <div class="sr"><span class="sk">Bluetooth/Speaker</span><span class="sv">None</span></div>
+        <div class="sr"><span class="sk">US Shipping</span><span class="sv">Approx. 7-10 days</span></div>
+    </div></div></section>
 
-    <div class="cs" id="cta" aria-labelledby="cta-title">
-        <div class="cb">
-            <h2 style="font-size:2rem;font-weight:700;margin-bottom:1rem" id="cta-title">Your Ceiling Is Waiting</h2>
-            <p style="color:var(--tm);margin-bottom:2rem;line-height:1.7">A night light that actually makes you want to stay in bed. USB-powered, remote-controlled, ready out of the box.</p>
-            <div class="pr" style="justify-content:center;margin-bottom:1.5rem">
-                <span class="pn">$24.99</span><span class="pw" aria-label="Original price $39.99">$39.99</span>
-            </div>
-            <a id="buy-btn" href="https://buy.stripe.com/6oU28t89H4674kA3EQfYY00" target="_blank" rel="noopener" class="bp" style="font-size:1.1rem;padding:1rem 2.5rem;display:inline-flex;align-items:center;gap:.5rem">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-                Buy Now — $24.99
-            </a>
-        </div>
-        <div class="hn">
-            <p><strong>Our promise:</strong> We never fabricate reviews, ratings, or sales numbers. Product photos are of the actual item. All specifications are from the manufacturer and reflect real capabilities.</p>
-        </div>
-    </div>
+    <section class="sec" id="faq" aria-labelledby="faq-title"><div class="si"><div class="sh"><span class="sl">Questions</span><h2 class="st" id="faq-title">FAQ</h2></div><div class="faq">
+        <div class="fq"><button class="fq-q" aria-expanded="false" aria-controls="faq-a1" onclick="toggleFaq(this)">How long does shipping take?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="fq-a" id="faq-a1"><div class="faq-inner"><div class="faq-body">US delivery is approximately 7-10 business days from when you order.</div></div></div></div>
+        <div class="fq"><button class="fq-q" aria-expanded="false" aria-controls="faq-a2" onclick="toggleFaq(this)">What is in the box?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="fq-a" id="faq-a2"><div class="faq-inner"><div class="faq-body">The projector unit, remote control, batteries (included), and user manual.</div></div></div></div>
+        <div class="fq"><button class="fq-q" aria-expanded="false" aria-controls="faq-a3" onclick="toggleFaq(this)">Does it need USB or a power outlet?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="fq-a" id="faq-a3"><div class="faq-inner"><div class="faq-body">No. It runs on batteries (included). No cords, no USB, no outlet needed. Place it anywhere.</div></div></div></div>
+        <div class="fq"><button class="fq-q" aria-expanded="false" aria-controls="faq-a5" onclick="toggleFaq(this)">How do I contact you?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="fq-a" id="faq-a5"><div class="faq-inner"><div class="faq-body">Email: <a href="mailto:lumaworldshop@gmail.com" style="color:var(--pl)">lumaworldshop@gmail.com</a></div></div></div></div>
+    </div></div></section>
+
+    <div class="cs" id="cta" aria-labelledby="cta-title"><div class="cb">
+        <h2 style="font-size:2rem;font-weight:700;margin-bottom:1rem" id="cta-title">Your Ceiling Is Waiting</h2>
+        <p style="color:var(--tm);margin-bottom:2rem;line-height:1.7">No cords. No setup. Your ceiling becomes a galaxy the moment you turn it on.</p>
+        <div class="pr" style="justify-content:center;margin-bottom:1.5rem"><span class="pn">$24.99</span><span class="pw" aria-label="Original price $34.99">$34.99</span></div>
+        <button onclick="buyNow()" class="bp" style="font-size:1.1rem;padding:1rem 2.5rem;display:inline-flex;align-items:center;gap:.5rem" aria-label="Buy now for $24.99"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Get Yours</button>
+    </div><div class="hn"><p><strong>Our promise:</strong> We never fabricate reviews, ratings, or sales numbers. Product photos are of the actual item. All specifications are from the manufacturer and reflect real capabilities.</p></div></div>
+
     </main>
 
     <footer class="ft" role="contentinfo">
-        <nav class="fl" aria-label="Footer">
-            <a href="#features">Features</a><a href="#gallery">Gallery</a><a href="#specs">Specs</a><a href="#compare">Compare</a>
-            <a href="returns-refund-policy.html">Returns & Refunds</a>
+        <nav class="fl" aria-label="Footer navigation">
+            <a href="#features">Features</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#specs">Specs</a>
+            <a href="#faq">FAQ</a>
+            <a href="returns-refund-policy.html">Returns and Refunds</a>
             <a href="privacy-policy.html">Privacy Policy</a>
         </nav>
         <p>&copy; 2026 LumaWorld. All rights reserved.</p>
     </footer>
 
     <script>
-    // ===== SECURITY: Input sanitization =====
-    function sanitizeInput(input) {
-        if (typeof input !== 'string') return '';
-        return input.replace(/[<>"'`]/g, function(c) {
-            var entities = {'<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#x27;', '`': '&#x60;'};
-            return entities[c] || c;
-        });
-    }
+    /* Utilities */
+    function sanitizeInput(input) { if (typeof input !== 'string') return ''; return input.replace(/[<>"'`]/g, function(c) { return {'<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#x27;','`':'&#x60;'}[c] || c; }); }
+    (function(){ var p = new URLSearchParams(window.location.search), c = new URLSearchParams(); p.forEach(function(v,k){ if(/^[a-zA-Z0-9_-]+$/.test(k)&&!/[<>"'`]/.test(v)) c.set(k,v); }); if(c.toString()!==p.toString()) window.history.replaceState({},'','/'+(c.toString()?'?'+c.toString():'')); })();
+    function announceChange(msg){ var e=document.getElementById('a11yAnnounce'); if(e){e.textContent='';setTimeout(function(){e.textContent=msg;},100);} }
 
-    // ===== SECURITY: Validate URL parameters =====
+    /* ===== AMBIENT PARALLAX STARFIELD (3 depth layers, mouse-reactive) ===== */
     (function(){
-        var p = new URLSearchParams(window.location.search);
-        var clean = new URLSearchParams();
-        p.forEach(function(v, k) {
-            if (/^[a-zA-Z0-9_-]+$/.test(k) && !/[<>"'`]/.test(v)) {
-                clean.set(k, v);
+        var l1=document.getElementById('stars-layer-1'),l2=document.getElementById('stars-layer-2'),l3=document.getElementById('stars-layer-3');
+        if(!l1||!l2||!l3)return;
+        var rm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        function addStars(layer,count,minSize,maxSize,extra){
+            for(var i=0;i<count;i++){
+                var s=document.createElement('div');s.className='star';
+                var sz=minSize+Math.random()*(maxSize-minSize);
+                var op=0.25+Math.random()*0.5;
+                var bg=Math.random()>0.7?(Math.random()>0.5?'rgba(167,139,250,0.7)':'rgba(96,165,250,0.6)'):'255,255,255';
+                s.style.cssText='width:'+sz+'px;height:'+sz+'px;top:'+(Math.random()*100)+'%;left:'+(Math.random()*100)+'%;opacity:'+op+';'+extra+';background:'+bg+';';
+                layer.appendChild(s);
             }
-        });
-        var cleanStr = clean.toString();
-        if (cleanStr !== p.toString()) {
-            var newUrl = window.location.pathname + (cleanStr ? '?' + cleanStr : '');
-            window.history.replaceState({}, '', newUrl);
         }
+        addStars(l1,80,0.5,1,'');
+        addStars(l2,45,1,2,'');
+        addStars(l3,22,1.5,3,'box-shadow:0 0 4px rgba(167,139,250,0.4);');
+        var mx=0,my=0,tx=0,ty=0;
+        if(!rm){
+            document.addEventListener('mousemove',function(e){
+                tx=(e.clientX/window.innerWidth-0.5)*2;
+                ty=(e.clientY/window.innerHeight-0.5)*2;
+            });
+        }
+        function loop(){
+            if(rm)return;
+            mx+=(tx-mx)*0.04;my+=(ty-my)*0.04;
+            l1.style.transform='translate('+(mx*-6)+'px,'+(my*-6)+'px)';
+            l2.style.transform='translate('+(mx*-14)+'px,'+(my*-14)+'px)';
+            l3.style.transform='translate('+(mx*-25)+'px,'+(my*-25)+'px)';
+            requestAnimationFrame(loop);
+        }
+        loop();
     })();
 
-    // ===== ACCESSIBILITY: Announce to screen readers =====
-    function announceChange(msg) {
-        var announce = document.getElementById('a11yAnnounce');
-        if (announce) {
-            announce.textContent = '';
-            setTimeout(function() { announce.textContent = msg; }, 100);
-        }
-    }
-
-    // ===== STAR GENERATION =====
+    /* ================================================================
+       PREMIUM GALAXY BACKGROUND
+       - Volumetric nebula clouds with filament structure
+       - Central galaxy core with luminosity bloom
+       - 4-layer parallax star field
+       - Aurora curtains with multi-frequency waves
+       - Shooting stars with physics
+       - Cosmic dust drift
+       Volumetric nebula filaments + parallax starfield + shooting stars
+       ================================================================ */
     (function(){
-        var c = document.getElementById('stars');
-        if (!c) return;
-        for (var i = 0; i < 80; i++) {
-            var s = document.createElement('div');
-            s.className = 'star';
-            s.style.left = Math.random() * 100 + '%';
-            s.style.top = Math.random() * 100 + '%';
-            s.style.setProperty('--d', (2 + Math.random() * 4) + 's');
-            s.style.setProperty('--om', (.4 + Math.random() * 0.6).toFixed(2));
-            s.style.animationDelay = (Math.random() * 5) + 's';
-            c.appendChild(s);
-        }
-    })();
-
-    // ===== VARIANT SELECTOR =====
-    function selectVariant(btn) {
-        document.querySelectorAll('.vb').forEach(function(b) {
-            b.classList.remove('active');
-            b.setAttribute('aria-checked', 'false');
-        });
-        btn.classList.add('active');
-        btn.setAttribute('aria-checked', 'true');
-        var img = document.getElementById('heroImg');
-        var src = btn.getAttribute('data-img');
-        if (img && src) {
-            // SECURITY: Validate the data-img path
-            if (!/^[a-zA-Z0-9_./-]+\.(jpg|jpeg|png|webp|gif)$/i.test(src)) {
-                return; // Reject invalid paths
-            }
-            img.style.opacity = '0.3';
-            setTimeout(function() { img.src = src; img.style.opacity = '1'; }, 150);
-        }
-
-        // Switch background theme based on variant
-        var label = btn.getAttribute('aria-label');
-        var svgClouds = document.getElementById('svgClouds');
-        if (label && label.toLowerCase().indexOf('cloud') !== -1) {
-            if (window.switchBgTheme) window.switchBgTheme('cloud');
-            if (svgClouds) { svgClouds.classList.remove('hidden'); svgClouds.classList.add('visible'); }
-            announceChange('Cloud White variant selected — cloudy sky theme activated');
-        } else {
-            if (window.switchBgTheme) window.switchBgTheme('midnight');
-            if (svgClouds) { svgClouds.classList.remove('visible'); svgClouds.classList.add('hidden'); }
-            announceChange('Midnight Black variant selected — moonlit sky theme activated');
-        }
-
-        // Update buy button link based on variant
-        var cleanLabel = label.replace(' variant', '');
-        var buyBtn = document.getElementById('buy-btn');
-        if (buyBtn && stripeLinks[cleanLabel]) {
-            buyBtn.href = stripeLinks[cleanLabel];
-        }
-    }
-
-    // ===== STRIPE LINKS =====
-    var stripeLinks = {
-        'Midnight Black': 'https://buy.stripe.com/6oU28t89H4674kA3EQfYY00',
-        'Cloud White': 'https://buy.stripe.com/8x2dRbdu1fOPaIY7V6fYY01'
-    };
-
-    // ===== SMOOTH SCROLL =====
-    document.querySelectorAll('a[href^="#"]').forEach(function(a) {
-        a.addEventListener('click', function(e) {
-            e.preventDefault();
-            var href = a.getAttribute('href');
-            if (!href || href === '#') return;
-            // SECURITY: Validate hash target
-            if (!/^[a-zA-Z0-9_-]+$/.test(href.substring(1))) return;
-            var t = document.querySelector(href);
-            if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
-    });
-
-    // ===== BUY NOW =====
-    var CHECKOUT_URL = 'https://buy.stripe.com/test_YOUR_STRIPE_LINK_HERE';
-
-    function buyNow() {
-        var ids = ['cta-main', 'cta-final'];
-        ids.forEach(function(id) {
-            var btn = document.getElementById(id);
-            if (!btn) return;
-            var orig = btn.innerHTML;
-            btn.innerHTML = '&#10003; Added!';
-            btn.style.background = 'linear-gradient(135deg,var(--td),var(--pur))';
-            btn.style.transform = 'scale(1.05)';
-            setTimeout(function() { btn.innerHTML = orig; btn.style.background = ''; btn.style.transform = ''; }, 1800);
-        });
-        announceChange('Product added to cart');
-    }
-
-    // ===== ANIMATED BACKGROUND CANVAS =====
-    (function() {
         var canvas = document.getElementById('bgCanvas');
         if (!canvas) return;
         var ctx = canvas.getContext('2d');
-        var w, h;
-        var stars = [];
-        var clouds = [];
-        var time = 0;
-        var currentTheme = 'midnight';
+        var w, h, time = 0;
+        var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)'.replace(' ','') || '(prefers-reduced-motion: reduce)').matches;
 
-        function resize() {
+        // Data layers
+        var bgStars = [];      // Layer 0: Tiny far-background stars
+        var midStars = [];     // Layer 1: Medium distance stars
+        var fgStars = [];      // Layer 2: Foreground bright stars with halos
+        var nebulaBlobs = [];  // Layer 3: Nebula cloud structures
+        var dustMotes = [];    // Layer 4: Floating cosmic dust
+        var shootingStars = [];
+
+        function resize(){
             w = canvas.width = window.innerWidth;
             h = canvas.height = window.innerHeight;
-            initParticles();
+            initScene();
         }
 
-        function initParticles() {
-            stars = [];
-            clouds = [];
-            // Stars for midnight theme
-            for (var i = 0; i < 150; i++) {
-                stars.push({
+        function initScene(){
+            bgStars = []; midStars = []; fgStars = []; nebulaBlobs = []; dustMotes = []; shootingStars = [];
+
+            // === BACKGROUND STAR FIELD (tiny, dense, no glow) ===
+            var bgCount = Math.floor(w * h / 4500);
+            for (var i = 0; i < bgCount; i++) {
+                var t = Math.random();
+                bgStars.push({
                     x: Math.random() * w,
-                    y: Math.random() * h * 0.7,
-                    r: Math.random() * 1.5 + 0.5,
-                    speed: Math.random() * 0.3 + 0.1,
-                    twinkle: Math.random() * Math.PI * 2
+                    y: Math.random() * h,
+                    r: 0.2 + Math.random() * 0.5,
+                    alpha: 0.05 + Math.random() * 0.2,
+                    twinkleSpeed: 0.001 + Math.random() * 0.003,
+                    twinklePhase: Math.random() * Math.PI * 2,
+                    depth: 0.2 + Math.random() * 0.3  // parallax factor
                 });
             }
-            // Clouds for cloud theme (SVG handles visual, JS just keeps array)
-            for (var i = 0; i < 7; i++) {
-                clouds.push({
+
+            // === MID DISTANCE STARS (some color tints, slight glow on brighter ones) ===
+            var midCount = Math.floor(w * h / 12000);
+            for (var i = 0; i < midCount; i++) {
+                var t = Math.random();
+                var tint;
+                if (t < 0.15) tint = [255, 200, 150];      // warm gold
+                else if (t < 0.3) tint = [150, 180, 255];  // cool blue
+                else if (t < 0.4) tint = [255, 180, 220];  // pink
+                else if (t < 0.48) tint = [180, 255, 220]; // mint
+                else tint = [255, 255, 255];
+
+                midStars.push({
                     x: Math.random() * w,
-                    y: Math.random() * h * 0.7,
-                    w: 200 + Math.random() * 300,
-                    h: 80 + Math.random() * 120,
-                    speed: (Math.random() * 0.2 + 0.05) * (Math.random() > 0.5 ? 1 : -1),
-                    opacity: 0.04 + Math.random() * 0.06
+                    y: Math.random() * h,
+                    r: 0.5 + Math.random() * 1.0,
+                    alpha: 0.15 + Math.random() * 0.5,
+                    twinkleSpeed: 0.002 + Math.random() * 0.008,
+                    twinklePhase: Math.random() * Math.PI * 2,
+                    depth: 0.4 + Math.random() * 0.3,
+                    tint: tint,
+                    hasGlow: Math.random() > 0.6
+                });
+            }
+
+            // === FOREGROUND BRIGHT STARS (glow halo + cross flare) ===
+            var fgCount = Math.max(12, Math.floor(w * h / 50000));
+            for (var i = 0; i < fgCount; i++) {
+                var t = Math.random();
+                var tint;
+                if (t < 0.2) tint = [255, 230, 180];       // golden
+                else if (t < 0.4) tint = [180, 200, 255];  // ice blue
+                else if (t < 0.6) tint = [255, 200, 230];  // rose
+                else if (t < 0.75) tint = [200, 255, 230]; // aqua
+                else tint = [255, 255, 255];
+
+                fgStars.push({
+                    x: Math.random() * w,
+                    y: Math.random() * h,
+                    r: 0.8 + Math.random() * 2,
+                    alpha: 0.5 + Math.random() * 0.5,
+                    twinkleSpeed: 0.004 + Math.random() * 0.015,
+                    twinklePhase: Math.random() * Math.PI * 2,
+                    depth: 0.7 + Math.random() * 0.3,
+                    tint: tint,
+                    flareIntensity: 0.3 + Math.random() * 0.7
+                });
+            }
+
+            // === NEBULAE (organic filament clouds) ===
+            // Each nebula is a wandering path of overlapping soft ellipses
+            // that follow a curved spine — creates tendrils and veins, not circles
+            var nebulaCount = 7 + Math.floor(Math.random() * 3);
+            for (var n = 0; n < nebulaCount; n++) {
+                var baseX = Math.random() * w;
+                var baseY = Math.random() * h * 0.75;
+                var baseAngle = Math.random() * Math.PI * 2;
+                var baseLen = 100 + Math.random() * 200;
+
+                var colorIdx = n % 6;
+                var colors = [
+                    [139, 92, 246],   // purple
+                    [96, 165, 250],   // blue
+                    [45, 212, 191],   // teal
+                    [244, 114, 182],  // pink
+                    [251, 191, 36],   // gold
+                    [100, 140, 255]   // indigo
+                ];
+                var baseColor = colors[colorIdx];
+
+                var filaments = [];
+                var filCount = 12 + Math.floor(Math.random() * 12);
+                // Generate a curved spine path using accumulated angle
+                var spineAngle = baseAngle;
+                var spineX = baseX;
+                var spineY = baseY;
+                for (var f = 0; f < filCount; f++) {
+                    var t = f / filCount;
+                    // Wander the spine slightly each step
+                    spineAngle += (Math.random() - 0.5) * 0.4;
+                    var stepSize = baseLen / filCount;
+                    spineX += Math.cos(spineAngle) * stepSize;
+                    spineY += Math.sin(spineAngle) * stepSize;
+
+                    // Filament size: fattest at center, tapering at ends
+                    var taper = Math.sin(t * Math.PI);
+                    var filWidth = (20 + Math.random() * 30) * taper;
+
+                    filaments.push({
+                        x: spineX + (Math.random() - 0.5) * filWidth * 0.5,
+                        y: spineY + (Math.random() - 0.5) * filWidth * 0.4,
+                        rx: filWidth * (0.8 + Math.random() * 0.6),
+                        ry: filWidth * (0.5 + Math.random() * 0.4),
+                        angle: spineAngle + (Math.random() - 0.5) * 0.3,
+                        alpha: (0.006 + Math.random() * 0.012) * taper,
+                        driftPhase: Math.random() * Math.PI * 2,
+                        driftSpeed: 0.008 + Math.random() * 0.02
+                    });
+                }
+
+                nebulaBlobs.push({
+                    baseX: baseX, baseY: baseY,
+                    angle: baseAngle,
+                    color: baseColor,
+                    filaments: filaments,
+                    globalPhase: Math.random() * Math.PI * 2,
+                    globalPulse: 0.012 + Math.random() * 0.025
+                });
+            }
+
+            // === COSMIC DUST (tiny drifting motes — adds life) ===
+            var dustCount = 35 + Math.floor(Math.random() * 20);
+            for (var i = 0; i < dustCount; i++) {
+                var t = Math.random();
+                dustMotes.push({
+                    x: Math.random() * w,
+                    y: Math.random() * h,
+                    r: 0.3 + Math.random() * 1.0,
+                    color: t < 0.4 ? [139,92,246] : t < 0.7 ? [96,165,250] : t < 0.85 ? [251,191,36] : [45,212,191],
+                    alpha: 0.08 + Math.random() * 0.15,
+                    vx: (Math.random() - 0.5) * 0.15,
+                    vy: (Math.random() - 0.5) * 0.1,
+                    phase: Math.random() * Math.PI * 2
                 });
             }
         }
 
-        function drawMidnight() {
-            // Dark sky gradient
-            var grad = ctx.createLinearGradient(0, 0, 0, h);
-            grad.addColorStop(0, '#0a0a2e');
-            grad.addColorStop(0.5, '#06061a');
-            grad.addColorStop(1, '#06060f');
+        function drawNebula(nebula, t){
+            var pulse = 1 + Math.sin(t * nebula.globalPulse + nebula.globalPhase) * 0.15;
+            var dx = Math.sin(t * 0.02 + nebula.globalPhase) * 15;
+            var dy = Math.cos(t * 0.015 + nebula.globalPhase) * 10;
+            var c = nebula.color;
+
+            for (var f = 0; f < nebula.filaments.length; f++) {
+                var fil = nebula.filaments[f];
+                var filPulse = 1 + Math.sin(t * fil.driftSpeed + fil.driftPhase) * 0.2;
+
+                var fx = nebula.baseX + dx + (fil.x - nebula.baseX) * pulse;
+                var fy = nebula.baseY + dy + (fil.y - nebula.baseY) * pulse;
+
+                var radGrad = ctx.createRadialGradient(fx, fy, 0, fx, fy, fil.rx * filPulse * pulse);
+                var a = fil.alpha * pulse;
+                radGrad.addColorStop(0, 'rgba(' + c[0]+','+c[1]+','+c[2]+',' + (a * 2).toFixed(3) + ')');
+                radGrad.addColorStop(0.25, 'rgba(' + c[0]+','+c[1]+','+c[2]+',' + a.toFixed(3) + ')');
+                radGrad.addColorStop(0.6, 'rgba(' + c[0]+','+c[1]+','+c[2]+',' + (a * 0.2).toFixed(3) + ')');
+                radGrad.addColorStop(1, 'rgba(' + c[0]+','+c[1]+','+c[2]+',0)');
+
+                ctx.fillStyle = radGrad;
+                ctx.save();
+                ctx.translate(fx, fy);
+                ctx.rotate(fil.angle + Math.sin(t * 0.01 + fil.driftPhase) * 0.05);
+                ctx.scale(1, fil.ry / fil.rx);
+                ctx.beginPath();
+                ctx.arc(0, 0, fil.rx * filPulse * pulse, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        function draw(t){
+            // === BASE (deep space with subtle color zones) ===
+            var grad = ctx.createRadialGradient(w * 0.3, h * 0.25, 0, w * 0.5, h * 0.5, Math.max(w, h) * 0.9);
+            grad.addColorStop(0, '#04041a');
+            grad.addColorStop(0.2, '#030316');
+            grad.addColorStop(0.45, '#020212');
+            grad.addColorStop(0.7, '#01010c');
+            grad.addColorStop(1, '#010104');
             ctx.fillStyle = grad;
             ctx.fillRect(0, 0, w, h);
 
-            // Aurora ribbons
+            // === GALAXY CORE GLOW (subtle focal point) ===
+            ctx.globalCompositeOperation = 'screen';
+            var coreX = w * 0.3, coreY = h * 0.25;
+            var corePulse = 0.7 + 0.3 * Math.sin(t * 0.08);
+            var coreGlow = ctx.createRadialGradient(coreX, coreY, 0, coreX, coreY, Math.min(w, h) * 0.35);
+            coreGlow.addColorStop(0, 'rgba(139,92,246,' + (0.025 * corePulse).toFixed(3) + ')');
+            coreGlow.addColorStop(0.15, 'rgba(96,165,250,' + (0.015 * corePulse).toFixed(3) + ')');
+            coreGlow.addColorStop(0.35, 'rgba(45,212,191,' + (0.008 * corePulse).toFixed(3) + ')');
+            coreGlow.addColorStop(0.65, 'rgba(139,92,246,' + (0.003 * corePulse).toFixed(3) + ')');
+            coreGlow.addColorStop(1, 'rgba(0,0,0,0)');
+            ctx.fillStyle = coreGlow;
+            ctx.fillRect(0, 0, w, h);
+
+            // Secondary core (different position, different rhythm)
+            var core2X = w * 0.72, core2Y = h * 0.6;
+            var core2Pulse = 0.6 + 0.4 * Math.cos(t * 0.06 + 1.5);
+            var core2Glow = ctx.createRadialGradient(core2X, core2Y, 0, core2X, core2Y, Math.min(w, h) * 0.28);
+            core2Glow.addColorStop(0, 'rgba(244,114,182,' + (0.018 * core2Pulse).toFixed(3) + ')');
+            core2Glow.addColorStop(0.2, 'rgba(139,92,246,' + (0.012 * core2Pulse).toFixed(3) + ')');
+            core2Glow.addColorStop(0.5, 'rgba(96,165,250,' + (0.005 * core2Pulse).toFixed(3) + ')');
+            core2Glow.addColorStop(1, 'rgba(0,0,0,0)');
+            ctx.fillStyle = core2Glow;
+            ctx.fillRect(0, 0, w, h);
+            ctx.globalCompositeOperation = 'source-over';
+
+            // === NEBULAE (behind stars) ===
+            ctx.globalCompositeOperation = 'screen';
+            for (var i = 0; i < nebulaBlobs.length; i++) {
+                drawNebula(nebulaBlobs[i], t);
+            }
+            ctx.globalCompositeOperation = 'source-over';
+
+            // === AURORA CURTAINS ===
+            ctx.globalCompositeOperation = 'screen';
             for (var i = 0; i < 4; i++) {
                 ctx.beginPath();
-                ctx.moveTo(0, h * 0.3 + i * 60);
-                for (var x = 0; x <= w; x += 20) {
-                    var y = h * 0.3 + i * 60 + Math.sin(x * 0.005 + time * 0.5 + i) * 40 + Math.sin(x * 0.01 + time * 0.3) * 20;
+                ctx.moveTo(0, h * 0.05 + i * 80);
+                for (var x = 0; x <= w; x += 6) {
+                    var y = h * 0.05 + i * 80
+                        + Math.sin(x * 0.0015 + t * 0.12 + i * 2.5) * 30
+                        + Math.sin(x * 0.0035 + t * 0.06 + i) * 15
+                        + Math.sin(x * 0.0007 + t * 0.03) * 20;
                     ctx.lineTo(x, y);
                 }
-                ctx.lineTo(w, h);
-                ctx.lineTo(0, h);
-                ctx.closePath();
-                var colors = ['rgba(139,92,246,0.08)', 'rgba(96,165,250,0.06)', 'rgba(108,92,231,0.05)', 'rgba(168,139,250,0.04)'];
-                ctx.fillStyle = colors[i];
+                ctx.lineTo(w, h); ctx.lineTo(0, h); ctx.closePath();
+                var rc = ['139,92,246','96,165,250','45,212,191','244,114,182'][i];
+                ctx.fillStyle = 'rgba(' + rc + ',0.012)';
                 ctx.fill();
             }
+            ctx.globalCompositeOperation = 'source-over';
 
-            // Crescent moon
-            var moonX = w * 0.82;
-            var moonY = h * 0.18;
-            var moonR = 50;
-            ctx.save();
-            ctx.beginPath();
-            ctx.arc(moonX, moonY, moonR, 0, Math.PI * 2);
-            ctx.fillStyle = '#c4b5fd';
-            ctx.fill();
-            ctx.beginPath();
-            ctx.arc(moonX + 18, moonY - 12, moonR * 0.85, 0, Math.PI * 2);
-            ctx.fillStyle = '#06061a';
-            ctx.fill();
-            ctx.restore();
-
-            // Moon glow
-            var glow = ctx.createRadialGradient(moonX, moonY, moonR, moonX, moonY, moonR * 3);
-            glow.addColorStop(0, 'rgba(196,181,253,0.15)');
-            glow.addColorStop(1, 'rgba(196,181,253,0)');
-            ctx.fillStyle = glow;
-            ctx.fillRect(moonX - moonR * 3, moonY - moonR * 3, moonR * 6, moonR * 6);
-
-            // Stars
-            for (var i = 0; i < stars.length; i++) {
-                var s = stars[i];
-                s.twinkle += 0.02;
-                var alpha = 0.3 + Math.sin(s.twinkle) * 0.5;
-                if (alpha < 0) alpha = 0;
+            // === BACKGROUND STARS ===
+            for (var i = 0; i < bgStars.length; i++) {
+                var s = bgStars[i];
+                var a = s.alpha * (0.4 + 0.6 * Math.abs(Math.sin(t * s.twinkleSpeed + s.twinklePhase)));
                 ctx.beginPath();
                 ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(255,255,255,' + alpha + ')';
+                ctx.fillStyle = 'rgba(255,255,255,' + a.toFixed(3) + ')';
                 ctx.fill();
             }
-        }
 
-        function drawCloud() {
-            // Deep blue night sky
-            var grad = ctx.createLinearGradient(0, 0, 0, h);
-            grad.addColorStop(0, '#0b1a35');
-            grad.addColorStop(0.4, '#0d1f3c');
-            grad.addColorStop(1, '#06060f');
-            ctx.fillStyle = grad;
-            ctx.fillRect(0, 0, w, h);
+            // === MID DISTANCE STARS ===
+            for (var i = 0; i < midStars.length; i++) {
+                var s = midStars[i];
+                var a = s.alpha * (0.2 + 0.8 * Math.abs(Math.sin(t * s.twinkleSpeed + s.twinklePhase)));
+                var tint = s.tint;
 
-            // Subtle aurora ribbons
-            for (var i = 0; i < 3; i++) {
-                ctx.beginPath();
-                ctx.moveTo(0, h * 0.15 + i * 60);
-                for (var x = 0; x <= w; x += 20) {
-                    var y = h * 0.15 + i * 60 + Math.sin(x * 0.004 + time * 0.3 + i) * 40 + Math.sin(x * 0.008 + time * 0.5) * 20;
-                    ctx.lineTo(x, y);
+                // Subtle glow for brighter ones
+                if (s.hasGlow && a > 0.3) {
+                    var glow = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, s.r * 4);
+                    glow.addColorStop(0, 'rgba(' + tint[0]+','+tint[1]+','+tint[2]+',' + (a * 0.15).toFixed(3) + ')');
+                    glow.addColorStop(1, 'rgba(' + tint[0]+','+tint[1]+','+tint[2]+',0)');
+                    ctx.fillStyle = glow;
+                    ctx.beginPath(); ctx.arc(s.x, s.y, s.r * 4, 0, Math.PI * 2); ctx.fill();
                 }
-                ctx.lineTo(w, h);
-                ctx.lineTo(0, h);
-                ctx.closePath();
-                ctx.fillStyle = ['rgba(45,212,191,0.04)','rgba(96,165,250,0.03)','rgba(125,200,255,0.02)'][i];
-                ctx.fill();
-            }
 
-            // Twinkling stars
-            for (var i = 0; i < 80; i++) {
-                var sx = (i * 137.5 + 50) % w;
-                var sy = (i * 73.3 + 30) % (h * 0.5);
-                var alpha = 0.2 + Math.sin(time * 1.5 + i * 0.8) * 0.2;
                 ctx.beginPath();
-                ctx.arc(sx, sy, 0.6 + Math.sin(i) * 0.3, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(255,255,255,' + alpha + ')';
+                ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(' + tint[0]+','+tint[1]+','+tint[2]+',' + a.toFixed(2) + ')';
                 ctx.fill();
             }
-        }
 
-        function animate() {
-            time += 0.016;
-            if (currentTheme === 'midnight') {
-                drawMidnight();
-            } else {
-                drawCloud();
+            // === FOREGROUND STARS (glow + flare) ===
+            ctx.globalCompositeOperation = 'screen';
+            for (var i = 0; i < fgStars.length; i++) {
+                var s = fgStars[i];
+                var a = s.alpha * (0.3 + 0.7 * Math.abs(Math.sin(t * s.twinkleSpeed + s.twinklePhase)));
+                var tint = s.tint;
+
+                // Large glow halo
+                var glowR = s.r * (5 + a * 8);
+                var glow = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, glowR);
+                glow.addColorStop(0, 'rgba(' + tint[0]+','+tint[1]+','+tint[2]+',' + (a * 0.3 * s.flareIntensity).toFixed(3) + ')');
+                glow.addColorStop(0.2, 'rgba(' + tint[0]+','+tint[1]+','+tint[2]+',' + (a * 0.08).toFixed(3) + ')');
+                glow.addColorStop(1, 'rgba(' + tint[0]+','+tint[1]+','+tint[2]+',0)');
+                ctx.fillStyle = glow;
+                ctx.beginPath(); ctx.arc(s.x, s.y, glowR, 0, Math.PI * 2); ctx.fill();
+
+                // Core
+                ctx.beginPath();
+                ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(' + tint[0]+','+tint[1]+','+tint[2]+',' + Math.min(a * 1.2, 1).toFixed(2) + ')';
+                ctx.fill();
+
+                // Cross flare
+                if (a > 0.5 && s.flareIntensity > 0.4) {
+                    var fl = s.r * (8 + a * 10) * s.flareIntensity;
+                    ctx.strokeStyle = 'rgba(' + tint[0]+','+tint[1]+','+tint[2]+',' + (a * 0.12 * s.flareIntensity).toFixed(3) + ')';
+                    ctx.lineWidth = 0.4;
+                    ctx.beginPath();
+                    ctx.moveTo(s.x - fl, s.y); ctx.lineTo(s.x + fl, s.y);
+                    ctx.stroke();
+                    ctx.beginPath();
+                    ctx.moveTo(s.x, s.y - fl * 0.6); ctx.lineTo(s.x, s.y + fl * 0.6);
+                    ctx.stroke();
+                }
             }
-            requestAnimationFrame(animate);
+            ctx.globalCompositeOperation = 'source-over';
+
+            // === COSMIC DUST ===
+            for (var i = 0; i < dustMotes.length; i++) {
+                var d = dustMotes[i];
+                if (!reducedMotion) {
+                    d.x += d.vx;
+                    d.y += d.vy;
+                    if (d.x < -5) d.x = w + 5;
+                    if (d.x > w + 5) d.x = -5;
+                    if (d.y < -5) d.y = h + 5;
+                    if (d.y > h + 5) d.y = -5;
+                }
+                var da = d.alpha * (0.5 + 0.5 * Math.sin(t * 0.03 + d.phase));
+                ctx.beginPath();
+                ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(' + d.color[0]+','+d.color[1]+','+d.color[2]+',' + da.toFixed(2) + ')';
+                ctx.fill();
+            }
+
+            // === SHOOTING STARS ===
+            if (!reducedMotion && Math.random() < 0.004) {
+                var angle = Math.PI * 0.1 + Math.random() * 0.35;
+                var speed = 5 + Math.random() * 10;
+                shootingStars.push({
+                    x: Math.random() * w * 0.85,
+                    y: Math.random() * h * 0.2,
+                    vx: Math.cos(angle) * speed,
+                    vy: Math.sin(angle) * speed,
+                    alpha: 0.9 + Math.random() * 0.1,
+                    decay: 0.005 + Math.random() * 0.008,
+                    length: 40 + Math.random() * 70,
+                    color: Math.random() > 0.5 ? '167,139,250' : Math.random() > 0.25 ? '96,165,250' : '255,255,255'
+                });
+            }
+            for (var i = shootingStars.length - 1; i >= 0; i--) {
+                var ss = shootingStars[i];
+                ss.x += ss.vx; ss.y += ss.vy;
+                ss.alpha -= ss.decay;
+                if (ss.alpha <= 0) { shootingStars.splice(i, 1); continue; }
+                var mag = Math.sqrt(ss.vx*ss.vx + ss.vy*ss.vy);
+                var tailX = ss.x - (ss.vx/mag)*ss.length;
+                var tailY = ss.y - (ss.vy/mag)*ss.length;
+                var g = ctx.createLinearGradient(ss.x, ss.y, tailX, tailY);
+                g.addColorStop(0, 'rgba('+ss.color+','+ss.alpha.toFixed(2)+')');
+                g.addColorStop(0.25, 'rgba('+ss.color+','+(ss.alpha*0.4).toFixed(2)+')');
+                g.addColorStop(1, 'rgba('+ss.color+',0)');
+                ctx.beginPath(); ctx.moveTo(tailX, tailY); ctx.lineTo(ss.x, ss.y);
+                ctx.strokeStyle = g; ctx.lineWidth = 2; ctx.stroke();
+
+                // Head bloom
+                var headR = 5 + ss.alpha * 3;
+                var hg = ctx.createRadialGradient(ss.x, ss.y, 0, ss.x, ss.y, headR);
+                hg.addColorStop(0, 'rgba('+ss.color+','+(ss.alpha*0.8).toFixed(2)+')');
+                hg.addColorStop(1, 'rgba('+ss.color+',0)');
+                ctx.fillStyle = hg;
+                ctx.beginPath(); ctx.arc(ss.x, ss.y, headR, 0, Math.PI*2); ctx.fill();
+            }
         }
 
-        window.switchBgTheme = function(theme) {
-            currentTheme = theme;
+        function animate(){ time += 0.016; draw(time); requestAnimationFrame(animate); }
+        window.addEventListener('resize', resize); resize();
+        if (reducedMotion) draw(0); else animate();
+    })();
+
+    /* ===== STAR BURST ON BUY ===== */
+    (function(){
+        var canvas = document.getElementById('bgCanvas');
+        if (!canvas) return;
+        var ctx = canvas.getContext('2d');
+        var burst = [], active = false;
+        window.triggerStarBurst = function(){
+            if (active) return; active = true;
+            var cx = canvas.width/2, cy = canvas.height/2;
+            var colors = ['167,139,250','96,165,250','45,212,191','244,114,182','251,191,36'];
+            for (var i = 0; i < 110; i++) {
+                var angle = (Math.PI*2*i)/110 + Math.random()*0.4;
+                var speed = 2+Math.random()*10;
+                burst.push({x:cx,y:cy,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed,alpha:1,decay:0.007+Math.random()*0.012,r:1+Math.random()*3,color:colors[Math.floor(Math.random()*colors.length)]});
+            }
+            animateBurst();
         };
-
-        window.addEventListener('resize', resize);
-        resize();
-        animate();
+        function animateBurst(){
+            if (burst.length === 0) { active = false; return; }
+            for (var i = burst.length-1; i >= 0; i--){
+                var s = burst[i]; s.x+=s.vx; s.y+=s.vy; s.vy+=0.018; s.vx*=0.985; s.alpha-=s.decay;
+                if (s.alpha<=0) { burst.splice(i,1); continue; }
+                ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+                ctx.fillStyle='rgba('+s.color+','+s.alpha.toFixed(2)+')'; ctx.fill();
+            }
+            requestAnimationFrame(animateBurst);
+        }
     })();
 
-    // ===== TEXT-TO-SPEECH =====
-    (function() {
-        var readBtn = document.getElementById('ttsReadBtn');
-        var stopBtn = document.getElementById('ttsStopBtn');
-        if (!readBtn || !stopBtn) return;
-        if (!('speechSynthesis' in window)) {
-            readBtn.style.display = 'none';
-            return;
-        }
+    var CHECKOUT_URL = 'https://buy.stripe.com/test_YOUR_STRIPE_LINK_HERE';
+    function buyNow(){
+        if (window.triggerStarBurst) window.triggerStarBurst();
+        var btn = document.getElementById('buy-btn');
+        if (btn){ var o=btn.innerHTML; btn.innerHTML='Added!'; btn.style.background='linear-gradient(135deg,var(--te),var(--pur))'; btn.style.transform='scale(1.05)'; setTimeout(function(){btn.innerHTML=o;btn.style.background='';btn.style.transform='';},1800); }
+        announceChange('Product added to cart');
+        setTimeout(function(){window.location.href=CHECKOUT_URL;},1200);
+    }
 
-        var currentUtterance = null;
-
-        readBtn.addEventListener('click', function() {
-            if (currentUtterance) {
-                window.speechSynthesis.cancel();
-            }
-            // Get all readable text from the page
-            var mainContent = document.getElementById('main-content');
-            if (!mainContent) return;
-            var text = mainContent.innerText;
-            // SECURITY: Sanitize text before speaking (limit length)
-            if (text.length > 10000) {
-                text = text.substring(0, 10000) + '. Text truncated for speech.';
-            }
-            currentUtterance = new SpeechSynthesisUtterance(text);
-            currentUtterance.rate = 0.95;
-            currentUtterance.pitch = 1;
-            currentUtterance.lang = 'en-US';
-            currentUtterance.onend = function() {
-                readBtn.style.display = '';
-                stopBtn.style.display = 'none';
-                readBtn.setAttribute('aria-pressed', 'false');
-                currentUtterance = null;
-            };
-            readBtn.style.display = 'none';
-            stopBtn.style.display = '';
-            readBtn.setAttribute('aria-pressed', 'true');
-            window.speechSynthesis.speak(currentUtterance);
-            announceChange('Reading page aloud');
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){
+        a.addEventListener('click',function(e){
+            e.preventDefault(); var href=a.getAttribute('href');
+            if(!href||href==='#')return; if(!/^[a-zA-Z0-9_-]+$/.test(href.substring(1)))return;
+            var t=document.querySelector(href); if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
         });
+    });
 
-        stopBtn.addEventListener('click', function() {
-            window.speechSynthesis.cancel();
-            readBtn.style.display = '';
-            stopBtn.style.display = 'none';
-            readBtn.setAttribute('aria-pressed', 'false');
-            currentUtterance = null;
-            announceChange('Speech stopped');
-        });
+    function toggleFaq(btn){
+        var exp = btn.getAttribute('aria-expanded')==='true';
+        var panel = document.getElementById(btn.getAttribute('aria-controls'));
+        document.querySelectorAll('.fq-q').forEach(function(b){if(b!==btn){b.setAttribute('aria-expanded','false');var p=document.getElementById(b.getAttribute('aria-controls'));if(p)p.classList.remove('open');}});
+        btn.setAttribute('aria-expanded',!exp); if(panel)panel.classList.toggle('open',!exp);
+        announceChange(!exp?'Answer expanded':'Answer collapsed');
+    }
+
+    (function(){
+        var rbtn=document.getElementById('ttsReadBtn'),sbtn=document.getElementById('ttsStopBtn');
+        if(!rbtn||!sbtn)return; if(!('speechSynthesis'in window)){rbtn.style.display='none';return;}
+        var cur=null;
+        rbtn.addEventListener('click',function(){if(cur)window.speechSynthesis.cancel();var mc=document.getElementById('main-content');if(!mc)return;var text=mc.innerText;if(text.length>10000)text=text.substring(0,10000)+'. Text truncated.';cur=new SpeechSynthesisUtterance(text);cur.rate=0.95;cur.pitch=1;cur.lang='en-US';cur.onend=function(){rbtn.style.display='';sbtn.style.display='none';rbtn.setAttribute('aria-pressed','false');cur=null;};rbtn.style.display='none';sbtn.style.display='';rbtn.setAttribute('aria-pressed','true');window.speechSynthesis.speak(cur);announceChange('Reading page aloud');});
+        sbtn.addEventListener('click',function(){window.speechSynthesis.cancel();rbtn.style.display='';sbtn.style.display='none';rbtn.setAttribute('aria-pressed','false');cur=null;announceChange('Speech stopped');});
     })();
 
-    // ===== ACCESSIBILITY SYSTEM =====
-    (function() {
-        var toggle = document.getElementById('a11yToggle');
-        var panel = document.getElementById('a11yPanel');
-        var html = document.documentElement;
-
-        if (!toggle || !panel) return;
-
-        // Toggle panel open/close
-        toggle.addEventListener('click', function() {
-            var isOpen = panel.classList.contains('open');
-            if (isOpen) {
-                panel.classList.remove('open');
-                panel.setAttribute('aria-hidden', 'true');
-                toggle.setAttribute('aria-expanded', 'false');
-                announceChange('Accessibility panel closed');
-            } else {
-                panel.classList.add('open');
-                panel.setAttribute('aria-hidden', 'false');
-                toggle.setAttribute('aria-expanded', 'true');
-                announceChange('Accessibility panel opened');
-                var firstBtn = panel.querySelector('.a11y-toggle-btn');
-                if (firstBtn) firstBtn.focus();
-            }
-        });
-
-        // Close panel on Escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && panel.classList.contains('open')) {
-                panel.classList.remove('open');
-                panel.setAttribute('aria-hidden', 'true');
-                toggle.setAttribute('aria-expanded', 'false');
-                toggle.focus();
-                announceChange('Accessibility panel closed');
-            }
-        });
-
-        // Close panel when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!panel.contains(e.target) && !toggle.contains(e.target) && panel.classList.contains('open')) {
-                panel.classList.remove('open');
-                panel.setAttribute('aria-hidden', 'true');
-                toggle.setAttribute('aria-expanded', 'false');
-            }
-        });
-
-        // High Contrast
-        var contrastBtn = document.getElementById('a11yContrast');
-        contrastBtn.addEventListener('click', function() {
-            var isActive = html.classList.toggle('a11y-high-contrast');
-            contrastBtn.classList.toggle('active');
-            contrastBtn.setAttribute('aria-checked', isActive);
-            contrastBtn.textContent = isActive ? 'On' : 'Off';
-            announceChange(isActive ? 'High contrast mode enabled' : 'High contrast mode disabled');
-        });
-
-        // Large Text
-        var largeTextBtn = document.getElementById('a11yLargeText');
-        largeTextBtn.addEventListener('click', function() {
-            var isActive = html.classList.toggle('a11y-large-text');
-            largeTextBtn.classList.toggle('active');
-            largeTextBtn.setAttribute('aria-checked', isActive);
-            largeTextBtn.textContent = isActive ? 'On' : 'Off';
-            announceChange(isActive ? 'Large text mode enabled' : 'Large text mode disabled');
-        });
-
-        // Reduced Motion
-        var reducedMotionBtn = document.getElementById('a11yReducedMotion');
-        reducedMotionBtn.addEventListener('click', function() {
-            var isActive = html.classList.toggle('a11y-reduced-motion');
-            reducedMotionBtn.classList.toggle('active');
-            reducedMotionBtn.setAttribute('aria-checked', isActive);
-            reducedMotionBtn.textContent = isActive ? 'On' : 'Off';
-            announceChange(isActive ? 'Reduced motion enabled' : 'Reduced motion disabled');
-        });
-
-        // Dyslexia Font
-        var dyslexiaBtn = document.getElementById('a11yDyslexia');
-        dyslexiaBtn.addEventListener('click', function() {
-            var isActive = html.classList.toggle('a11y-dyslexia');
-            dyslexiaBtn.classList.toggle('active');
-            dyslexiaBtn.setAttribute('aria-checked', isActive);
-            dyslexiaBtn.textContent = isActive ? 'On' : 'Off';
-            announceChange(isActive ? 'Dyslexia-friendly font enabled' : 'Dyslexia-friendly font disabled');
-        });
-
-        // Keyboard navigation within panel
-        var panelBtns = panel.querySelectorAll('.a11y-toggle-btn');
-        panelBtns.forEach(function(btn, idx) {
-            btn.addEventListener('keydown', function(e) {
-                if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
-                    e.preventDefault();
-                    var next = panelBtns[idx + 1];
-                    if (next) next.focus();
-                } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
-                    e.preventDefault();
-                    var prev = panelBtns[idx - 1];
-                    if (prev) prev.focus();
-                } else if (e.key === 'Home') {
-                    e.preventDefault();
-                    panelBtns[0].focus();
-                } else if (e.key === 'End') {
-                    e.preventDefault();
-                    panelBtns[panelBtns.length - 1].focus();
-                }
-            });
-        });
-
-        // Auto-detect prefers-reduced-motion
-        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            html.classList.add('a11y-reduced-motion');
-            reducedMotionBtn.classList.add('active');
-            reducedMotionBtn.setAttribute('aria-checked', 'true');
-            reducedMotionBtn.textContent = 'On';
-        }
-
-        // Auto-detect prefers-contrast
-        if (window.matchMedia && window.matchMedia('(prefers-contrast: more)').matches) {
-            html.classList.add('a11y-high-contrast');
-            contrastBtn.classList.add('active');
-            contrastBtn.setAttribute('aria-checked', 'true');
-            contrastBtn.textContent = 'On';
-        }
+    (function(){
+        var tg=document.getElementById('a11yToggle'),pn=document.getElementById('a11yPanel'),html=document.documentElement;
+        if(!tg||!pn)return;
+        tg.addEventListener('click',function(){var op=pn.classList.contains('open');if(op){pn.classList.remove('open');pn.setAttribute('aria-hidden','true');tg.setAttribute('aria-expanded','false');announceChange('Accessibility panel closed');}else{pn.classList.add('open');pn.setAttribute('aria-hidden','false');tg.setAttribute('aria-expanded','true');announceChange('Accessibility panel opened');var f=pn.querySelector('.a11y-toggle-btn');if(f)f.focus();}});
+        document.addEventListener('keydown',function(e){if(e.key==='Escape'&&pn.classList.contains('open')){pn.classList.remove('open');pn.setAttribute('aria-hidden','true');tg.setAttribute('aria-expanded','false');tg.focus();announceChange('Accessibility panel closed');}});
+        document.addEventListener('click',function(e){if(!pn.contains(e.target)&&!tg.contains(e.target)&&pn.classList.contains('open')){pn.classList.remove('open');pn.setAttribute('aria-hidden','true');tg.setAttribute('aria-expanded','false');}});
+        function st(id,cls){var b=document.getElementById(id);b.addEventListener('click',function(){var on=html.classList.toggle(cls);b.classList.toggle('active');b.setAttribute('aria-checked',on);b.textContent=on?'On':'Off';announceChange(id+(on?' enabled':' disabled'));});}
+        st('a11yContrast','a11y-high-contrast');st('a11yLargeText','a11y-large-text');st('a11yReducedMotion','a11y-reduced-motion');st('a11yDyslexia','a11y-dyslexia');
+        var btns=pn.querySelectorAll('.a11y-toggle-btn');btns.forEach(function(b,i){b.addEventListener('keydown',function(e){if(e.key==='ArrowDown'||e.key==='ArrowRight'){e.preventDefault();var n=btns[i+1];if(n)n.focus();}else if(e.key==='ArrowUp'||e.key==='ArrowLeft'){e.preventDefault();var p=btns[i-1];if(p)p.focus();}else if(e.key==='Home'){e.preventDefault();btns[0].focus();}else if(e.key==='End'){e.preventDefault();btns[btns.length-1].focus();}});});
+        if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){html.classList.add('a11y-reduced-motion');var b=document.getElementById('a11yReducedMotion');b.classList.add('active');b.setAttribute('aria-checked','true');b.textContent='On';}
+        if(window.matchMedia&&window.matchMedia('(prefers-contrast: more)').matches){html.classList.add('a11y-high-contrast');var b=document.getElementById('a11yContrast');b.classList.add('active');b.setAttribute('aria-checked','true');b.textContent='On';}
     })();
     </script>
-
 </body>
 </html>
