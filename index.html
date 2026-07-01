@@ -105,7 +105,7 @@
         .nll a:hover::after { width: 100%; }
 
         /* ===== HERO ===== */
-        .hero { position: relative; z-index: 2; min-height: 100vh; display: flex; align-items: center; padding: 8rem 2rem 5rem; }
+        .hero { position: relative; z-index: 2; min-height: 100vh; min-height: 100dvh; display: flex; align-items: center; padding: 8rem 2rem 5rem; }
         .hi { max-width: 1200px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1.1fr .9fr; gap: 5rem; align-items: center; }
         .hc { max-width: 560px; }
         .hero-icon { width: 80px; height: 80px; margin-bottom: 1.5rem; }
@@ -220,13 +220,39 @@
             .sl2 { grid-template-columns: 1fr; } .nll { display: none; }
         }
         @media (max-width: 600px) {
-            .sec { padding: 4rem 1.25rem; } .hero { padding: 6rem 1.25rem 3rem; }
-            .cb { padding: 2.5rem 1.5rem; } .sc { padding: 1.5rem; } .nav { padding: .75rem 1.25rem; }
+            .sec { padding: 3rem 1.25rem; } .hero { padding: 6.5rem 1.25rem 2.5rem; }
+            .cb { padding: 2rem 1.25rem; } .sc { padding: 1.25rem; } .nav { padding: .75rem 1rem; }
+            .ht { font-size: clamp(2.1rem, 8vw, 2.6rem); }
+            .hd { font-size: 1rem; margin-bottom: 1.25rem; }
+            .pn { font-size: 2.1rem; }
+            .sh { margin-bottom: 2.5rem; }
+            .st { font-size: 1.6rem; }
+            .sd { font-size: .95rem; }
+            .fg, .hs, .kl { gap: 1rem; }
+            .fc, .hn2 { padding: 1.5rem 1.25rem; }
+            .ha { gap: .75rem; }
+            .bp, .bs { padding: .8rem 1.6rem; font-size: .95rem; width: 100%; justify-content: center; }
+            .ha { flex-direction: column; }
+            .ti { gap: 1.25rem 1.5rem; }
+            .cs { padding: 3rem 1.25rem; }
+            .a11y-toggle { width: 42px; height: 42px; bottom: 14px; left: 14px; }
+            #ttsBar { top: 60px; right: 12px; }
+            .tts-btn { padding: .4rem .75rem; font-size: .72rem; }
+        }
+        @media (max-width: 380px) {
+            .ht { font-size: 1.9rem; }
+            .pn { font-size: 1.85rem; }
         }
 
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
             * { scroll-behavior: auto !important; }
+        }
+
+        /* Lighten expensive effects on small/low-power screens */
+        @media (max-width: 600px) {
+            .ambient-blob { filter: blur(60px); }
+            .nav, .tb, .sc, .fc, .hn2, .ki, .fq { backdrop-filter: none; -webkit-backdrop-filter: none; }
         }
     </style>
 </head>
@@ -369,6 +395,17 @@
     (function(){ var p = new URLSearchParams(window.location.search), c = new URLSearchParams(); p.forEach(function(v,k){ if(/^[a-zA-Z0-9_-]+$/.test(k)&&!/[<>"'`]/.test(v)) c.set(k,v); }); if(c.toString()!==p.toString()) window.history.replaceState({},'','/'+(c.toString()?'?'+c.toString():'')); })();
     function announceChange(msg){ var e=document.getElementById('a11yAnnounce'); if(e){e.textContent='';setTimeout(function(){e.textContent=msg;},100);} }
 
+    /* iOS dvh fallback: set --vh so 100vh-reliant older browsers still size right */
+    (function(){
+        function setVH(){ document.documentElement.style.setProperty('--vh', (window.innerHeight*0.01)+'px'); }
+        setVH();
+        window.addEventListener('resize', setVH);
+        window.addEventListener('orientationchange', setVH);
+    })();
+
+    var IS_MOBILE = window.matchMedia('(max-width: 600px)').matches || /Mobi|Android/i.test(navigator.userAgent);
+    var IS_TOUCH = ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
+
     /* ===== AMBIENT PARALLAX STARFIELD (3 depth layers, mouse-reactive) ===== */
     (function(){
         var l1=document.getElementById('stars-layer-1'),l2=document.getElementById('stars-layer-2'),l3=document.getElementById('stars-layer-3');
@@ -384,43 +421,44 @@
                 layer.appendChild(s);
             }
         }
-        addStars(l1,80,0.5,1,'');
-        addStars(l2,45,1,2,'');
-        addStars(l3,22,1.5,3,'box-shadow:0 0 4px rgba(167,139,250,0.4);');
+        // Fewer stars on mobile to reduce paint cost
+        var f = IS_MOBILE ? 0.5 : 1;
+        addStars(l1,Math.round(80*f),0.5,1,'');
+        addStars(l2,Math.round(45*f),1,2,'');
+        addStars(l3,Math.round(22*f),1.5,3,'box-shadow:0 0 4px rgba(167,139,250,0.4);');
         var mx=0,my=0,tx=0,ty=0;
-        if(!rm){
+        // Skip mouse-driven parallax entirely on touch devices — nothing to react to
+        if(!rm && !IS_TOUCH){
             document.addEventListener('mousemove',function(e){
                 tx=(e.clientX/window.innerWidth-0.5)*2;
                 ty=(e.clientY/window.innerHeight-0.5)*2;
             });
+            (function loop(){
+                mx+=(tx-mx)*0.04;my+=(ty-my)*0.04;
+                l1.style.transform='translate('+(mx*-6)+'px,'+(my*-6)+'px)';
+                l2.style.transform='translate('+(mx*-14)+'px,'+(my*-14)+'px)';
+                l3.style.transform='translate('+(mx*-25)+'px,'+(my*-25)+'px)';
+                requestAnimationFrame(loop);
+            })();
         }
-        function loop(){
-            if(rm)return;
-            mx+=(tx-mx)*0.04;my+=(ty-my)*0.04;
-            l1.style.transform='translate('+(mx*-6)+'px,'+(my*-6)+'px)';
-            l2.style.transform='translate('+(mx*-14)+'px,'+(my*-14)+'px)';
-            l3.style.transform='translate('+(mx*-25)+'px,'+(my*-25)+'px)';
-            requestAnimationFrame(loop);
-        }
-        loop();
     })();
 
     /* ================================================================
        PREMIUM GALAXY BACKGROUND
-       - Volumetric nebula clouds with filament structure
-       - Central galaxy core with luminosity bloom
-       - 4-layer parallax star field
-       - Aurora curtains with multi-frequency waves
-       - Shooting stars with physics
-       - Cosmic dust drift
        Volumetric nebula filaments + parallax starfield + shooting stars
+       Scales down complexity on mobile/low-power devices for smoothness.
        ================================================================ */
     (function(){
         var canvas = document.getElementById('bgCanvas');
         if (!canvas) return;
-        var ctx = canvas.getContext('2d');
+        var ctx = canvas.getContext('2d', { alpha: false });
         var w, h, time = 0;
-        var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)'.replace(' ','') || '(prefers-reduced-motion: reduce)').matches;
+        var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        // Scale factor for particle counts / effects on mobile
+        var Q = IS_MOBILE ? 0.4 : 1;
+        // Cap devicePixelRatio on mobile to avoid rendering at 3x on huge canvases
+        var DPR = IS_MOBILE ? Math.min(window.devicePixelRatio || 1, 1.5) : (window.devicePixelRatio || 1);
 
         // Data layers
         var bgStars = [];      // Layer 0: Tiny far-background stars
@@ -431,8 +469,13 @@
         var shootingStars = [];
 
         function resize(){
-            w = canvas.width = window.innerWidth;
-            h = canvas.height = window.innerHeight;
+            w = window.innerWidth;
+            h = window.innerHeight;
+            canvas.width = w * DPR;
+            canvas.height = h * DPR;
+            canvas.style.width = w + 'px';
+            canvas.style.height = h + 'px';
+            ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
             initScene();
         }
 
@@ -440,9 +483,8 @@
             bgStars = []; midStars = []; fgStars = []; nebulaBlobs = []; dustMotes = []; shootingStars = [];
 
             // === BACKGROUND STAR FIELD (tiny, dense, no glow) ===
-            var bgCount = Math.floor(w * h / 4500);
+            var bgCount = Math.floor(w * h / 4500 * Q);
             for (var i = 0; i < bgCount; i++) {
-                var t = Math.random();
                 bgStars.push({
                     x: Math.random() * w,
                     y: Math.random() * h,
@@ -450,19 +492,19 @@
                     alpha: 0.05 + Math.random() * 0.2,
                     twinkleSpeed: 0.001 + Math.random() * 0.003,
                     twinklePhase: Math.random() * Math.PI * 2,
-                    depth: 0.2 + Math.random() * 0.3  // parallax factor
+                    depth: 0.2 + Math.random() * 0.3
                 });
             }
 
-            // === MID DISTANCE STARS (some color tints, slight glow on brighter ones) ===
-            var midCount = Math.floor(w * h / 12000);
+            // === MID DISTANCE STARS ===
+            var midCount = Math.floor(w * h / 12000 * Q);
             for (var i = 0; i < midCount; i++) {
                 var t = Math.random();
                 var tint;
-                if (t < 0.15) tint = [255, 200, 150];      // warm gold
-                else if (t < 0.3) tint = [150, 180, 255];  // cool blue
-                else if (t < 0.4) tint = [255, 180, 220];  // pink
-                else if (t < 0.48) tint = [180, 255, 220]; // mint
+                if (t < 0.15) tint = [255, 200, 150];
+                else if (t < 0.3) tint = [150, 180, 255];
+                else if (t < 0.4) tint = [255, 180, 220];
+                else if (t < 0.48) tint = [180, 255, 220];
                 else tint = [255, 255, 255];
 
                 midStars.push({
@@ -474,19 +516,19 @@
                     twinklePhase: Math.random() * Math.PI * 2,
                     depth: 0.4 + Math.random() * 0.3,
                     tint: tint,
-                    hasGlow: Math.random() > 0.6
+                    hasGlow: !IS_MOBILE && Math.random() > 0.6
                 });
             }
 
             // === FOREGROUND BRIGHT STARS (glow halo + cross flare) ===
-            var fgCount = Math.max(12, Math.floor(w * h / 50000));
+            var fgCount = Math.max(IS_MOBILE ? 6 : 12, Math.floor(w * h / 50000 * Q));
             for (var i = 0; i < fgCount; i++) {
                 var t = Math.random();
                 var tint;
-                if (t < 0.2) tint = [255, 230, 180];       // golden
-                else if (t < 0.4) tint = [180, 200, 255];  // ice blue
-                else if (t < 0.6) tint = [255, 200, 230];  // rose
-                else if (t < 0.75) tint = [200, 255, 230]; // aqua
+                if (t < 0.2) tint = [255, 230, 180];
+                else if (t < 0.4) tint = [180, 200, 255];
+                else if (t < 0.6) tint = [255, 200, 230];
+                else if (t < 0.75) tint = [200, 255, 230];
                 else tint = [255, 255, 255];
 
                 fgStars.push({
@@ -503,9 +545,7 @@
             }
 
             // === NEBULAE (organic filament clouds) ===
-            // Each nebula is a wandering path of overlapping soft ellipses
-            // that follow a curved spine — creates tendrils and veins, not circles
-            var nebulaCount = 7 + Math.floor(Math.random() * 3);
+            var nebulaCount = IS_MOBILE ? (3 + Math.floor(Math.random() * 2)) : (7 + Math.floor(Math.random() * 3));
             for (var n = 0; n < nebulaCount; n++) {
                 var baseX = Math.random() * w;
                 var baseY = Math.random() * h * 0.75;
@@ -514,30 +554,23 @@
 
                 var colorIdx = n % 6;
                 var colors = [
-                    [139, 92, 246],   // purple
-                    [96, 165, 250],   // blue
-                    [45, 212, 191],   // teal
-                    [244, 114, 182],  // pink
-                    [251, 191, 36],   // gold
-                    [100, 140, 255]   // indigo
+                    [139, 92, 246], [96, 165, 250], [45, 212, 191],
+                    [244, 114, 182], [251, 191, 36], [100, 140, 255]
                 ];
                 var baseColor = colors[colorIdx];
 
                 var filaments = [];
-                var filCount = 12 + Math.floor(Math.random() * 12);
-                // Generate a curved spine path using accumulated angle
+                var filCount = IS_MOBILE ? (6 + Math.floor(Math.random() * 6)) : (12 + Math.floor(Math.random() * 12));
                 var spineAngle = baseAngle;
                 var spineX = baseX;
                 var spineY = baseY;
                 for (var f = 0; f < filCount; f++) {
                     var t = f / filCount;
-                    // Wander the spine slightly each step
                     spineAngle += (Math.random() - 0.5) * 0.4;
                     var stepSize = baseLen / filCount;
                     spineX += Math.cos(spineAngle) * stepSize;
                     spineY += Math.sin(spineAngle) * stepSize;
 
-                    // Filament size: fattest at center, tapering at ends
                     var taper = Math.sin(t * Math.PI);
                     var filWidth = (20 + Math.random() * 30) * taper;
 
@@ -563,8 +596,8 @@
                 });
             }
 
-            // === COSMIC DUST (tiny drifting motes — adds life) ===
-            var dustCount = 35 + Math.floor(Math.random() * 20);
+            // === COSMIC DUST ===
+            var dustCount = Math.round((35 + Math.floor(Math.random() * 20)) * Q);
             for (var i = 0; i < dustCount; i++) {
                 var t = Math.random();
                 dustMotes.push({
@@ -613,7 +646,7 @@
         }
 
         function draw(t){
-            // === BASE (deep space with subtle color zones) ===
+            // === BASE ===
             var grad = ctx.createRadialGradient(w * 0.3, h * 0.25, 0, w * 0.5, h * 0.5, Math.max(w, h) * 0.9);
             grad.addColorStop(0, '#04041a');
             grad.addColorStop(0.2, '#030316');
@@ -623,7 +656,7 @@
             ctx.fillStyle = grad;
             ctx.fillRect(0, 0, w, h);
 
-            // === GALAXY CORE GLOW (subtle focal point) ===
+            // === GALAXY CORE GLOW ===
             ctx.globalCompositeOperation = 'screen';
             var coreX = w * 0.3, coreY = h * 0.25;
             var corePulse = 0.7 + 0.3 * Math.sin(t * 0.08);
@@ -636,19 +669,20 @@
             ctx.fillStyle = coreGlow;
             ctx.fillRect(0, 0, w, h);
 
-            // Secondary core (different position, different rhythm)
-            var core2X = w * 0.72, core2Y = h * 0.6;
-            var core2Pulse = 0.6 + 0.4 * Math.cos(t * 0.06 + 1.5);
-            var core2Glow = ctx.createRadialGradient(core2X, core2Y, 0, core2X, core2Y, Math.min(w, h) * 0.28);
-            core2Glow.addColorStop(0, 'rgba(244,114,182,' + (0.018 * core2Pulse).toFixed(3) + ')');
-            core2Glow.addColorStop(0.2, 'rgba(139,92,246,' + (0.012 * core2Pulse).toFixed(3) + ')');
-            core2Glow.addColorStop(0.5, 'rgba(96,165,250,' + (0.005 * core2Pulse).toFixed(3) + ')');
-            core2Glow.addColorStop(1, 'rgba(0,0,0,0)');
-            ctx.fillStyle = core2Glow;
-            ctx.fillRect(0, 0, w, h);
+            if (!IS_MOBILE) {
+                var core2X = w * 0.72, core2Y = h * 0.6;
+                var core2Pulse = 0.6 + 0.4 * Math.cos(t * 0.06 + 1.5);
+                var core2Glow = ctx.createRadialGradient(core2X, core2Y, 0, core2X, core2Y, Math.min(w, h) * 0.28);
+                core2Glow.addColorStop(0, 'rgba(244,114,182,' + (0.018 * core2Pulse).toFixed(3) + ')');
+                core2Glow.addColorStop(0.2, 'rgba(139,92,246,' + (0.012 * core2Pulse).toFixed(3) + ')');
+                core2Glow.addColorStop(0.5, 'rgba(96,165,250,' + (0.005 * core2Pulse).toFixed(3) + ')');
+                core2Glow.addColorStop(1, 'rgba(0,0,0,0)');
+                ctx.fillStyle = core2Glow;
+                ctx.fillRect(0, 0, w, h);
+            }
             ctx.globalCompositeOperation = 'source-over';
 
-            // === NEBULAE (behind stars) ===
+            // === NEBULAE ===
             ctx.globalCompositeOperation = 'screen';
             for (var i = 0; i < nebulaBlobs.length; i++) {
                 drawNebula(nebulaBlobs[i], t);
@@ -657,10 +691,12 @@
 
             // === AURORA CURTAINS ===
             ctx.globalCompositeOperation = 'screen';
-            for (var i = 0; i < 4; i++) {
+            var auroraCount = IS_MOBILE ? 2 : 4;
+            var auroraStep = IS_MOBILE ? 12 : 6;
+            for (var i = 0; i < auroraCount; i++) {
                 ctx.beginPath();
                 ctx.moveTo(0, h * 0.05 + i * 80);
-                for (var x = 0; x <= w; x += 6) {
+                for (var x = 0; x <= w; x += auroraStep) {
                     var y = h * 0.05 + i * 80
                         + Math.sin(x * 0.0015 + t * 0.12 + i * 2.5) * 30
                         + Math.sin(x * 0.0035 + t * 0.06 + i) * 15
@@ -690,7 +726,6 @@
                 var a = s.alpha * (0.2 + 0.8 * Math.abs(Math.sin(t * s.twinkleSpeed + s.twinklePhase)));
                 var tint = s.tint;
 
-                // Subtle glow for brighter ones
                 if (s.hasGlow && a > 0.3) {
                     var glow = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, s.r * 4);
                     glow.addColorStop(0, 'rgba(' + tint[0]+','+tint[1]+','+tint[2]+',' + (a * 0.15).toFixed(3) + ')');
@@ -712,7 +747,6 @@
                 var a = s.alpha * (0.3 + 0.7 * Math.abs(Math.sin(t * s.twinkleSpeed + s.twinklePhase)));
                 var tint = s.tint;
 
-                // Large glow halo
                 var glowR = s.r * (5 + a * 8);
                 var glow = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, glowR);
                 glow.addColorStop(0, 'rgba(' + tint[0]+','+tint[1]+','+tint[2]+',' + (a * 0.3 * s.flareIntensity).toFixed(3) + ')');
@@ -721,14 +755,12 @@
                 ctx.fillStyle = glow;
                 ctx.beginPath(); ctx.arc(s.x, s.y, glowR, 0, Math.PI * 2); ctx.fill();
 
-                // Core
                 ctx.beginPath();
                 ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
                 ctx.fillStyle = 'rgba(' + tint[0]+','+tint[1]+','+tint[2]+',' + Math.min(a * 1.2, 1).toFixed(2) + ')';
                 ctx.fill();
 
-                // Cross flare
-                if (a > 0.5 && s.flareIntensity > 0.4) {
+                if (!IS_MOBILE && a > 0.5 && s.flareIntensity > 0.4) {
                     var fl = s.r * (8 + a * 10) * s.flareIntensity;
                     ctx.strokeStyle = 'rgba(' + tint[0]+','+tint[1]+','+tint[2]+',' + (a * 0.12 * s.flareIntensity).toFixed(3) + ')';
                     ctx.lineWidth = 0.4;
@@ -761,7 +793,8 @@
             }
 
             // === SHOOTING STARS ===
-            if (!reducedMotion && Math.random() < 0.004) {
+            var shootChance = IS_MOBILE ? 0.002 : 0.004;
+            if (!reducedMotion && Math.random() < shootChance) {
                 var angle = Math.PI * 0.1 + Math.random() * 0.35;
                 var speed = 5 + Math.random() * 10;
                 shootingStars.push({
@@ -790,7 +823,6 @@
                 ctx.beginPath(); ctx.moveTo(tailX, tailY); ctx.lineTo(ss.x, ss.y);
                 ctx.strokeStyle = g; ctx.lineWidth = 2; ctx.stroke();
 
-                // Head bloom
                 var headR = 5 + ss.alpha * 3;
                 var hg = ctx.createRadialGradient(ss.x, ss.y, 0, ss.x, ss.y, headR);
                 hg.addColorStop(0, 'rgba('+ss.color+','+(ss.alpha*0.8).toFixed(2)+')');
@@ -800,7 +832,16 @@
             }
         }
 
-        function animate(){ time += 0.016; draw(time); requestAnimationFrame(animate); }
+        // Pause rendering when tab/page isn't visible (saves battery, avoids jank on resume)
+        var visible = true;
+        document.addEventListener('visibilitychange', function(){ visible = !document.hidden; if(visible && !reducedMotion) requestAnimationFrame(animate); });
+
+        function animate(){
+            if (!visible) return;
+            time += 0.016;
+            draw(time);
+            requestAnimationFrame(animate);
+        }
         window.addEventListener('resize', resize); resize();
         if (reducedMotion) draw(0); else animate();
     })();
@@ -811,12 +852,13 @@
         if (!canvas) return;
         var ctx = canvas.getContext('2d');
         var burst = [], active = false;
+        var burstCount = IS_MOBILE ? 55 : 110;
         window.triggerStarBurst = function(){
             if (active) return; active = true;
-            var cx = canvas.width/2, cy = canvas.height/2;
+            var cx = window.innerWidth/2, cy = window.innerHeight/2;
             var colors = ['167,139,250','96,165,250','45,212,191','244,114,182','251,191,36'];
-            for (var i = 0; i < 110; i++) {
-                var angle = (Math.PI*2*i)/110 + Math.random()*0.4;
+            for (var i = 0; i < burstCount; i++) {
+                var angle = (Math.PI*2*i)/burstCount + Math.random()*0.4;
                 var speed = 2+Math.random()*10;
                 burst.push({x:cx,y:cy,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed,alpha:1,decay:0.007+Math.random()*0.012,r:1+Math.random()*3,color:colors[Math.floor(Math.random()*colors.length)]});
             }
